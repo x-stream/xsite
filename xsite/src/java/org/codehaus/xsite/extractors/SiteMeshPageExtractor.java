@@ -5,13 +5,15 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.codehaus.xsite.PageExtractor;
 import org.codehaus.xsite.io.FileSystem;
 import org.codehaus.xsite.model.Page;
 
-
 import com.opensymphony.module.sitemesh.html.BasicRule;
+import com.opensymphony.module.sitemesh.html.CustomTag;
 import com.opensymphony.module.sitemesh.html.HTMLProcessor;
 import com.opensymphony.module.sitemesh.html.Tag;
 import com.opensymphony.module.sitemesh.html.rules.BodyTagRule;
@@ -77,6 +79,7 @@ public class SiteMeshPageExtractor implements PageExtractor {
         htmlProcessor.addRule(new TitleExtractingRule(pageBuilder));
         htmlProcessor.addRule(new MetaTagRule(pageBuilder));
         htmlProcessor.addRule(new LinkExtractingRule());
+        htmlProcessor.addRule(new AddFirstChildClassToHeader());
         // turn JIRA:XSTR-123 snippets into links
         htmlProcessor.addTextFilter(new RegexReplacementTextFilter("JIRA:(XSTR\\-[0-9]+)", "<a href=\"http://jira.codehaus.org/browse/$1\">$1</a>"));   
 
@@ -103,6 +106,35 @@ public class SiteMeshPageExtractor implements PageExtractor {
         public void process(Tag tag) {
             if (tag.hasAttribute("href", false)) {
                 links.add(tag.getAttributeValue("href", false));
+            }
+            tag.writeTo(currentBuffer());
+        }
+    }
+
+    /**
+     * Rule for HTMLProcessor that adds class=""FirstChild" to the first header of the body if it is the first element.
+     */
+    private class AddFirstChildClassToHeader extends BasicRule {
+        private boolean firstChildIsHeader = true;
+        private final Pattern pattern;
+        
+        private AddFirstChildClassToHeader() {
+            pattern = Pattern.compile("^H[1-9]$", Pattern.CASE_INSENSITIVE);
+        }
+
+        public boolean shouldProcess(String tag) {
+            final Matcher matcher = pattern.matcher(tag);
+            return tag.equalsIgnoreCase("p") || matcher.matches();
+        }
+
+        public void process(Tag tag) {
+            if (firstChildIsHeader) {
+                if (!tag.getName().equalsIgnoreCase("p")) {
+                    CustomTag customTag = new CustomTag(tag);
+                    customTag.addAttribute("class", "FirstChild");
+                    tag = customTag;
+                }
+                firstChildIsHeader = false;
             }
             tag.writeTo(currentBuffer());
         }
