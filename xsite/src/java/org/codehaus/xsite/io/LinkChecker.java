@@ -63,17 +63,31 @@ public class LinkChecker {
         if (link.startsWith("mailto:")) {
             // todo: valid email addresses should be cofigurable
             return true;
+        } else if (link.startsWith("javascript:")) {
+            return true;
         } else if (link.startsWith("http://")) {
             // todo: HTTP get this address to check it's valid (cache result)
             return true;
-        } else if (link.startsWith("javadoc/")) {
-            // todo: Check the class is valid
+        } else if (link.startsWith("nntp://")) {
+            // todo: News get this address to check it's valid (cache result)
             return true;
-        } else if (knownPageFileNames.contains(link)) {
+        } else if (link.startsWith(siteMap.getProperty("javadoc-location"))) {
+            // todo: Check the class/package is valid
             return true;
         } else {
-            return false;
+            int anchorIdx = link.lastIndexOf('#');
+            if (anchorIdx >= 0) {
+                // todo: Check anchors
+                if (anchorIdx == 0) {
+                    return true;
+                }
+                link = link.substring(0, link.lastIndexOf('#'));
+            }
+            if (knownPageFileNames.contains(link)) {
+                return true;
+            }
         }
+        return false;
     }
 
 }
