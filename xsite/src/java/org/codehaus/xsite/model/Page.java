@@ -66,5 +66,9 @@ public class Page {
             super(cause);
         }
     }
+
+    public boolean isIndex() {
+        return "index.html".equals(filename);
+    }
     
 }

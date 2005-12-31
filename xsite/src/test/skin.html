@@ -11,7 +11,7 @@
             <a href="index.html"><img id="logo" src="logo.gif" alt="XStream"/></a>
         </div>
 
-        <div id="center" class="Content2Column">  <!-- Content3Column for index -->
+        <div id="center" class="${centerClass}">
             <div id="content">
                 <h1 class="FirstChild">${title}</h1>
 
@@ -39,8 +39,7 @@
             </#list>
         </div>
 
-<!--
-    <template:when var="isindex">
+      <#if page.index>
       <div class="SidePanel" id="right">
         <div class="NewsGroup">
           <h1>Latest Version: 1.0.2</h1>
@@ -53,7 +52,7 @@
                         elements="/html/body/*[@class='NewsItem' and position()<=5]"/>
         </div>
       </div>
-    </template:when>
--->
+      </#if>
+      
   </body>
 </html>

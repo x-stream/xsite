@@ -46,6 +46,7 @@ public class FreemarkerSkin implements Skin {
         context.put("body", page.getBody());
         context.put("page", page);
         context.put("sitemap", siteMap);
+        context.put("centerClass", page.isIndex() ? "Content3Column" : "Content2Column");
 
         try {
             Writer writer = new FileWriter(new File(outputDirectory, page.getFilename()));
