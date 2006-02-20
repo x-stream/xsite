@@ -81,7 +81,7 @@ public class SiteMeshPageExtractor implements PageExtractor {
         htmlProcessor.addRule(new LinkExtractingRule());
         htmlProcessor.addRule(new AddFirstChildClassToHeader());
         // turn JIRA:XSTR-123 snippets into links
-        htmlProcessor.addTextFilter(new RegexReplacementTextFilter("JIRA:(XSTR\\-[0-9]+)", "<a href=\"http://jira.codehaus.org/browse/$1\">$1</a>"));   
+        htmlProcessor.addTextFilter(new RegexReplacementTextFilter("JIRA:(XSTR\\-[0-9]+)", "<a href=\"http://jira.codehaus.org/browse/$1\">$1</a>"));
 
         // go!
         htmlProcessor.process();
@@ -117,7 +117,7 @@ public class SiteMeshPageExtractor implements PageExtractor {
     private class AddFirstChildClassToHeader extends BasicRule {
         private boolean firstChildIsHeader = true;
         private final Pattern pattern;
-        
+
         private AddFirstChildClassToHeader() {
             pattern = Pattern.compile("^H[1-9]$", Pattern.CASE_INSENSITIVE);
         }
@@ -139,5 +139,5 @@ public class SiteMeshPageExtractor implements PageExtractor {
             tag.writeTo(currentBuffer());
         }
     }
-    
+
 }
