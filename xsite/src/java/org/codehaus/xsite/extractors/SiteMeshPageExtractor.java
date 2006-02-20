@@ -130,8 +130,14 @@ public class SiteMeshPageExtractor implements PageExtractor {
         public void process(Tag tag) {
             if (firstChildIsHeader) {
                 if (!tag.getName().equalsIgnoreCase("p")) {
-                    CustomTag customTag = new CustomTag(tag);
-                    customTag.addAttribute("class", "FirstChild");
+                    final CustomTag customTag;
+                    // http://jira.opensymphony.com/browse/SIM-202
+                    if (tag.getAttributeCount() == 0) {
+                        customTag = new CustomTag(tag.getName(), tag.getType());
+                    } else {
+                        customTag = new CustomTag(tag);
+                        customTag.addAttribute("class", "FirstChild");
+                    }
                     tag = customTag;
                 }
                 firstChildIsHeader = false;
