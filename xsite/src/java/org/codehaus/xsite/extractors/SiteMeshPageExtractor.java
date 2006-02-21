@@ -136,8 +136,8 @@ public class SiteMeshPageExtractor implements PageExtractor {
                         customTag = new CustomTag(tag.getName(), tag.getType());
                     } else {
                         customTag = new CustomTag(tag);
-                        customTag.addAttribute("class", "FirstChild");
                     }
+                    customTag.addAttribute("class", "FirstChild");
                     tag = customTag;
                 }
                 firstChildIsHeader = false;
