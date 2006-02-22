@@ -28,6 +28,7 @@ import com.opensymphony.module.sitemesh.html.util.CharArray;
  * PageExtractor which extract page information from an HTML file using the SiteMesh library.
  *
  * @author Joe Walnes
+ * @author J&ouml;rg Schaible
  */
 public class SiteMeshPageExtractor implements PageExtractor {
 
@@ -35,9 +36,10 @@ public class SiteMeshPageExtractor implements PageExtractor {
     private String filename;
     private String head;
     private String body;
-    private Collection links = new HashSet();
+    private Collection links;
 
     public Page extractPage(File htmlFile) {
+        links = new HashSet();
         try {
             filename = htmlFile.getName();
             FileSystem fileSystem = new FileSystem();
@@ -50,6 +52,7 @@ public class SiteMeshPageExtractor implements PageExtractor {
     }
 
     public Page extractPage(String filename, String htmlContent) {
+        links = new HashSet();
         try {
             this.filename = filename;
             extractContentFromHTML(htmlContent.toCharArray());

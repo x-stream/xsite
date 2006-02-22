@@ -13,6 +13,7 @@ import org.codehaus.xsite.model.SiteMap;
  * Verifies all the links in a SiteMap.
  *
  * @author Joe Walnes
+ * @author J&ouml;rg Schaible
  */
 public class LinkChecker {
 

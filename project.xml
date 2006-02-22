@@ -1,88 +1,90 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project xmlns:j="jelly:core">
 
-    <pomVersion>3</pomVersion>
-    <currentVersion>1.0-SNAPSHOT</currentVersion>
-    <name>xsite</name>
-    <groupId>xsite</groupId>
-    <id>xsite</id>
-    <url>http://xsite.codehaus.org</url>
-    <organization>
-    </organization>
-    <inceptionYear>2005</inceptionYear>
-    <description>XSite - a simple site generation tool</description>
-    <shortDescription>XSite - a simple site generation tool</shortDescription>
-    <logo></logo>
+	<pomVersion>3</pomVersion>
+	<currentVersion>1.0-SNAPSHOT</currentVersion>
+	<name>xsite</name>
+	<groupId>org.codehaus.xsite</groupId>
+	<id>xsite</id>
+	<url>http://xsite.codehaus.org</url>
+	<organization></organization>
+	<inceptionYear>2005</inceptionYear>
+	<description>XSite - a simple site generation tool</description>
+	<shortDescription>
+		XSite - a simple site generation tool
+	</shortDescription>
+	<logo></logo>
 
-    <siteAddress></siteAddress>
-    <siteDirectory></siteDirectory>
+	<siteAddress></siteAddress>
+	<siteDirectory></siteDirectory>
 
-    <distributionSite></distributionSite>
-    <distributionDirectory>/dist</distributionDirectory>
+	<distributionSite></distributionSite>
+	<distributionDirectory>/dist</distributionDirectory>
 
-    <repository>
-    </repository>
+	<repository></repository>
 
-    <dependencies>
-	    	<dependency>
-    			<id>freemarker</id>
-    			<version>2.3.3</version>
- 	        <properties>
-                <zip.bundle>true</zip.bundle>
-    		    </properties>            
-    		</dependency>	
-	    	<dependency>
-    			<groupId>opensymphony</groupId>
-    			<artifactId>sitemesh</artifactId>
-    			<version>20051115</version>
- 	        <properties>
-                <zip.bundle>true</zip.bundle>
-    		    </properties>            
-    		</dependency>	
-	    	<dependency>
-    			<id>xstream</id>
-    			<version>1.1.2</version>
- 	        <properties>
-                <zip.bundle>true</zip.bundle>
-    		    </properties>            
-    		</dependency>	
-	    	<dependency>
-    			<id>xpp3</id>
-    			<version>1.1.3.3_min</version>
- 	        <properties>
-                <zip.bundle>true</zip.bundle>
-    		    </properties>            
-    		</dependency>	
-	    	<dependency>
-    			<id>junit</id>
-    			<version>3.8.1</version>
-    		</dependency>	
-    </dependencies>
-    
+	<dependencies>
+		<dependency>
+			<id>freemarker</id>
+			<version>2.3.3</version>
+			<properties>
+				<zip.bundle>true</zip.bundle>
+			</properties>
+		</dependency>
+		<dependency>
+			<groupId>opensymphony</groupId>
+			<artifactId>sitemesh</artifactId>
+			<version>20051115</version>
+			<properties>
+				<zip.bundle>true</zip.bundle>
+			</properties>
+		</dependency>
+		<dependency>
+			<id>xstream</id>
+			<version>1.1.3</version>
+			<properties>
+				<zip.bundle>true</zip.bundle>
+			</properties>
+		</dependency>
+		<dependency>
+			<groupId>xpp3</groupId>
+			<artifactId>xpp3_min</artifactId>
+			<version>1.1.3.4.O</version>
+			<properties>
+				<zip.bundle>true</zip.bundle>
+			</properties>
+		</dependency>
+		<dependency>
+			<id>junit</id>
+			<version>3.8.1</version>
+		</dependency>
+	</dependencies>
 
-    <build>
-    		<defaultGoal>multiproject:install</defaultGoal>
-        <sourceDirectory>${basedir}/src/java</sourceDirectory>
-        <unitTestSourceDirectory>${basedir}/src/test</unitTestSourceDirectory>
-        <unitTest>
-            <includes>
-                <include>**/*Test.java</include>
-            </includes>
-            <excludes>
-                <exclude>**/Abstract*</exclude>
-            </excludes>
-            <resources>
-                <resource>
-                    <directory>${basedir}/src/test</directory>
-                    <includes>
-                        <include>**/*</include>
-                    </includes>
-                </resource>
-            </resources>
-        </unitTest>
-    </build>
 
-    <reports>
-    </reports>    
+	<build>
+		<defaultGoal>multiproject:install</defaultGoal>
+		<sourceDirectory>${basedir}/src/java</sourceDirectory>
+		<unitTestSourceDirectory>
+			${basedir}/src/test
+		</unitTestSourceDirectory>
+		<unitTest>
+			<includes>
+				<include>**/*Test.java</include>
+			</includes>
+			<excludes>
+				<exclude>**/Abstract*</exclude>
+			</excludes>
+			<resources>
+				<resource>
+					<directory>${basedir}/src/test</directory>
+					<includes>
+						<include>**/*</include>
+					</includes>
+				</resource>
+			</resources>
+		</unitTest>
+	</build>
+
+	<reports></reports>
 </project>
 
