@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Properties;
 
 /**
  * Holds the structure of a website.
@@ -15,7 +14,6 @@ public class SiteMap {
 
     private List sections = new ArrayList();
     private List pages = new ArrayList();
-    private Properties properties = new Properties();
 
     public void addSection(Section section) {
         sections.add(section);
@@ -23,10 +21,6 @@ public class SiteMap {
 
     public void addPage(Page page) {
         pages.add(page);
-    }
-    
-    public void addProperty(String key, String value) {
-        properties.put(key, value);
     }
 
     public List getSections() {
@@ -45,9 +39,5 @@ public class SiteMap {
             }
         }
         return Collections.unmodifiableList(result);
-    }
-
-    public String getProperty(String key) {
-        return (String)properties.get(key);
     }
 }

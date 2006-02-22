@@ -8,4 +8,19 @@
 		<parameter><string>JIRA:(XSTR-[0-9]+)</string></parameter>
 		<parameter><string><![CDATA[<a href=\"http://jira.codehaus.org/browse/$1\">$1</a>]]></string></parameter>
 	</component-implementation>
+	<component-implementation key="email" class="org.codehaus.xsite.validate.links.LinkStartsWithValidator">
+		<parameter><string>mailto:</string></parameter>
+	</component-implementation>
+	<component-implementation key="javascript" class="org.codehaus.xsite.validate.links.LinkStartsWithValidator">
+		<parameter><string>javascript:</string></parameter>
+	</component-implementation>
+	<component-implementation key="http" class="org.codehaus.xsite.validate.links.LinkStartsWithValidator">
+		<parameter><string>http://</string></parameter>
+	</component-implementation>
+	<component-implementation key="news" class="org.codehaus.xsite.validate.links.LinkStartsWithValidator">
+		<parameter><string>nntp://</string></parameter>
+	</component-implementation>
+	<component-implementation key="javadoc" class="org.codehaus.xsite.validate.links.LinkStartsWithValidator">
+		<parameter><string>apidocs/</string></parameter>
+	</component-implementation>
 </container>

@@ -1,10 +1,11 @@
-package org.codehaus.xsite.io;
+package org.codehaus.xsite.validate;
 
 import java.util.List;
 import java.util.Iterator;
 import java.util.Collection;
 import java.util.HashSet;
 
+import org.codehaus.xsite.LinkValidator;
 import org.codehaus.xsite.model.Page;
 import org.codehaus.xsite.model.SiteMap;
 
@@ -20,6 +21,7 @@ public class LinkChecker {
     private final Collection knownPageFileNames;
     private final SiteMap siteMap;
     private final Reporter reporter;
+    private final LinkValidator[] validators;
 
     /**
      * Callback for errors.
@@ -28,8 +30,9 @@ public class LinkChecker {
         void badLink(Page page, String link);
     }
 
-    public LinkChecker(SiteMap siteMap, Reporter reporter) {
+    public LinkChecker(SiteMap siteMap, LinkValidator[] validators, Reporter reporter) {
         this.siteMap = siteMap;
+        this.validators = validators;
         this.reporter = reporter;
         knownPageFileNames = new HashSet();
         List allPages = siteMap.getAllPages();
@@ -61,32 +64,21 @@ public class LinkChecker {
     }
 
     protected boolean verifyLink(String link) {
-        if (link.startsWith("mailto:")) {
-            // todo: valid email addresses should be cofigurable
-            return true;
-        } else if (link.startsWith("javascript:")) {
-            return true;
-        } else if (link.startsWith("http://")) {
-            // todo: HTTP get this address to check it's valid (cache result)
-            return true;
-        } else if (link.startsWith("nntp://")) {
-            // todo: News get this address to check it's valid (cache result)
-            return true;
-        } else if (link.startsWith(siteMap.getProperty("javadoc-location"))) {
-            // todo: Check the class/package is valid
-            return true;
-        } else {
-            int anchorIdx = link.lastIndexOf('#');
-            if (anchorIdx >= 0) {
-                // todo: Check anchors
-                if (anchorIdx == 0) {
-                    return true;
-                }
-                link = link.substring(0, link.lastIndexOf('#'));
-            }
-            if (knownPageFileNames.contains(link)) {
+        for (int i = 0; i < validators.length; i++) {
+            if (validators[i].isValid(link)) {
                 return true;
             }
+        }
+        int anchorIdx = link.lastIndexOf('#');
+        if (anchorIdx >= 0) {
+            // todo: Check anchors
+            if (anchorIdx == 0) {
+                return true;
+            }
+            link = link.substring(0, link.lastIndexOf('#'));
+        }
+        if (knownPageFileNames.contains(link)) {
+            return true;
         }
         return false;
     }

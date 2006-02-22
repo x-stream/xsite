@@ -1,7 +1,4 @@
 <sitemap>
-	<properties>
-		<property name="javadoc-location" value="apidocs" />
-	</properties>
     <section>
         <name>Software</name>
         <page>index.html</page>
