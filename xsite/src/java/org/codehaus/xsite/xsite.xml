@@ -1,0 +1,6 @@
+<container>
+	<component-implementation class="org.codehaus.xsite.XSite"/>
+	<component-implementation key="org.codehaus.xsite.SiteMapLoader" class="org.codehaus.xsite.loaders.XStreamSiteMapLoader"/>
+	<component-implementation key="org.codehaus.xsite.PageExtractor" class="org.codehaus.xsite.loaders.XStreamSiteMapLoader"/>
+	<component-implementation key="org.codehaus.xsite.Skin" class="org.codehaus.xsite.skins.FreemarkerSkin"/>
+</container>
