@@ -12,8 +12,8 @@ import org.codehaus.xsite.skins.FreemarkerSkin;
 public class XSiteTest extends TestCase {
 
     public void testBuild() throws IOException{
-        XSite xsite = new XSite(new XStreamSiteMapLoader(new SiteMeshPageExtractor()), 
+        XSite xsite = new XSite(new XStreamSiteMapLoader(new SiteMeshPageExtractor()),
                 new FreemarkerSkin());
-       xsite.build(new File("src/test/xsite.xml"), new File("src/test/skin.html"), new File("target/xsite"));
+       xsite.build(new File("src/test/sitemap.xml"), new File("src/test/skin.html"), new File("target/xsite"));
     }
 }
