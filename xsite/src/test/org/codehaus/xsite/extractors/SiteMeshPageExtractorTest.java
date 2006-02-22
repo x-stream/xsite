@@ -1,20 +1,25 @@
 package org.codehaus.xsite.extractors;
 
+import com.opensymphony.module.sitemesh.html.TagRule;
+import com.opensymphony.module.sitemesh.html.TextFilter;
+
 import junit.framework.TestCase;
 
+import org.codehaus.xsite.extractors.sitemesh.rules.AddFirstChildClassToHeader;
 import org.codehaus.xsite.model.Page;
+
 
 /**
  * @author J&ouml;rg Schaible
  */
 public class SiteMeshPageExtractorTest extends TestCase {
 
-
     private SiteMeshPageExtractor pageExtractor;
 
     protected void setUp() throws Exception {
         super.setUp();
-        pageExtractor = new SiteMeshPageExtractor();
+        pageExtractor = new SiteMeshPageExtractor(
+                new TagRule[]{new AddFirstChildClassToHeader()}, new TextFilter[0]);
     }
 
     public void testPageBodyStartingWithHeader() {

@@ -1,19 +1,14 @@
 package org.codehaus.xsite;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
-import java.net.URL;
-
-import org.codehaus.xsite.extractors.SiteMeshPageExtractor;
-import org.codehaus.xsite.loaders.XStreamSiteMapLoader;
-import org.codehaus.xsite.skins.FreemarkerSkin;
 import org.nanocontainer.script.ScriptedContainerBuilder;
 import org.nanocontainer.script.xml.XMLContainerBuilder;
 import org.picocontainer.PicoContainer;
 import org.picocontainer.defaults.ObjectReference;
 import org.picocontainer.defaults.SimpleReference;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
 
 /**
@@ -39,7 +34,12 @@ public class Main {
         if (xsiteFile.exists()) {
             url = xsiteFile.toURL();
         } else {
-            url = Main.class.getClassLoader().getResource(XSITE_FILE);
+            url = Main.class.getResource(XSITE_FILE);
+        }
+
+        if (url == null) {
+            System.err.println("Could not find " + XSITE_FILE);
+            System.exit(-1);
         }
 
         ScriptedContainerBuilder builder = new XMLContainerBuilder(url, Main.class.getClassLoader());
@@ -47,7 +47,7 @@ public class Main {
         builder.buildContainer(reference, null, null, false);
         PicoContainer pico = (PicoContainer)reference.get();
 
-        XSite xsite = (XSite)pico.getComponentInstancesOfType(XSite.class);
+        XSite xsite = (XSite)pico.getComponentInstanceOfType(XSite.class);
         xsite.build(new File(args[0]), new File(args[1]), new File(args[2]));
     }
 
