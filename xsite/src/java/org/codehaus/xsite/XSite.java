@@ -10,7 +10,7 @@ import org.codehaus.xsite.loaders.XStreamSiteMapLoader;
 import org.codehaus.xsite.model.Page;
 import org.codehaus.xsite.model.SiteMap;
 import org.codehaus.xsite.skins.FreemarkerSkin;
-import org.codehaus.xsite.validate.LinkChecker;
+import org.codehaus.xsite.validators.LinkChecker;
 
 
 /**

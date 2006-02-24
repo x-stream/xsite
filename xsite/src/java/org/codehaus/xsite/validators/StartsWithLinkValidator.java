@@ -1,4 +1,4 @@
-package org.codehaus.xsite.validate.links;
+package org.codehaus.xsite.validators;
 
 import org.codehaus.xsite.LinkValidator;
 
@@ -9,11 +9,11 @@ import org.codehaus.xsite.LinkValidator;
  * @author J&ouml;rg Schaible
  * @since 1.0
  */
-public class LinkStartsWithValidator implements LinkValidator {
+public class StartsWithLinkValidator implements LinkValidator {
 
     private final String start;
 
-    public LinkStartsWithValidator(final String start) {
+    public StartsWithLinkValidator(final String start) {
         this.start = start;
     }
 

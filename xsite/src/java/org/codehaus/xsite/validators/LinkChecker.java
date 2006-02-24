@@ -1,4 +1,4 @@
-package org.codehaus.xsite.validate;
+package org.codehaus.xsite.validators;
 
 import java.util.List;
 import java.util.Iterator;

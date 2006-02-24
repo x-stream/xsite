@@ -1,14 +1,16 @@
 package org.codehaus.xsite;
 
-import junit.framework.TestCase;
-
 import java.io.File;
 import java.io.IOException;
 
-public class XSiteTest extends TestCase {
-
-    public void testBuild() throws IOException{
+public class XSiteTest extends AbstractXSiteTestCase {
+    
+    public void setUp() throws Exception {
+        super.setUp();
+    }    
+    
+    public void testBuild() throws IOException{       
         XSite xsite = new XSite();
-       xsite.build(new File("src/test/sitemap.xml"), new File("src/test/skin.html"), new File("target/xsite"));
+        xsite.build(new File(testSrcDir+"sitemap.xml"), new File(testSrcDir+"skin.html"), new File("target/xsite"));
     }
 }
