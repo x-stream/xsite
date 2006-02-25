@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:ant="jelly:ant">
 
-	<goal name="site:generate">
+	<goal name="xsite:generate">
 		<mkdir dir="target/docs" />
 		<java classname="org.codehaus.xsite.Main" failonerror="true"
 			classpathref="maven.dependency.classpath">

@@ -18,5 +18,35 @@
 			<version>${pom.version}</version>
 		</dependency>
 	</dependencies>
-	
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<mkdir dir="target/xsite" />
+								<java
+									classname="org.codehaus.xsite.Main" failonerror="true"
+									classpathref="maven.dependency.classpath">
+									<arg
+										value="src/content/website.xml" />
+									<arg
+										value="src/templates/skin.html" />
+									<arg value="target/xsite" />
+								</java>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>

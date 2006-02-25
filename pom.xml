@@ -123,7 +123,6 @@
 				<groupId>xerces</groupId>
 				<artifactId>xerces</artifactId>
 				<version>2.4.0</version>
-				<scope>runtime</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -197,7 +196,6 @@
 		<dependency>
 			<groupId>xerces</groupId>
 			<artifactId>xerces</artifactId>
-			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
 
