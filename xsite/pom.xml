@@ -10,4 +10,27 @@
 	<artifactId>xsite</artifactId>
 	<packaging>jar</packaging>
 	<name>XSite Core</name>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>org.codehaus.xsite.Main</mainClass>
+							<packageName>org.codehaus.xsite</packageName>
+							<!-- options
+								<manifestFile>/path/to/MANIFEST.MF</manifestFile>
+								<addClasspath>true</addClasspath>
+								<addExtensions/>
+								<classpathPrefix/>
+							-->
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

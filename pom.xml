@@ -131,26 +131,32 @@
 		<dependency>
 			<groupId>freemarker</groupId>
 			<artifactId>freemarker</artifactId>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>opensymphony</groupId>
 			<artifactId>sitemesh</artifactId>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>xstream</groupId>
 			<artifactId>xstream</artifactId>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>xpp3</groupId>
 			<artifactId>xpp3_min</artifactId>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>picocontainer</groupId>
 			<artifactId>picocontainer</artifactId>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>nanocontainer</groupId>
 			<artifactId>nanocontainer</artifactId>
+			<scope>compile</scope>
 		</dependency>
 
 		<!-- test-scoped -->

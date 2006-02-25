@@ -1,0 +1,60 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.codehaus.xsite</groupId>
+		<artifactId>xsite-parent</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>xsite-distribution</artifactId>
+	<name>XSite Distribution</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>${pom.groupId}</groupId>
+			<artifactId>xsite</artifactId>
+			<version>${pom.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<mkdir dir="target/xsite" />
+								<java
+									classname="org.codehaus.xsite.Main" failonerror="true"
+									classpathref="maven.dependency.classpath">
+									<arg
+										value="src/content/website.xml" />
+									<arg
+										value="src/templates/skin.html" />
+									<arg value="target/xsite" />
+								</java>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.0</version>
+				<configuration>
+					<descriptor>src/assembly.xml</descriptor>
+					<finalName>xsite-${pom.version}</finalName>
+					<workDirectory>target/assembly/work</workDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
