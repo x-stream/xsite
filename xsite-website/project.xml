@@ -1,0 +1,16 @@
+<?xml version="1.0"  encoding="ISO-8859-1"?>
+
+<project>
+	<extend>${basedir}/../project.xml</extend>
+	<pomVersion>3</pomVersion>
+	<id>xsite-website</id>
+	<name>XSite Website</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.codehaus.xsite</groupId>
+			<artifactId>xsite</artifactId>
+			<version>${pom.currentVersion}</version>
+		</dependency>
+	</dependencies>
+</project>
