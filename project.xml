@@ -57,6 +57,11 @@
 			</properties>
 		</dependency>
 		<dependency>
+			<groupId>xerces</groupId>
+			<artifactId>xerces</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+		<dependency>
 			<groupId>picocontainer</groupId>
 			<artifactId>picocontainer</artifactId>
 			<version>1.2</version>
@@ -91,7 +96,9 @@
 				</includes>
 			</resource>
 		</resources>
-		<unitTestSourceDirectory>${basedir}/src/test</unitTestSourceDirectory>
+		<unitTestSourceDirectory>
+			${basedir}/src/test
+		</unitTestSourceDirectory>
 		<unitTest>
 			<includes>
 				<include>**/*Test.java</include>
