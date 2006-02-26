@@ -6,23 +6,24 @@
 	</formats>
 	<fileSets>
 		<fileSet>
-			<directory>src</directory>
-			<outputDirectory></outputDirectory>
-			<includes>
-				<include>README*</include>
-				<include>LICENSE*</include>
-				<include>NOTICE*</include>
-			</includes>
-		</fileSet>
-		<fileSet>
 			<directory>src/bin</directory>
 			<outputDirectory>bin</outputDirectory>
 			<includes>
 				<include>*.sh</include>
+				<include>*.bat</include>
 			</includes>
+		</fileSet>
+		<fileSet>
+			<directory>src/sample</directory>
+			<outputDirectory>sample</outputDirectory>
 		</fileSet>
 	</fileSets>
 	<dependencySets>
+		<dependencySet>
+			<outputDirectory>/classes</outputDirectory>
+			<unpack>true</unpack>
+			<scope>runtime</scope>
+		</dependencySet>
 		<dependencySet>
 			<outputDirectory>/lib</outputDirectory>
 			<unpack>false</unpack>

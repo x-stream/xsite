@@ -32,15 +32,15 @@
 						</goals>
 						<configuration>
 							<tasks>
-								<mkdir dir="target/xsite" />
+								<mkdir dir="${basedir}/target/xsite" />
 								<java
 									classname="org.codehaus.xsite.Main" failonerror="true"
 									classpathref="maven.dependency.classpath">
 									<arg
-										value="src/content/website.xml" />
+										value="${basedir}/src/content/website.xml" />
 									<arg
-										value="src/templates/skin.html" />
-									<arg value="target/xsite" />
+										value="${basedir}/src/templates/skin.html" />
+									<arg value="${basedir}/target/xsite" />
 								</java>
 							</tasks>
 						</configuration>
