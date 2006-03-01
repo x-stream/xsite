@@ -14,6 +14,16 @@
 	</ciManagement>
 
 	<distributionManagement>
+		<repository>
+			<id>codehaus-xsite-repository</id>
+			<name>Codehaus XSite Repository</name>
+			<url>scp://beaver.codehaus.org/home/projects/xsite/repository</url>
+		</repository>
+		<snapshotRepository>
+			<id>codehaus-xsite-snapshot-repository</id>
+			<name>Codehaus XSite Snapshot Repository</name>
+			<url>scp://beaver.codehaus.org/home/projects/xsite/repository-snapshot</url>
+		</snapshotRepository>
 	</distributionManagement>
 
 	<scm>
