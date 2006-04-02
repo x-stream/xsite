@@ -146,12 +146,6 @@
 				<artifactId>xerces</artifactId>
 				<version>2.4.0</version>
 			</dependency>
-
-			<dependency>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-clover-plugin</artifactId>
-				<version>2.0</version>
-			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -185,10 +179,6 @@
 			<groupId>org.nanocontainer</groupId>
 			<artifactId>nanocontainer</artifactId>
 			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-clover-plugin</artifactId>
 		</dependency>
 
 		<!-- test-scoped -->
