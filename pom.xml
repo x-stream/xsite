@@ -57,7 +57,9 @@
 	
 	<modules>
 		<module>xsite</module>
+		<module>xsite-maven-plugin</module>
 		<module>xsite-website</module>
+		<module>xsite-distribution</module>
 	</modules>
 
 	<dependencyManagement>
