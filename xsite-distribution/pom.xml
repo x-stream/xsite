@@ -22,9 +22,10 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.0</version>
+				<version>2.0.1</version>
 				<executions>
 					<execution>
+						<id>bin</id>
 						<phase>package</phase>
 						<goals>
 							<goal>assembly</goal>
@@ -32,18 +33,25 @@
 						<configuration>
 							<descriptor>src/assembly-bin.xml</descriptor>
 							<finalName>xsite-${pom.version}</finalName>
-							<workDirectory>target/assembly-bin/work</workDirectory>
+							<workDirectory>target/assembly/bin</workDirectory>
+						</configuration>
+					</execution>
+					<execution>
+						<id>src</id>
+						<phase>package</phase>
+						<goals>
+							<goal>assembly</goal>
+						</goals>
+						<configuration>
+							<descriptor>src/assembly-src.xml</descriptor>
+							<finalName>xsite-${pom.version}</finalName>
+							<workDirectory>target/assembly/src</workDirectory>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
 			<plugin>
 				<artifactId>maven-scm-plugin</artifactId>
-				<configuration>
-					<descriptor>src/assembly.xml</descriptor>
-					<finalName>xsite-${pom.version}</finalName>
-					<workDirectory>target/assembly/work</workDirectory>
-				</configuration>
 				<executions>
 					<execution>
 						<phase>package</phase>
