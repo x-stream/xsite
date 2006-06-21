@@ -5,27 +5,63 @@
 
   <body>
 
-    <p><a href="versioning.html">About XSite version numbers...</a></p>
+    <h1>Releases</h1>
 
+    <p>There are no official releases yet</p>
+    
     <h1 id="snapshot">Latest Snapshot</h1>
 
     <p>Below are builds of the latest version of XSite from the <a href="repository.html">repository</a>.</p>
 
     <ul>
-      <li><a href="http://dist.codehaus.org/xsite/distributions/xsite-SNAPSHOT.zip">Complete distribution</a></li>
-      <li><a href="http://dist.codehaus.org/xsite/jars/xsite-SNAPSHOT.jar">XSite.jar only</a></li>
+      <li><a href="http://snapshots.repository.codehaus.org/org/codehaus/xsite/xsite/"></a></li>
     </ul>
 
-    <h1>Previous Releases</h1>
+    <h1>Using with Maven 2</h1>
 
-    <p>Previous releases of XSite are also available. However, use of the latest stable version is recommended.</p>
+	<p>Maven 2 users can easily add XSite as a dependency to their projects.  Add the following repositories to the POM:
+	
+<div class="Source"><pre><![CDATA[
+	<repositories>
+		<repository>
+			<id>codehaus-m2-repository</id>
+			<name>Codehaus Maven 2.x Repository</name>
+			<url>http://repository.codehaus.org</url>
+		</repository>
+		<repository>
+			<id>codehaus-m2-snapshot-repository</id>
+			<name>Codehaus Maven 2.x Snapshot Repository</name>
+			<url>http://snapshot.repository.codehaus.org</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>		
+]]></pre></div>
 
-    <ul>
-       <li><a href="http://dist.codehaus.org/xsite/">Previous releases</a></li>
-    </ul>
+	and add XSite plugin configuration:
 
-    <h1>Optional Dependencies</h1>
-
-
+<div class="Source"><pre><![CDATA[
+	<plugins>
+			<plugin>
+				<groupId>org.codehaus.xsite</groupId>
+				<artifactId>xsite-maven-plugin</artifactId>
+				<configuration>
+					<siteMapPath>${basedir}/src/content/website.xml</siteMapPath>
+					<skinPath>${basedir}/src/templates/skin.html</skinPath>
+					<outputDirectoryPath>${basedir}/target/xsite</outputDirectoryPath>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+]]></pre></div>
+	</p>
   </body>
 </html>

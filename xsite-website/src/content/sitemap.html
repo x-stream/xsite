@@ -1,3 +1,13 @@
+<html>
+  <head>
+    <title>XSite Sitemap</title>
+  </head>
+
+  <body>
+	<h1>Sitemap configuration</h1>
+	
+	<p>XSite can be easily configured using an XML-based sitemap:
+<div class="Source"><pre><![CDATA[
 <sitemap>
     <section>
         <name>About XSite</name>
@@ -7,15 +17,12 @@
         <page>news.html</page>
         <page>changes.html</page>
         <page>versioning.html</page>
-        <page>history.html</page>
     </section>
     <section>
         <name>Using XSite</name>
-        <page>getting-started.html</page>
-        <page>sitemap.html</page>
-        <page>skin.html</page>
         <page>faq.html</page>
         <page>list-user.html</page>
+        <link title="JavaDoc">javadoc/index.html</link>
         <link title="Reporting Issues">http://jira.codehaus.org/browse/XSITE</link>
     </section>
     <section>
@@ -25,3 +32,12 @@
         <page>repository.html</page>
     </section>
 </sitemap>
+]]></pre></div>	
+	Each <code>page</code> element corresponds to an HTML file in the content directory. 
+	</p>
+	<p>
+		The sitemap filename is configurable but must be found in the content directory.
+	</p> 
+  </body>
+</html>
+

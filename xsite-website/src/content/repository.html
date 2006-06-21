@@ -8,28 +8,14 @@
     
     XSite uses Subversion as the SCM.  See <a href="http://subversion.tigris.org">Subversion</a> for details and documentation on IDE integration.
 
-	<h2>Svnserve Access</h2>
-
-	Svnserve access is via a specific port (typically 3690 on Unix systems) and requires ssh access for developers.  This is often not allowed by corporate firewalls.
-
-	<h3>Anonymous Access</h3>
-	
-		<div class="Source"><pre>svn co svn://svn.xsite.codehaus.org/xsite/scm/trunk</pre></div>
-		
-	<h3>Developer Access over SSH</h3>
-	
-		<p>
-		<div class="Source"><pre>svn co svn+ssh://username@svn.xsite.codehaus.org/scm/xsite/trunk</pre></div>
-		where username is your unix Codehaus username.
-		</p>
-		<p>
-		<b>Note</b>: the path is different when accessing over SSH, ie scm/xsite in place of xsite/scm. 
-		</p>
-
 	<h2>WebDav Access</h2>
 
 	WebDav is an alternative access protocol supported by SVN and being http-based is often allowed by corporate firewalls. 
 
+	<h3>Anonymous Access</h3>
+	
+		<div class="Source"><pre>svn co http://svn.codehaus.org/xsite/trunk xsite</pre></div>
+		
 	<h3>WebDAV over SSL</h3>
 
 		<div class="Source"><pre>svn co https://svn.codehaus.org/xsite/trunk</pre></div>
@@ -38,9 +24,7 @@
 		This access protocol is available to all, but only developers can commit changes.    
 		</p>
 		<p>
-		Developers require a unix password for Codehaus username (contact Bob at the Haus to get assigned a password if you don't have one).
-		</p>
-		<p>
+		Developers require a unix password for Codehaus username. 
 		To test https commit access, one may eg: 
 			<div class="Source"><pre>
 svn co https://svn.codehaus.org/xsite/trunk xsite

@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>Gettng started</title>
+  </head>
+
+  <body>
+
+    <h1>Installing standalone XSite</h1>
+
+    <p><a href="download.html">Download</a> XSite and unzip archive to your local filesystem, eg <code>~/xsite</code>, which 
+    will thereafter be refered as <code>XSITE_HOME</code>.  It is also useful to add <code>XSITE_HOME/bin</code> to your system path.
+    On UNIX systems, ensure that you have the correct permissions to execute <code>bin/xsite.sh</code>.</p>
+    
+    <h1>Using XSite</h1>
+
+	<p>The required inputs for XSite are 
+	
+	<ul>
+		<li>sitemap.xml: specifies the content of the website and the navigation.  
+		The content files refered to in the sitemap are assumed to be in the same directory as the sitemap.</li>
+		<li>skin.html: specifies the template and style used by XSite</li>
+		<li>output directory: specifies the directory where the generated files will be written to.</li>
+	</ul>
+
+	To generate site, simply execute (assuming xsite.sh is in system path, else use full path XSITE_HOME/bin/xsite.sh).
+<div class="Source"><pre>
+xsite.sh [path-to-sitemap] [path-to-skin] [output-directory]
+</pre></div>    	
+	Executing script without arguments will also result in a usage message.
+	</p>
+	
+    <h1>Using XSite via Maven 2 plugin</h1>
+
+    <p>Configure plugin in POM as described in <a href="download.html">Download</a> and execute</p>
+<div class="Source"><pre>
+mvn install
+</pre></div>    	
+  </body>
+
+</html>
