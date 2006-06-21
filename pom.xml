@@ -13,13 +13,17 @@
 		<repository>
 			<id>codehaus-xsite-repository</id>
 			<name>Codehaus XSite Repository</name>
-			<url>scp://beaver.codehaus.org/home/projects/xsite/repository</url>
+			<url>dav:https://dav.codehaus.org/repository/xsite/</url>
 		</repository>
 		<snapshotRepository>
 			<id>codehaus-xsite-snapshot-repository</id>
 			<name>Codehaus XSite Snapshot Repository</name>
-			<url>scp://beaver.codehaus.org/home/projects/xsite/repository-snapshot</url>
+			<url>dav:https://dav.codehaus.org/snapshots.repository/xsite/</url>
 		</snapshotRepository>
+		<site>
+			<id>xsite-site</id>
+			<url>dav:https://dav.codehaus.org/xsite/</url>
+		</site>
 	</distributionManagement>
 
 	<scm>
@@ -41,6 +45,11 @@
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
+		</repository>
+		<repository>
+			<id>apache-snapshots</id>
+			<name>Snapshot repository</name>
+			<url>http://people.apache.org/maven-snapshot-repository/</url>
 		</repository>
 	</repositories>
 
@@ -349,6 +358,11 @@
 				<groupId>org.apache.maven.wagon</groupId>
 				<artifactId>wagon-ssh-external</artifactId>
 				<version>1.0-alpha-5</version>
+			</extension>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav</artifactId>
+				<version>1.0-beta-1-SNAPSHOT</version>
 			</extension>
 		</extensions>
 	</build>
