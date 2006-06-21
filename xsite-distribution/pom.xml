@@ -8,6 +8,7 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>xsite-distribution</artifactId>
+	<packaging>pom</packaging>	
 	<name>XSite Distribution</name>
 
 	<dependencies>
