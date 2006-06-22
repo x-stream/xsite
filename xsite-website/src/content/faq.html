@@ -9,34 +9,12 @@
     <h2>Which JDK is required to use XSite?</h2>
     <p>1.4 or later.</p>
 
-    <h2>What is required if I user XSite as a standalone application?</h2>
-    <p>Only the JDK.  Simply download the binary distribution and unzip somewhere on your local filesystem.  
+    <h2>What is required to use XSite as a standalone application?</h2>
+    <p>Only the JDK.  Simply <a href="download.html">download</a> the binary distribution and unzip somewhere on your local filesystem.  
     	   The binary scripts are in the <code>bin/</code> directory, which should be added to the system path.</p>
 
-    <h2>Can I use XSite as Maven 2 plugin</h2>
-    <p>Yes - add the following configuraiton to your POM:
-<div class="Source"><pre><![CDATA[
-	<plugins>
-			<plugin>
-				<groupId>org.codehaus.xsite</groupId>
-				<artifactId>xsite-maven-plugin</artifactId>
-				<configuration>
-					<siteMapPath>${basedir}/src/content/website.xml</siteMapPath>
-					<skinPath>${basedir}/src/templates/skin.html</skinPath>
-					<outputDirectoryPath>${basedir}/target/xsite</outputDirectoryPath>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>install</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-]]></pre></div>	 
-    </p>
+    <h2>Can I use XSite as Maven 2 plugin?</h2>
+    <p>Yes, see <a href="download.html">download</a> for more details.</p>
 
     <h1>Usability</h1>
     

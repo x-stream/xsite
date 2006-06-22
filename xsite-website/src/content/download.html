@@ -11,57 +11,58 @@
     
     <h1 id="snapshot">Latest Snapshot</h1>
 
-    <p>Below are builds of the latest version of XSite from the <a href="repository.html">repository</a>.</p>
+    <p>Below are builds of the latest version of XSite from the <a href="repository.html">repository</a>:</p>
 
     <ul>
-      <li><a href="http://snapshots.repository.codehaus.org/org/codehaus/xsite/xsite/"></a></li>
+      <li><a href="http://snapshots.repository.codehaus.org/org/codehaus/xsite/xsite/1.0-SNAPSHOT/xsite-1.0-20060621.095054-1.jar">xsite.jar</a></li>
+      <li><a href="http://snapshots.repository.codehaus.org/org/codehaus/xsite/xsite-distribution/1.0-SNAPSHOT/xsite-distribution-1.0-20060621.105336-1-bin.zip">xsite-distribution-bin.zip</a></li>
     </ul>
 
     <h1>Using with Maven 2</h1>
 
 	<p>Maven 2 users can easily add XSite as a dependency to their projects.  Add the following repositories to the POM:
 	
-<div class="Source"><pre><![CDATA[
-	<repositories>
-		<repository>
-			<id>codehaus-m2-repository</id>
-			<name>Codehaus Maven 2.x Repository</name>
-			<url>http://repository.codehaus.org</url>
-		</repository>
-		<repository>
-			<id>codehaus-m2-snapshot-repository</id>
-			<name>Codehaus Maven 2.x Snapshot Repository</name>
-			<url>http://snapshot.repository.codehaus.org</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>		
-]]></pre></div>
+<div class="Source"><pre>
+&lt;repositories&gt;
+	&lt;repository&gt;
+		&lt;id&gt;codehaus-m2-repository&lt;/id&gt;
+		&lt;name&gt;Codehaus Maven 2.x Repository&lt;/name&gt;
+		&lt;url&gt;http://repository.codehaus.org&lt;/url&gt;
+	&lt;/repository&gt;
+	&lt;repository&gt;
+		&lt;id&gt;codehaus-m2-snapshot-repository&lt;/id&gt;
+		&lt;name&gt;Codehaus Maven 2.x Snapshot Repository&lt;/name&gt;
+		&lt;url&gt;http://snapshot.repository.codehaus.org&lt;/url&gt;
+		&lt;snapshots&gt;
+			&lt;enabled&gt;true&lt;/enabled&gt;
+		&lt;/snapshots&gt;
+	&lt;/repository&gt;
+&lt;/repositories&gt;		
+</pre></div>
 
 	and add XSite plugin configuration:
 
-<div class="Source"><pre><![CDATA[
-	<plugins>
-			<plugin>
-				<groupId>org.codehaus.xsite</groupId>
-				<artifactId>xsite-maven-plugin</artifactId>
-				<configuration>
-					<siteMapPath>${basedir}/src/content/website.xml</siteMapPath>
-					<skinPath>${basedir}/src/templates/skin.html</skinPath>
-					<outputDirectoryPath>${basedir}/target/xsite</outputDirectoryPath>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>install</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-]]></pre></div>
+<div class="Source"><pre>
+&lt;plugins&gt;
+	&lt;plugin&gt;
+		&lt;groupId&gt;org.codehaus.xsite&lt;/groupId&gt;
+		&lt;artifactId&gt;xsite-maven-plugin&lt;/artifactId&gt;
+		&lt;configuration&gt;
+			&lt;siteMapPath&gt;${basedir}/src/content/website.xml&lt;/siteMapPath&gt;
+			&lt;skinPath&gt;${basedir}/src/templates/skin.html&lt;/skinPath&gt;
+			&lt;outputDirectoryPath&gt;${basedir}/target/xsite&lt;/outputDirectoryPath&gt;
+		&lt;/configuration&gt;
+		&lt;executions&gt;
+			&lt;execution&gt;
+				&lt;phase&gt;install&lt;/phase&gt;
+				&lt;goals&gt;
+					&lt;goal&gt;run&lt;/goal&gt;
+				&lt;/goals&gt;
+			&lt;/execution&gt;
+		&lt;/executions&gt;
+	&lt;/plugin&gt;
+&lt;/plugins&gt;
+</pre></div>
 	</p>
   </body>
 </html>
