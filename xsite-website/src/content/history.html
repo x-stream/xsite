@@ -5,13 +5,86 @@
 
   <body>
 
-    <p>The core of XSite grew out of the website generation code originally written by Joe Walnes for XStream project.
-    We felt there was a need for this type of tool, that could benefit many other projects. 
-    </p>
+	<p>A brief (!?!) history of a website generate tool ... as handed down from generation to generation :-)
+	</p>
 
-    <p>XSite provides cleaner separation between interfaces and implementation and made the instantiation completely configurable
-    using Pico/NanoContainer. XSite also provides several deployment options, from standalone to a Maven 2 plugin.
-    </p>
+	<p>
+Once upon a time, there was a mock objects library called DynaMock
+written by Nat, living on <a href="http://mockobjects.com">mockobjects.com</a>.	
+	</p>
+
+	<p>
+Along came Joe, and decided to fork in an attempt to rebrand and ditch
+the legacy. And so <a href="http://jmock.org">jMock</a> war born. 
+Joe didn't actually do much code, he just forked Nat's code and launched the new jMock
+website. Joe didn't even do that very well and because he was feeling
+so lazy he used Maven to create a very bad and unusable website.
+	</p>	
+
+
+	<p>
+Meanwhile, Nat was doing great things with jMock but hated the
+website. So he spent some time analysing user requirements for
+building a more useful website and came up with a new design.
+
+Nat built this site upon some little Ruby scripts called skinner.rb
+and xemplate.rb (found <a href="http://fisheye.codehaus.org/browse/jmock/jmock/website">here</a>). 
+This was a few years ago.
+
+And the result is the <a href="http://jmock.org">jMock website</a>.
+	</p>	
+
+	<p>
+Along came Joe (again!) and really liked the look and navigation of the jMock
+website and wanted a similar thing for his new project XStream.
+However, for ego stroking reasons ;) , thought it could be done pretty
+easily as a 'mashup' between two of his existing opensource projects.
+So Joe reimplemented it in Java using SiteMesh and XStream. He called
+it MiniMesh (historians will be able to uncover the original code 
+<a href="http://svn.xstream.codehaus.org/browse/xstream/trunk/xstream-website">here</a>).
+
+And the result was the current <a href="http://xstream.codehaus.org">XStream website</a>. --- uhmm ... 
+starting to look familiar?	
+	</p>
+	
+	<p>
+Not long after, Dan was also looking for a website for his opensource
+project, jBehave. He liked Ruby and grabbed Nat's scripts.
+
+And the result is the  <a href="http://jbehave.codehaus.org/">jBehave website</a>
+	</p>
+	
+	<p>
+Meanwhile, Nat was making lots of improvements to his scripts, but Joe
+and Dan were missing out.
+
+A little later, Dan started another opensource project, ProxyToys.
+Jšrg stepped up and drove it. Coincidentally, Jšrg had also been
+driving XStream so he took Joe's fork of Nat's website and used that.
+
+And the result is the <a href="http://proxytoys.codehaus.org/">ProxyToys website</a>
+	</p>
+
+	<p>
+Wait a minute! Jšrg and Mauro (who was also driving XStream) noticed a
+lot of forking and duplication going on.
+
+So they created XSite, which was a fork of Joe's Java fork of Nat's Ruby code.
+
+This was a tool people could use to build similar sites.
+
+And the result is the  <a href="http://xsite.codehaus.org/">XSite website</a>
+	</p>
+
+	<p>
+Meanwhile, Shane, who was involved with jBehave, had a similar idea
+and forked Dan's fork of Nat's fork and worked into his BuildMaster
+project:
+
+And the result is the  <a href="http://buildmaster.rubyforge.org/">BuildMaster website</a>
+	</p>
 
   </body>
 </html>
+
+
