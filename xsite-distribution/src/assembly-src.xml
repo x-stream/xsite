@@ -5,7 +5,7 @@
 	</formats>
 	<fileSets>
 		<fileSet>
-			<directory>target/checkout</directory>
+			<directory>xsite-distribution/target/checkout</directory>
 			<outputDirectory>/</outputDirectory>
 		</fileSet>
 	</fileSets>

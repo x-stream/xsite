@@ -37,7 +37,6 @@
 							<workDirectory>target/assembly/bin</workDirectory>
 						</configuration>
 					</execution>
-					<!-- FIXME 
 					<execution>
 						<id>src</id>
 						<phase>package</phase>
@@ -50,7 +49,6 @@
 							<workDirectory>target/assembly/src</workDirectory>
 						</configuration>
 					</execution>
-					-->
 				</executions>
 			</plugin>
 			<plugin>
