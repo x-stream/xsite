@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.codehaus.xsite</groupId>
 		<artifactId>xsite-parent</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>1.0-beta-1</version>
 	</parent>
 	<artifactId>xsite-distribution</artifactId>
 	<packaging>pom</packaging>	
@@ -32,11 +32,12 @@
 							<goal>assembly</goal>
 						</goals>
 						<configuration>
-							<descriptor>src/assembly-bin.xml</descriptor>
+							<descriptor>${basedir}/src/assembly-bin.xml</descriptor>
 							<finalName>xsite-${pom.version}</finalName>
 							<workDirectory>target/assembly/bin</workDirectory>
 						</configuration>
 					</execution>
+					<!-- FIXME 
 					<execution>
 						<id>src</id>
 						<phase>package</phase>
@@ -44,11 +45,12 @@
 							<goal>assembly</goal>
 						</goals>
 						<configuration>
-							<descriptor>src/assembly-src.xml</descriptor>
+							<descriptor>${basedir}/src/assembly-src.xml</descriptor>
 							<finalName>xsite-${pom.version}</finalName>
 							<workDirectory>target/assembly/src</workDirectory>
 						</configuration>
 					</execution>
+					-->
 				</executions>
 			</plugin>
 			<plugin>

@@ -5,7 +5,7 @@
 	</formats>
 	<fileSets>
 		<fileSet>
-			<directory>src/bin</directory>
+			<directory>xsite-distribution/src/bin</directory>
 			<outputDirectory>bin</outputDirectory>
 			<includes>
 				<include>xsite</include>
@@ -14,7 +14,7 @@
 			<fileMode>0774</fileMode>
 		</fileSet>
 		<fileSet>
-			<directory>src/sample</directory>
+			<directory>xsite-distribution/src/sample</directory>
 			<outputDirectory>sample</outputDirectory>
 		</fileSet>
 	</fileSets>
