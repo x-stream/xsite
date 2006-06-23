@@ -7,10 +7,17 @@
 
     <h1>Installing standalone XSite</h1>
 
-    <p><a href="download.html">Download</a> XSite and unzip archive to your local filesystem, eg <code>~/xsite</code>, which 
-    will thereafter be refered as <code>XSITE_HOME</code>.  It is also useful to add <code>XSITE_HOME/bin</code> to your system path.
-    On UNIX systems, ensure that you have the correct permissions to execute <code>bin/xsite.sh</code>.</p>
-    
+    <p>
+	<ul>
+		<li> <a href="download.html">Download</a> XSite and unzip archive to local filesystem directory of your choice.</li>
+		<li>Define an environment variable <code>XSITE_HOME</code> to point to the chosen directory.</li>
+		<li>Add <code>XSITE_HOME/bin</code> to your system path. 
+	    On UNIX systems, ensure that you have the correct permissions to execute <code>XSITE_HOME/bin/xsite</code>.
+	    On Windows systems, replace <code>/</code> with <code>\</code>.
+	    </li>
+	</ul>	
+	</p>
+
     <h1>Using XSite</h1>
 
 	<p>The required inputs for XSite are 
@@ -22,9 +29,9 @@
 		<li>output directory: specifies the directory where the generated files will be written to.</li>
 	</ul>
 
-	To generate site, simply execute (assuming xsite.sh is in system path, else use full path XSITE_HOME/bin/xsite.sh).
+	To generate site, simply execute
 <div class="Source"><pre>
-xsite.sh [path-to-sitemap] [path-to-skin] [output-directory]
+xsite [path-to-sitemap] [path-to-skin] [output-directory]
 </pre></div>    	
 	Executing script without arguments will also result in a usage message.
 	</p>

@@ -25,7 +25,7 @@
 				<groupId>org.codehaus.xsite</groupId>
 				<artifactId>xsite-maven-plugin</artifactId>
 				<configuration>
-					<siteMapPath>${basedir}/src/content/website.xml</siteMapPath>
+					<siteMapPath>${basedir}/src/content/sitemap.xml</siteMapPath>
 					<skinPath>${basedir}/src/templates/skin.html</skinPath>
 					<outputDirectoryPath>${basedir}/target/xsite</outputDirectoryPath>
 				</configuration>
