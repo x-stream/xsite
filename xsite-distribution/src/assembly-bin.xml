@@ -1,7 +1,6 @@
 <assembly>
 	<id>bin</id>
 	<formats>
-		<format>tar.gz</format>
 		<format>zip</format>
 	</formats>
 	<fileSets>
@@ -9,9 +8,10 @@
 			<directory>src/bin</directory>
 			<outputDirectory>bin</outputDirectory>
 			<includes>
-				<include>*.sh</include>
-				<include>*.bat</include>
+				<include>xsite</include>
+				<include>xsite.bat</include>
 			</includes>
+			<fileMode>0774</fileMode>
 		</fileSet>
 		<fileSet>
 			<directory>src/sample</directory>
