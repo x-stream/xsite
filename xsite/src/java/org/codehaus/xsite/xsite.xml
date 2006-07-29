@@ -20,7 +20,10 @@
 	<component-implementation key="news-link-validator" class="org.codehaus.xsite.validators.StartsWithLinkValidator">
 		<parameter><string>nntp://</string></parameter>
 	</component-implementation>
-	<component-implementation key="javadoc-link-validator" class="org.codehaus.xsite.validators.StartsWithLinkValidator">
+	<component-implementation key="apidocs-link-validator" class="org.codehaus.xsite.validators.StartsWithLinkValidator">
 		<parameter><string>apidocs/</string></parameter>
+	</component-implementation>
+	<component-implementation key="javadoc-link-validator" class="org.codehaus.xsite.validators.StartsWithLinkValidator">
+		<parameter><string>javadoc/</string></parameter>
 	</component-implementation>
 </container>

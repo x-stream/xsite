@@ -2,5 +2,7 @@
     <section>
         <name>Software</name>
         <page>index.html</page>
+        <link title="API">apidocs/index.html</link>
+        <link title="Javadoc">javadoc/index.html</link>
     </section>
 </sitemap>
