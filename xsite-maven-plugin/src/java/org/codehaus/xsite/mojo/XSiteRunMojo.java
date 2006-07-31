@@ -1,5 +1,9 @@
 package org.codehaus.xsite.mojo;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -31,14 +35,39 @@ public class XSiteRunMojo  extends AbstractMojo {
      * @required true
      */
     protected String outputDirectoryPath;
+
+    /**
+     * @parameter
+     */
+    protected String compositionFilePath;
     
+    /**
+     * @parameter
+     */
+    protected String compositionResourcePath;
+
     public void execute() throws MojoExecutionException, MojoFailureException {
         try {
-            getLog().debug("Executing XSite run goal with siteMapPath=" + siteMapPath + ", skinPath=" + skinPath + ", outputDirectoryPath=" + outputDirectoryPath);
-            Main.main(new String[] {siteMapPath, skinPath, outputDirectoryPath});
+            String[] args = getArgs();
+            getLog().debug("Executing XSite run goal with args "+Arrays.toString(args));
+            Main.main(args);
         } catch (Exception e) {
             throw new MojoExecutionException("Failed to run xsite", e);
         }
+    }
+
+    private String[] getArgs() {
+	List<String> args = new ArrayList<String>();
+	args.add("-m"+siteMapPath);
+	args.add("-s"+skinPath);
+	args.add("-o"+outputDirectoryPath);
+	if ( compositionFilePath != null ){
+	    args.add("-f"+compositionFilePath);	    
+	}
+	if ( compositionResourcePath != null ){
+	    args.add("-r"+compositionResourcePath);	    
+	}
+	return (String[]) args.toArray(new String[args.size()]);
     }
 
 }

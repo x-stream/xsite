@@ -4,6 +4,8 @@ import java.io.File;
 
 import junit.framework.TestCase;
 
+import org.apache.maven.plugin.MojoExecutionException;
+
 public class XSiteRunMojoTest  extends TestCase {
     protected  String testSrcDir;
     
@@ -20,7 +22,7 @@ public class XSiteRunMojoTest  extends TestCase {
         }        
     }
     
-    public void testGoalCanBeRun() throws Exception {
+    public void testGoalCanBeRunWithDefaultComposition() throws Exception {
         XSiteRunMojo mojo = new XSiteRunMojo();
         mojo.siteMapPath = testSrcDir+"content/website.xml";
         mojo.skinPath = testSrcDir+"templates/skin.html";
@@ -28,5 +30,35 @@ public class XSiteRunMojoTest  extends TestCase {
         mojo.execute();
     }
 
+    public void testGoalCanBeRunWithOptionalFileComposition() throws Exception {
+        XSiteRunMojo mojo = new XSiteRunMojo();
+        mojo.siteMapPath = testSrcDir+"content/website.xml";
+        mojo.skinPath = testSrcDir+"templates/skin.html";
+        mojo.outputDirectoryPath = "target/xsite";
+        mojo.compositionFilePath = testSrcDir+"templates/xsite.xml";
+        mojo.execute();
+    }
+
+    public void testGoalCanBeRunWithOptionalResourceComposition() throws Exception {
+        XSiteRunMojo mojo = new XSiteRunMojo();
+        mojo.siteMapPath = testSrcDir+"content/website.xml";
+        mojo.skinPath = testSrcDir+"templates/skin.html";
+        mojo.outputDirectoryPath = "target/xsite";
+        mojo.compositionResourcePath = "templates/xsite.xml";
+        mojo.execute();
+    }
+    
+    public void testGoalFailsWithInvalidPath() throws Exception {
+        XSiteRunMojo mojo = new XSiteRunMojo();
+        mojo.siteMapPath = testSrcDir+"content/non-existent.xml";
+        mojo.skinPath = testSrcDir+"templates/skin.html";
+        mojo.outputDirectoryPath = "target/xsite";
+        try {
+	    mojo.execute();
+	    fail("MojoExecutionException expected");
+	} catch ( MojoExecutionException e) {
+	    // expected
+	}
+    }
 }
 
