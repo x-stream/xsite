@@ -10,7 +10,7 @@
 	<artifactId>xsite</artifactId>
 	<packaging>jar</packaging>
 	<name>XSite Core</name>
-
+		
 	<build>
 		<plugins>
 			<plugin>

@@ -57,17 +57,17 @@ public class XSiteRunMojo  extends AbstractMojo {
     }
 
     private String[] getArgs() {
-	List<String> args = new ArrayList<String>();
-	args.add("-m"+siteMapPath);
-	args.add("-s"+skinPath);
-	args.add("-o"+outputDirectoryPath);
-	if ( compositionFilePath != null ){
-	    args.add("-f"+compositionFilePath);	    
-	}
-	if ( compositionResourcePath != null ){
-	    args.add("-r"+compositionResourcePath);	    
-	}
-	return (String[]) args.toArray(new String[args.size()]);
+        List<String> args = new ArrayList<String>();
+        args.add("-m" + siteMapPath);
+        args.add("-s" + skinPath);
+        args.add("-o" + outputDirectoryPath);
+        if (compositionFilePath != null) {
+            args.add("-f" + compositionFilePath);
+        }
+        if (compositionResourcePath != null) {
+            args.add("-r" + compositionResourcePath);
+        }
+        return (String[]) args.toArray(new String[args.size()]);
     }
 
 }

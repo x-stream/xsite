@@ -7,7 +7,7 @@ import junit.framework.TestCase;
 /**
  * @author Mauro Talevi
  */
-public class AbstractXSiteTestCase extends TestCase {
+public abstract class AbstractXSiteTestCase extends TestCase {
     protected  String testSrcDir;
     
     public void setUp() throws Exception {
