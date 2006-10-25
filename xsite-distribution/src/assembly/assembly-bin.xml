@@ -10,6 +10,7 @@
 			<includes>
 				<include>xsite</include>
 				<include>xsite.bat</include>
+				<include>cpappend.bat</include>
 			</includes>
 			<fileMode>0774</fileMode>
 		</fileSet>
@@ -19,11 +20,6 @@
 		</fileSet>
 	</fileSets>
 	<dependencySets>
-		<dependencySet>
-			<outputDirectory>/classes</outputDirectory>
-			<unpack>true</unpack>
-			<scope>runtime</scope>
-		</dependencySet>
 		<dependencySet>
 			<outputDirectory>/lib</outputDirectory>
 			<unpack>false</unpack>

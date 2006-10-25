@@ -1,6 +1,12 @@
 #!/bin/sh
 # Run xsite
 
-EXEC="$JAVA_HOME/bin/java -classpath $XSITE_HOME/classes  org.codehaus.xsite.Main $@"
+XSITE_CLASSPATH=
+for path in `ls $XSITE_HOME/lib/*.jar`
+do
+  XSITE_CLASSPATH=${XSITE_CLASSPATH}:${path}
+done
+
+EXEC="$JAVA_HOME/bin/java -classpath $XSITE_CLASSPATH org.codehaus.xsite.Main $@"
 $EXEC
 
