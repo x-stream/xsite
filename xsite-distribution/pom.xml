@@ -36,7 +36,7 @@
 								<descriptor>${basedir}/src/assembly/assembly-bin.xml</descriptor>
 							</descriptors>
 							<finalName>xsite-${pom.version}</finalName>
-							<workDirectory>${project.outputDirectory}/assembly/bin</workDirectory>
+							<workDirectory>${project.build.directory}/assembly/bin</workDirectory>
 						</configuration>
 					</execution>
 					<execution>
@@ -50,7 +50,7 @@
 								<descriptor>${basedir}/src/assembly/assembly-src.xml</descriptor>
 							</descriptors>
 							<finalName>xsite-${pom.version}</finalName>
-							<workDirectory>${project.outputDirectory}/assembly/src</workDirectory>
+							<workDirectory>${project.build.directory}/assembly/src</workDirectory>
 						</configuration>
 					</execution>
 				</executions>
