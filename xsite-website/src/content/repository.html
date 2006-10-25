@@ -21,7 +21,7 @@
 		
 	<h3>WebDAV over SSL</h3>
 
-		<div class="Source"><pre>svn co https://svn.codehaus.org/xsite/trunk< xsite</pre></div>
+		<div class="Source"><pre>svn co https://svn.codehaus.org/xsite/trunk xsite</pre></div>
 
 		<p>
 		This access protocol is available to all, but only developers can commit changes.    
@@ -40,6 +40,28 @@ svn commit --username username --password your-password --message "Testing https
 		<p>
 		<b>Note</b>: you only need to specify username and password once per client.
 		</p>
+	
+	<h2>Browser</h2>
+
+	<p>
+		You can use the browser to navigate within the sources <a href="http://svn.xsite.codehaus.org/browse/xsite/trunk/">online</a> with the help of the FishEye installation on Codehaus.
+	</p>
+	<h2>Modules</h2>
+
+	<p>
+	XSite project consists of several modules:  
+	<ol>
+		<li>xsite - the core module</li>
+		<li>xsite-maven-plugin - the Maven 2 plugin</li>
+		<li>xsite-website - the module contains the website</li>
+		<li>xsite-distribution - the module that assembles the src and bin distributions</li>
+	</ol>
+	When you checkout the trunk you'll get all the modules, but you can just add the module you are interested in to the URL, eg
+	<div class="Source"><pre>
+svn co http://svn.codehaus.org/xsite/trunk/[module] [module]
+	</pre></div>
+	to checkout out the single module separately.
+	</p>
 	
   </body>
 </html>
