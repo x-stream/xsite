@@ -5,8 +5,8 @@
 	</formats>
 	<fileSets>
 		<fileSet>
-			<directory>xsite-distribution/src/bin</directory>
-			<outputDirectory>bin</outputDirectory>
+			<directory>../xsite-distribution/src/bin</directory>
+			<outputDirectory>/bin</outputDirectory>
 			<includes>
 				<include>xsite</include>
 				<include>xsite.bat</include>
@@ -14,8 +14,8 @@
 			<fileMode>0774</fileMode>
 		</fileSet>
 		<fileSet>
-			<directory>xsite-distribution/src/sample</directory>
-			<outputDirectory>sample</outputDirectory>
+			<directory>../xsite-distribution/src/sample</directory>
+			<outputDirectory>/sample</outputDirectory>
 		</fileSet>
 	</fileSets>
 	<dependencySets>
