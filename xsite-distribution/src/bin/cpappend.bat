@@ -1,4 +1,5 @@
-rem CPAPPEND.BAT
+@echo off
+rem Adapted from ASF CPAPPEND.BAT
 rem
 rem Copyright 1999-2004 The Apache Software Foundation
 rem 
@@ -16,5 +17,4 @@ rem OF ANY KIND, either express or implied.
 rem See the License for the specific language governing 
 rem permissions and limitations under the License.
 rem
-@echo off
 set XSITE_CLASSPATH=%XSITE_CLASSPATH%;%1

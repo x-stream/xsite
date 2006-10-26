@@ -1,8 +1,9 @@
+@echo off
 rem run XSite
 
 set XSITE_CLASSPATH=
-for %%path in (%XSITE_HOME%\lib\*.jar) do call cpappend.bat %%path
+for %%i in (%XSITE_HOME%\lib\*.jar) do call %XSITE_HOME%\bin\cpappend.bat %%i
 
-EXEC="%JAVA_HOME%\bin\java -classpath %XSITE_CLASSPATH% org.codehaus.xsite.Main $@"
-%EXEC%
+%JAVA_HOME%\bin\java -classpath %XSITE_CLASSPATH% org.codehaus.xsite.Main %*
+
 
