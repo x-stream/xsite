@@ -6,7 +6,7 @@
   <body>
 	<h1>Sitemap configuration</h1>
 	
-	<p>XSite can be easily configured using an XML-based sitemap:
+	<p>XSite can be easily configured using an XML-based sitemap:</p>
 <div class="Source"><pre>
 &lt;sitemap&gt;
     &lt;section&gt;
@@ -14,6 +14,7 @@
         &lt;page&gt;index.html&lt;/page&gt;
         &lt;page&gt;license.html&lt;/page&gt;
         &lt;page&gt;download.html&lt;/page&gt;
+        &lt;page&gt;maven-plugin.html&lt;/page&gt;
         &lt;page&gt;news.html&lt;/page&gt;
         &lt;page&gt;changes.html&lt;/page&gt;
         &lt;page&gt;versioning.html&lt;/page&gt;
@@ -33,7 +34,9 @@
     &lt;/section&gt;
 &lt;/sitemap&gt;
 </pre></div>	
-	Each <code>page</code> element corresponds to an HTML file in the content directory. 
+	<p>
+		Each <code>page</code> element corresponds to an HTML file in the content directory.  The HTML content files are read from the same directory in which 
+		<code>sitemap</code> is found.
 	</p>
 	<p>
 		The sitemap filename is configurable but must be found in the content directory.

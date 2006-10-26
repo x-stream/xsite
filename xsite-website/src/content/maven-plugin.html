@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <title>Maven Plugin</title>
+  </head>
+
+  <body>
+
+    <h2>Configuring the Maven 2 plugin</h2>
+
+	<p>Maven 2 users can easily add XSite as a dependency to their projects.  Add the following repositories to the POM:
+	
+<div class="Source"><pre>
+&lt;repositories&gt;
+	&lt;repository&gt;
+		&lt;id&gt;codehaus-repository&lt;/id&gt;
+		&lt;name&gt;Codehaus Repository&lt;/name&gt;
+		&lt;url&gt;http://repository.codehaus.org&lt;/url&gt;
+	&lt;/repository&gt;
+	&lt;repository&gt;
+		&lt;id&gt;codehaus-snapshots-repository&lt;/id&gt;
+		&lt;name&gt;Codehaus Snapshots Repository&lt;/name&gt;
+		&lt;url&gt;http://snapshots.repository.codehaus.org&lt;/url&gt;
+	&lt;/repository&gt;
+&lt;/repositories&gt;		
+</pre></div>
+
+	and add XSite plugin configuration:
+
+<div class="Source"><pre>
+&lt;plugins&gt;
+	&lt;plugin&gt;
+		&lt;groupId&gt;org.codehaus.xsite&lt;/groupId&gt;
+		&lt;artifactId&gt;xsite-maven-plugin&lt;/artifactId&gt;
+		&lt;configuration&gt;
+			&lt;siteMapPath&gt;${basedir}/src/content/website.xml&lt;/siteMapPath&gt;
+			&lt;skinPath&gt;${basedir}/src/templates/skin.html&lt;/skinPath&gt;
+			&lt;outputDirectoryPath&gt;${basedir}/target/xsite&lt;/outputDirectoryPath&gt;
+		&lt;/configuration&gt;
+		&lt;executions&gt;
+			&lt;execution&gt;
+				&lt;phase&gt;install&lt;/phase&gt;
+				&lt;goals&gt;
+					&lt;goal&gt;run&lt;/goal&gt;
+				&lt;/goals&gt;
+			&lt;/execution&gt;
+		&lt;/executions&gt;
+	&lt;/plugin&gt;
+&lt;/plugins&gt;
+</pre></div>
+	</p>
+  </body>
+</html>

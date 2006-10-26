@@ -5,13 +5,13 @@
 
   <body>
 
-   	<h2>Release 1.0-beta-1</h2>
+   	<h2>Release 1.0-beta-3</h2>
 
-    <p>Released 23/06/2006</p>
+    <p>Released 26/10/2006</p>
 
     <ul>
-      <li><a href="http://repository.codehaus.org/org/codehaus/xsite/xsite/1.0-beta-1/xsite-1.0-beta-1.jar">xsite.jar</a></li>
-      <li><a href="http://repository.codehaus.org/org/codehaus/xsite/xsite-distribution/1.0-beta-1/xsite-distribution-1.0-beta-1-bin.zip">xsite-distribution-bin.zip</a></li>
+      <li><a href="http://repository.codehaus.org/org/codehaus/xsite/xsite/1.0-beta-3/xsite-1.0-beta-3.jar">xsite.jar</a></li>
+      <li><a href="http://repository.codehaus.org/org/codehaus/xsite/xsite-distribution/1.0-beta-3/xsite-distribution-1.0-beta-3-bin.zip">xsite-distribution-bin.zip</a></li>
     </ul>
 
     
@@ -26,52 +26,10 @@
 	
 	Be sure to choose the snapshot with the latest timestamp in the filename.
 	</p>
-	
-    <h1>Using with Maven 2</h1>
+		
+    <h2>Using with Maven</h2>
 
-	<p>Maven 2 users can easily add XSite as a dependency to their projects.  Add the following repositories to the POM:
-	
-<div class="Source"><pre>
-&lt;repositories&gt;
-	&lt;repository&gt;
-		&lt;id&gt;codehaus-m2-repository&lt;/id&gt;
-		&lt;name&gt;Codehaus Maven 2.x Repository&lt;/name&gt;
-		&lt;url&gt;http://repository.codehaus.org&lt;/url&gt;
-	&lt;/repository&gt;
-	&lt;repository&gt;
-		&lt;id&gt;codehaus-m2-snapshot-repository&lt;/id&gt;
-		&lt;name&gt;Codehaus Maven 2.x Snapshot Repository&lt;/name&gt;
-		&lt;url&gt;http://snapshot.repository.codehaus.org&lt;/url&gt;
-		&lt;snapshots&gt;
-			&lt;enabled&gt;true&lt;/enabled&gt;
-		&lt;/snapshots&gt;
-	&lt;/repository&gt;
-&lt;/repositories&gt;		
-</pre></div>
+	<p>Maven users can also configure the use of the <a href="maven-plugin.html">Maven plugin</a> directly.</p>
 
-	and add XSite plugin configuration:
-
-<div class="Source"><pre>
-&lt;plugins&gt;
-	&lt;plugin&gt;
-		&lt;groupId&gt;org.codehaus.xsite&lt;/groupId&gt;
-		&lt;artifactId&gt;xsite-maven-plugin&lt;/artifactId&gt;
-		&lt;configuration&gt;
-			&lt;siteMapPath&gt;${basedir}/src/content/website.xml&lt;/siteMapPath&gt;
-			&lt;skinPath&gt;${basedir}/src/templates/skin.html&lt;/skinPath&gt;
-			&lt;outputDirectoryPath&gt;${basedir}/target/xsite&lt;/outputDirectoryPath&gt;
-		&lt;/configuration&gt;
-		&lt;executions&gt;
-			&lt;execution&gt;
-				&lt;phase&gt;install&lt;/phase&gt;
-				&lt;goals&gt;
-					&lt;goal&gt;run&lt;/goal&gt;
-				&lt;/goals&gt;
-			&lt;/execution&gt;
-		&lt;/executions&gt;
-	&lt;/plugin&gt;
-&lt;/plugins&gt;
-</pre></div>
-	</p>
   </body>
 </html>

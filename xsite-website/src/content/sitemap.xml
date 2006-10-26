@@ -4,6 +4,7 @@
         <page>index.html</page>
         <page>license.html</page>
         <page>download.html</page>
+        <page>maven-plugin.html</page>
         <page>news.html</page>
         <page>changes.html</page>
         <page>versioning.html</page>
