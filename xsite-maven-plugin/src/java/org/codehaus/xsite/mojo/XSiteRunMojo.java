@@ -14,7 +14,6 @@ import org.codehaus.xsite.Main;
  * 
  * @author Mauro Talevi
  * @goal run
- * @todo Find a way to inject Mojo with params without the need to make them protected
  */
 public class XSiteRunMojo  extends AbstractMojo {
     
@@ -22,24 +21,24 @@ public class XSiteRunMojo  extends AbstractMojo {
      * @parameter
      * @required true
      */
-    protected String siteMapPath;
+    String siteMapPath;
     
     /**
      * @parameter
      * @required true
      */
-    protected String skinPath;
+    String skinPath;
 
     /**
      * @parameter
      * @required true
      */
-    protected String outputDirectoryPath;
+    String outputDirectoryPath;
 
     /**
      * @parameter
      */
-    protected String compositionFilePath;
+    String compositionFilePath;
     
     /**
      * @parameter
