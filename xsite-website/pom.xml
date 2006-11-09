@@ -9,14 +9,6 @@
 	<packaging>jar</packaging>
 	<name>XSite Website</name>
 
-	<dependencies>
-		<dependency>
-			<groupId>${pom.groupId}</groupId>
-			<artifactId>xsite</artifactId>
-			<version>${pom.version}</version>
-		</dependency>
-	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>

@@ -56,21 +56,21 @@ public class Main {
 	    Properties properties = createProperties();
 	    printVersion(properties);
 	} else {
-	    if ( !validateOptions(cl) ){
-		printUsage(options);
-		throw new IllegalArgumentException("Invalid arguments "+cl.getArgList());
-	    }
-	    try {
-		URL compositionURL = getCompositionURL(cl);
-		XSite xsite = instantiateXSite(compositionURL);
-		xsite.build(new File(cl.getOptionValue(SITEMAP_OPT)), new File(
-			cl.getOptionValue(SKIN_OPT)), new File(cl
-			.getOptionValue(OUTPUT_OPT)));
+	    if (!validateOptions(cl)) {
+                printUsage(options);
+                throw new IllegalArgumentException("Invalid arguments "
+                        + cl.getArgList());
+            }
+            try {
+                URL compositionURL = getCompositionURL(cl);
+                XSite xsite = instantiateXSite(compositionURL);
+                xsite.build(new File(cl.getOptionValue(SITEMAP_OPT)), new File(
+                        cl.getOptionValue(SKIN_OPT)), new File(cl
+                        .getOptionValue(OUTPUT_OPT)));
 
-	    } catch ( Exception e) {
-		e.printStackTrace();
-		throw new IllegalStateException("Failed to build XSite", e);
-	    }
+            } catch (Exception e) {
+                throw new IllegalStateException("Failed to build XSite", e);
+            }
 	}        
     }
     

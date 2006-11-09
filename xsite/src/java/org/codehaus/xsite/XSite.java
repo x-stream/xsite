@@ -12,6 +12,9 @@ import org.codehaus.xsite.model.SiteMap;
 import org.codehaus.xsite.skins.FreemarkerSkin;
 import org.codehaus.xsite.validators.LinkChecker;
 
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+
 
 /**
  * Facade for building sites
@@ -29,7 +32,7 @@ public class XSite {
      * Creates an XSite with default dependencies
      */
     public XSite() {
-        this(new XStreamSiteMapLoader(new SiteMeshPageExtractor()),
+        this(new XStreamSiteMapLoader(new SiteMeshPageExtractor(), new XStream(new DomDriver())),
                 new FreemarkerSkin(), new LinkValidator[0]);
     }
 

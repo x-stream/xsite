@@ -31,11 +31,13 @@ public class XStreamSiteMapLoader implements SiteMapLoader {
     private XStream xstream;
     
     /**
-     * @param extractor
+     * Creates am XStreamSiteMapLoader
+     * @param extractor the PageExtractor
+     * @param xstream the XStream instance
      */
-    public XStreamSiteMapLoader(PageExtractor extractor) {
+    public XStreamSiteMapLoader(PageExtractor extractor, XStream xstream) {
         this.pageExtractor = extractor;
-        this.xstream = new XStream();
+        this.xstream = xstream;
         configureXStream();
     }
 
