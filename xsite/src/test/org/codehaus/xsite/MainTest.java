@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.Properties;
 
 import org.apache.commons.cli.CommandLine;
+import org.codehaus.xsite.factories.DefaultXSiteFactory;
 
 
 /**
@@ -65,4 +66,10 @@ public class MainTest extends AbstractXSiteTestCase {
         assertTrue(url.getPath().endsWith("custom-xsite.xml"));
     }
 
+    public void testCanBuildWithCustomXSiteFactory() throws Exception{
+        Main.main(new String[] {"-x"+DefaultXSiteFactory.class.getName(),
+                "-m"+testSrcDir+"sitemap.xml", "-s"+testSrcDir+"skin.html", 
+                "-otarget/xsite"});
+
+    }
 }
