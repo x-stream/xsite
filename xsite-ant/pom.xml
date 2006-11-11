@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>org.codehaus.xsite</groupId>
 		<artifactId>xsite-parent</artifactId>
-		<version>1.0-beta-4</version>
+		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>xsite-ant</artifactId>
 	<name>XSite Ant</name>
