@@ -8,6 +8,7 @@
 
 	<modules>
 		<module>xsite</module>
+		<module>xsite-ant</module>
 		<module>xsite-maven-plugin</module>
 		<module>xsite-distribution</module>
 	</modules>

@@ -15,6 +15,16 @@
 			<artifactId>xsite</artifactId>
 			<version>${pom.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>${pom.groupId}</groupId>
+			<artifactId>xsite-ant</artifactId>
+			<version>${pom.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${pom.groupId}</groupId>
+			<artifactId>xsite-maven-plugin</artifactId>
+			<version>${pom.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
