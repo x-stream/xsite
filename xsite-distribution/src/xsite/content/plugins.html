@@ -48,5 +48,18 @@
 &lt;/plugins&gt;
 </pre></div>
 	</p>
+	
+
+    <h2>Configuring the Ant task</h2>
+
+	<p>Ant users can easily use XSite task:
+	
+<div class="Source"><pre>
+&lt;taskdef name="xsite" classname="org.codehaus.xsite.ant.XSiteTask"/&gt;
+&lt;xsite siteMapPath="${basedir}/src/content/website.xml" 
+		skinPath="${basedir}/src/templates/skin.html"
+		outputDirectoryPath="${basedir}/target/xsite"/&gt;
+</pre></div>
+	</p>	
   </body>
 </html>
