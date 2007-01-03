@@ -56,7 +56,7 @@ public class XSiteRunMojo  extends AbstractMojo {
     }
 
     private String[] getArgs() {
-        List<String> args = new ArrayList<String>();
+        List args = new ArrayList();
         args.add("-m" + siteMapPath);
         args.add("-s" + skinPath);
         args.add("-o" + outputDirectoryPath);
