@@ -1,7 +1,6 @@
 package org.codehaus.xsite.ant;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.apache.tools.ant.BuildException;
@@ -30,8 +29,19 @@ public class XSiteTask extends Task {
         try {
             Main.main(args);
         } catch (Exception e) {
-            throw new BuildException("Failed to run xsite with args "+Arrays.toString(args), e);
+            throw new BuildException("Failed to run xsite with args "+toString(args), e);
         }
+    }
+
+    private String toString(String[] args) {
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < args.length; i++) {
+            sb.append(args[i]);
+            if ( i < args.length - 1 ){
+                sb.append(",");
+            }
+        }        
+        return sb.toString();
     }
 
     private String[] getArgs() {

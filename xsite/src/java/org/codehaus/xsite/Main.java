@@ -69,7 +69,7 @@ public class Main {
         } else {
             if (!validateOptions(cl)) {
                 printUsage(options);
-                throw new IllegalArgumentException("Invalid arguments "
+                throw new RuntimeException("Invalid arguments "
                         + cl.getArgList());
             }
             try {
@@ -79,7 +79,7 @@ public class Main {
                         .getOptionValue(OUTPUT_OPT)));
 
             } catch (Exception e) {
-                throw new IllegalStateException("Failed to build XSite", e);
+                throw new RuntimeException("Failed to build XSite", e);
             }
         }
     }

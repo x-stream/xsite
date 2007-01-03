@@ -48,13 +48,24 @@ public class XSiteRunMojo  extends AbstractMojo {
     public void execute() throws MojoExecutionException, MojoFailureException {
         try {
             String[] args = getArgs();
-            getLog().debug("Executing XSite run goal with args "+Arrays.toString(args));
+            getLog().debug("Executing XSite run goal with args "+toString(args));
             Main.main(args);
         } catch (Exception e) {
             throw new MojoExecutionException("Failed to run xsite", e);
         }
     }
 
+    private String toString(String[] args) {
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < args.length; i++) {
+            sb.append(args[i]);
+            if ( i < args.length - 1 ){
+                sb.append(",");
+            }
+        }        
+        return sb.toString();
+    }
+    
     private String[] getArgs() {
         List args = new ArrayList();
         args.add("-m" + siteMapPath);
