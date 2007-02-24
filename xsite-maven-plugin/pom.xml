@@ -3,9 +3,10 @@
 	<parent>
 		<groupId>org.codehaus.xsite</groupId>
 		<artifactId>xsite-parent</artifactId>
-		<version>1.0-beta-5</version>
+		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>xsite-maven-plugin</artifactId>
+  <version> 1.0-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
 	<name>XSite Maven Plugin</name>
 
