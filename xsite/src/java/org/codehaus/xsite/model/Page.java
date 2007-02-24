@@ -9,6 +9,7 @@ import java.util.Properties;
  * A single page in a website, including title, filename and content.
  *
  * @author Joe Walnes
+ * @author Mauro Talevi
  */
 public class Page {
 
@@ -19,6 +20,7 @@ public class Page {
     private Collection links = new HashSet();
 
     /**
+     * Creates a Page 
      * @param filename
      * @param head
      * @param body
@@ -31,6 +33,14 @@ public class Page {
         this.body = body;
         this.links = links;
         this.properties = properties;
+    }
+
+    public String getId() {
+        if (properties.containsKey("meta.id")) {
+            return properties.getProperty("meta.id");
+        } else {
+            return filename.substring(0, filename.indexOf(".html"));
+        }
     }
 
     public String getTitle() {
@@ -61,13 +71,7 @@ public class Page {
         return Collections.unmodifiableCollection(links);
     }
 
-    public static class CannotParsePageException extends RuntimeException {
-        public CannotParsePageException(Throwable cause) {
-            super(cause);
-        }
-    }
-
-    public boolean isIndex() {
+     public boolean isIndex() {
         return "index.html".equals(filename);
     }
     
