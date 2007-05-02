@@ -173,17 +173,17 @@
 	
 	<distributionManagement>
 		<repository>
-			<id>codehaus-xsite-repository</id>
+			<id>codehaus.org</id>
 			<name>Codehaus XSite Repository</name>
 			<url>dav:https://dav.codehaus.org/repository/xsite/</url>
 		</repository>
 		<snapshotRepository>
-			<id>codehaus-xsite-snapshot-repository</id>
+			<id>codehaus.org</id>
 			<name>Codehaus XSite Snapshot Repository</name>
 			<url>dav:https://dav.codehaus.org/snapshots.repository/xsite/</url>
 		</snapshotRepository>
 		<site>
-			<id>xsite-site</id>
+			<id>codehaus.org</id>
 			<url>dav:https://dav.codehaus.org/xsite/</url>
 		</site>
 	</distributionManagement>
