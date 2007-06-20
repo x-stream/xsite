@@ -36,6 +36,7 @@
 				<configuration>
 					<siteMapPath>${basedir}/src/xsite/content/sitemap.xml</siteMapPath>
 					<skinPath>${basedir}/src/xsite/templates/skin.html</skinPath>
+                    <resourcePaths>${basedir}/src/xsite/resources</resourcePaths>
 					<outputDirectoryPath>${basedir}/target/xsite</outputDirectoryPath>
 				</configuration>
 				<executions>
