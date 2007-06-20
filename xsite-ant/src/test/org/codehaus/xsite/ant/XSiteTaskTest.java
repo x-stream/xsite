@@ -33,6 +33,15 @@ public class XSiteTaskTest extends TestCase {
         task.setOutputDirectoryPath("target/xsite");
         task.execute();
     }
+    
+    public void testGoalCanBeRunWithOptionalResources() throws Exception {
+        XSiteTask task = new XSiteTask();
+        task.setSiteMapPath(testSrcDir+"content/website.xml");
+        task.setSkinPath(testSrcDir+"templates/skin.html");
+        task.setResourcePaths(testSrcDir+"resources");
+        task.setOutputDirectoryPath("target/xsite");
+        task.execute();
+    }
 
     public void testGoalCanBeRunWithOptionalFileComposition() throws Exception {
         XSiteTask task = new XSiteTask();

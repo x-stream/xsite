@@ -50,25 +50,25 @@ public class MainTest extends AbstractXSiteTestCase {
     }
 
     public void testCanBuildWithDefaultComposition() throws Exception{        
-        Main.main(new String[] {"-m"+testSrcDir+"sitemap.xml", "-s"+ testSrcDir+"skin.html", 
+        Main.main(new String[] {"-m"+testSrcDir+"/content/sitemap.xml", "-s"+ testSrcDir+"/templates/skin.html", 
             "-otarget/xsite"});
     }
     
     public void testCanGetCustomCompositionURLViaFile() throws Exception{        
-        URL url = Main.getCompositionURL(Main.getCommandLine(new String[] {"-m"+testSrcDir+"sitemap.xml", "-s"+ testSrcDir+"skin.html", 
+        URL url = Main.getCompositionURL(Main.getCommandLine(new String[] {"-m"+testSrcDir+"/content/sitemap.xml", "-s"+ testSrcDir+"/templates/skin.html", 
                 "-otarget/xsite", "-f"+testSrcDir+"custom-xsite.xml"}, Main.createOptions()));       
         assertTrue(url.getPath().endsWith("custom-xsite.xml"));
     }
     
     public void testCanGetCustomCompositionURLViaResource() throws Exception{        
-        URL url = Main.getCompositionURL(Main.getCommandLine(new String[] {"-m"+testSrcDir+"sitemap.xml", "-s"+ testSrcDir+"skin.html", 
+        URL url = Main.getCompositionURL(Main.getCommandLine(new String[] {"-m"+testSrcDir+"/content/sitemap.xml", "-s"+ testSrcDir+"/templates/skin.html", 
                 "-otarget/xsite", "-rcustom-xsite.xml"}, Main.createOptions()));       
         assertTrue(url.getPath().endsWith("custom-xsite.xml"));
     }
 
     public void testCanBuildWithCustomXSiteFactory() throws Exception{
         Main.main(new String[] {"-x"+DefaultXSiteFactory.class.getName(),
-                "-m"+testSrcDir+"sitemap.xml", "-s"+testSrcDir+"skin.html", 
+                "-m"+testSrcDir+"/content/sitemap.xml", "-s"+testSrcDir+"/templates/skin.html", 
                 "-otarget/xsite"});
 
     }

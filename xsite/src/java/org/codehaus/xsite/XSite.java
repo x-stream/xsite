@@ -48,7 +48,7 @@ public class XSite {
         this.validators = validators;
     }
 
-    public void build(File siteMapFile, File skinFile, File outputDirectory) throws IOException{
+    public void build(File siteMapFile, File skinFile, File[] resourceDirs, File outputDirectory) throws IOException{
         // Load sitemap and content
         SiteMap siteMap = siteMapLoader.loadFrom(siteMapFile);
 
@@ -63,8 +63,11 @@ public class XSite {
 
         // Copy additional resources (css, images, etc) to output
         FileSystem fileSystem = new FileSystem();
-        fileSystem.copyAllFiles(siteMapFile.getParentFile(), outputDirectory, "html,xml");
-        fileSystem.copyAllFiles(skinFile.getParentFile(), outputDirectory, "html,xml");
+        for ( int i = 0; i < resourceDirs.length; i++){
+            File resourceDir = resourceDirs[i];
+            System.out.println("Copying resources from " + resourceDir);
+            fileSystem.copyAllFiles(resourceDir, outputDirectory, "");
+        }
 
         // Verify links
         LinkChecker linkChecker = new LinkChecker(siteMap, validators, new LinkChecker.Reporter() {

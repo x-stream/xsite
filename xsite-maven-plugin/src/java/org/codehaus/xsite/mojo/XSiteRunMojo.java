@@ -1,7 +1,6 @@
 package org.codehaus.xsite.mojo;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.apache.maven.plugin.AbstractMojo;
@@ -38,6 +37,11 @@ public class XSiteRunMojo  extends AbstractMojo {
     /**
      * @parameter
      */
+    String resourcePaths;
+    
+    /**
+     * @parameter
+     */
     String compositionFilePath;
     
     /**
@@ -71,6 +75,9 @@ public class XSiteRunMojo  extends AbstractMojo {
         args.add("-m" + siteMapPath);
         args.add("-s" + skinPath);
         args.add("-o" + outputDirectoryPath);
+        if (resourcePaths != null) {
+            args.add("-R" + resourcePaths);
+        }
         if (compositionFilePath != null) {
             args.add("-f" + compositionFilePath);
         }

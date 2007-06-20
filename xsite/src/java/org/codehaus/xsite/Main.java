@@ -40,6 +40,8 @@ public class Main {
 
     private static final char SKIN_OPT = 's';
 
+    private static final char RESOURCES_OPT = 'R';
+
     private static final char FILE_OPT = 'f';
 
     private static final char RESOURCE_OPT = 'r';
@@ -47,6 +49,7 @@ public class Main {
     private static final char XSITE_FACTORY_OPT = 'x';
 
     private static final char OUTPUT_OPT = 'o';
+
 
     public static final void main(String[] args) throws Exception {
         new Main(args);
@@ -75,13 +78,25 @@ public class Main {
             try {
                 XSite xsite = instantiateXSite(cl);
                 xsite.build(new File(cl.getOptionValue(SITEMAP_OPT)), new File(
-                        cl.getOptionValue(SKIN_OPT)), new File(cl
+                        cl.getOptionValue(SKIN_OPT)), getResourceDirs(cl), new File(cl
                         .getOptionValue(OUTPUT_OPT)));
 
             } catch (Exception e) {
                 throw new RuntimeException("Failed to build XSite", e);
             }
         }
+    }
+
+    private File[] getResourceDirs(CommandLine cl) {
+        if ( !cl.hasOption(RESOURCES_OPT)){
+            return new File[]{};
+        }
+        String[] resourcePaths = cl.getOptionValue(RESOURCES_OPT).split(",");
+        File[] resourceDirs = new File[resourcePaths.length];
+        for ( int i = 0; i < resourcePaths.length; i++ ){
+            resourceDirs[i] = new File(resourcePaths[i]);
+        }
+        return resourceDirs;
     }
 
     private XSite instantiateXSite(CommandLine cl) throws MalformedURLException {
@@ -153,6 +168,8 @@ public class Main {
                 "specify the sitemap file");
         options.addOption(String.valueOf(SKIN_OPT), "skin", true,
                 "specify the skin file");
+        options.addOption(String.valueOf(RESOURCES_OPT), "resources", true,
+                "specify the CSV list of resource dirs");
         options.addOption(String.valueOf(OUTPUT_OPT), "output", true,
                 "specify the output dir");
         options.addOption(String.valueOf(XSITE_FACTORY_OPT), "xsite-factory", true,
@@ -172,6 +189,7 @@ public class Main {
         usage.append(lineSeparator);
         usage.append(CLASSNAME
                         + ": -m<path-to-sitemap> -s<path-to-skin> -o<output-dir> "
+                        + "[-R <csv-of-resource-paths>]"
                         + "[-f<filesystem-path-to-xsite.xml>|-r<classpath-path-to-xsite.xml>] "
                         + "[-x<xsite-factory-classname>"
                         + "[-h|-v]");

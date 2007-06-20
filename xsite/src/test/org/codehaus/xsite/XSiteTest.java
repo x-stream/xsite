@@ -11,6 +11,6 @@ public class XSiteTest extends AbstractXSiteTestCase {
     
     public void testBuild() throws IOException{       
         XSite xsite = new XSite();
-        xsite.build(new File(testSrcDir+"sitemap.xml"), new File(testSrcDir+"skin.html"), new File("target/xsite"));
+        xsite.build(new File(testSrcDir+"/content/sitemap.xml"), new File(testSrcDir+"/templates/skin.html"), new File[]{new File(testSrcDir+"/resources"), new File(testSrcDir+"/resources2")}, new File("target/xsite"));
     }
 }

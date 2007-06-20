@@ -20,6 +20,8 @@ public class XSiteTask extends Task {
 
     private String outputDirectoryPath;
 
+    private String resourcePaths;
+
     private String compositionFilePath;
     
     private String compositionResourcePath;
@@ -49,6 +51,9 @@ public class XSiteTask extends Task {
         args.add("-m" + siteMapPath);
         args.add("-s" + skinPath);
         args.add("-o" + outputDirectoryPath);
+        if (resourcePaths != null) {
+            args.add("-R" + resourcePaths);
+        }
         if (compositionFilePath != null) {
             args.add("-f" + compositionFilePath);
         }
@@ -69,6 +74,10 @@ public class XSiteTask extends Task {
     public void setOutputDirectoryPath(String outputDirectoryPath) {
         this.outputDirectoryPath = outputDirectoryPath;
     }
+    
+    public void setResourcePaths(String resourcePaths) {
+        this.resourcePaths = resourcePaths;
+    }
 
     public void setSiteMapPath(String siteMapPath) {
         this.siteMapPath = siteMapPath;
@@ -76,8 +85,6 @@ public class XSiteTask extends Task {
 
     public void setSkinPath(String skinPath) {
         this.skinPath = skinPath;
-    }
-
-    
+    }    
     
 }

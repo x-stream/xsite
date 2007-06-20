@@ -21,11 +21,20 @@ public class XSiteRunMojoTest  extends TestCase {
             testSrcDir = testSrcDir + File.separator; 
         }        
     }
-    
+
     public void testGoalCanBeRunWithDefaultComposition() throws Exception {
         XSiteRunMojo mojo = new XSiteRunMojo();
         mojo.siteMapPath = testSrcDir+"content/website.xml";
         mojo.skinPath = testSrcDir+"templates/skin.html";
+        mojo.outputDirectoryPath = "target/xsite";
+        mojo.execute();
+    }
+
+    public void testGoalCanBeRunWithOptionalResources() throws Exception {
+        XSiteRunMojo mojo = new XSiteRunMojo();
+        mojo.siteMapPath = testSrcDir+"content/website.xml";
+        mojo.skinPath = testSrcDir+"templates/skin.html";
+        mojo.resourcePaths = testSrcDir+"resources";
         mojo.outputDirectoryPath = "target/xsite";
         mojo.execute();
     }
