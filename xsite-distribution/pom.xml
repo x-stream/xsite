@@ -84,4 +84,12 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<distributionManagement>
+	  <site>
+	    <id>codehaus.org</id>
+	    <url>dav:https://dav.codehaus.org/xsite/</url>
+	  </site>
+	</distributionManagement>
+
 </project>
