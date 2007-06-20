@@ -2,11 +2,10 @@ package org.codehaus.xsite.io;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.channels.FileChannel;
+
+import org.apache.commons.io.FileUtils;
 
 /**
  * Facade for underlying filesystem.
@@ -30,6 +29,14 @@ public class FileSystem {
         }
     }
 
+    public void copyDirectory(File sourceDirectory, File targetDirectory) {
+        try {
+            FileUtils.copyDirectory(sourceDirectory, targetDirectory);
+        } catch ( IOException e) {
+            throw new FileSystemException("Cannot copy " + sourceDirectory.getName() + " to " + targetDirectory.getName(), e);
+        }        
+    }
+    
     public void copyAllFiles(File sourceDirectory, File targetDirectory, String suffixesToExclude) {
         String[] badSuffixes = suffixesToExclude.split(",");
         File[] files = sourceDirectory.listFiles();
@@ -50,11 +57,7 @@ public class FileSystem {
 
     private void copyFile(File source, File destination) {
         try {
-            FileChannel sourceChannel = new FileInputStream(source).getChannel();
-            FileChannel destinationChannel = new FileOutputStream(destination).getChannel();
-            destinationChannel.transferFrom(sourceChannel, 0, sourceChannel.size());
-            sourceChannel.close();
-            destinationChannel.close();
+            FileUtils.copyFile(source, destination);
         } catch (IOException e) {
             throw new FileSystemException("Cannot copy " + source.getName() + " to " + destination.getName(), e);
         }
