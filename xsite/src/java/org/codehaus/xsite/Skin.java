@@ -14,7 +14,7 @@ import org.codehaus.xsite.model.SiteMap;
  */
 public interface Skin {
 
-    public void load(File skinFile);
+    void load(File skinFile);
     
     void skin(Page page, SiteMap siteMap, File outputDirectory);
 

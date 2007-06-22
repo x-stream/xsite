@@ -19,6 +19,9 @@
 	<component-implementation key="http-link-validator" class="org.codehaus.xsite.validators.StartsWithLinkValidator">
 		<parameter><string>http://</string></parameter>
 	</component-implementation>
+    <component-implementation key="https-link-validator" class="org.codehaus.xsite.validators.StartsWithLinkValidator">
+      <parameter><string>https://</string></parameter>
+    </component-implementation>
 	<component-implementation key="news-link-validator" class="org.codehaus.xsite.validators.StartsWithLinkValidator">
 		<parameter><string>nntp://</string></parameter>
 	</component-implementation>
