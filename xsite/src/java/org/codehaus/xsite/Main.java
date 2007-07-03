@@ -80,7 +80,7 @@ public class Main {
                 XSite xsite = instantiateXSite(cl);
                 String sourcePath = cl.getOptionValue(SOURCE_OPT);
                 File sitemap = new File(sourcePath+File.separator+cl.getOptionValue(SITEMAP_OPT));
-                File skin = new File(sourcePath+File.separator+cl.getOptionValue(SITEMAP_OPT));
+                File skin = new File(sourcePath+File.separator+cl.getOptionValue(SKIN_OPT));
                 File output = new File(cl.getOptionValue(OUTPUT_OPT));
                 xsite.build(sitemap, skin, getResourceDirs(cl), output);
 
