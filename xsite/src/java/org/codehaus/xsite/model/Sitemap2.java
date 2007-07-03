@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author Joe Walnes
  */
-public class SiteMap {
+public class Sitemap2 {
 
     private List sections = new ArrayList();
     private List pages = new ArrayList();

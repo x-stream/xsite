@@ -7,11 +7,11 @@ import java.util.HashSet;
 
 import org.codehaus.xsite.LinkValidator;
 import org.codehaus.xsite.model.Page;
-import org.codehaus.xsite.model.SiteMap;
+import org.codehaus.xsite.model.Sitemap2;
 
 
 /**
- * Verifies all the links in a SiteMap.
+ * Verifies all the links in a Sitemap.
  *
  * @author Joe Walnes
  * @author J&ouml;rg Schaible
@@ -19,7 +19,7 @@ import org.codehaus.xsite.model.SiteMap;
 public class LinkChecker {
 
     private final Collection knownPageFileNames;
-    private final SiteMap siteMap;
+    private final Sitemap2 siteMap;
     private final Reporter reporter;
     private final LinkValidator[] validators;
 
@@ -30,7 +30,7 @@ public class LinkChecker {
         void badLink(Page page, String link);
     }
 
-    public LinkChecker(SiteMap siteMap, LinkValidator[] validators, Reporter reporter) {
+    public LinkChecker(Sitemap2 siteMap, LinkValidator[] validators, Reporter reporter) {
         this.siteMap = siteMap;
         this.validators = validators;
         this.reporter = reporter;

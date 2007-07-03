@@ -15,7 +15,7 @@ import java.util.Map;
 
 import org.codehaus.xsite.Skin;
 import org.codehaus.xsite.model.Page;
-import org.codehaus.xsite.model.SiteMap;
+import org.codehaus.xsite.model.Sitemap2;
 
 
 /**
@@ -39,7 +39,7 @@ public class FreemarkerSkin implements Skin {
             throw new CannotCreateSkinException(e);
         }
     }
-    public void skin(Page page, SiteMap siteMap, File outputDirectory) {
+    public void skin(Page page, Sitemap2 siteMap, File outputDirectory) {
         Map context = new HashMap();
         context.put("title", page.getTitle());
         context.put("head", page.getHead());

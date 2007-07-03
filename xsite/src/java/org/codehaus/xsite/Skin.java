@@ -3,7 +3,7 @@ package org.codehaus.xsite;
 import java.io.File;
 
 import org.codehaus.xsite.model.Page;
-import org.codehaus.xsite.model.SiteMap;
+import org.codehaus.xsite.model.Sitemap2;
 
 /**
  * Interface that allows the loading of a skin - ie a template
@@ -16,6 +16,6 @@ public interface Skin {
 
     void load(File skinFile);
     
-    void skin(Page page, SiteMap siteMap, File outputDirectory);
+    void skin(Page page, Sitemap2 siteMap, File outputDirectory);
 
 }

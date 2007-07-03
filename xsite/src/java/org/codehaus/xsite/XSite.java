@@ -6,9 +6,9 @@ import java.util.Iterator;
 
 import org.codehaus.xsite.extractors.SiteMeshPageExtractor;
 import org.codehaus.xsite.io.FileSystem;
-import org.codehaus.xsite.loaders.XStreamSiteMapLoader;
+import org.codehaus.xsite.loaders.XStreamSitemapLoader2;
 import org.codehaus.xsite.model.Page;
-import org.codehaus.xsite.model.SiteMap;
+import org.codehaus.xsite.model.Sitemap2;
 import org.codehaus.xsite.skins.FreemarkerSkin;
 import org.codehaus.xsite.validators.LinkChecker;
 
@@ -24,7 +24,7 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
  */
 public class XSite {
 
-    private SiteMapLoader siteMapLoader;
+    private SitemapLoader2 siteMapLoader;
     private Skin skin;
     private final LinkValidator[] validators;
 
@@ -32,17 +32,17 @@ public class XSite {
      * Creates an XSite with default dependencies
      */
     public XSite() {
-        this(new XStreamSiteMapLoader(new SiteMeshPageExtractor(), new XStream(new DomDriver())),
+        this(new XStreamSitemapLoader2(new SiteMeshPageExtractor(), new XStream(new DomDriver())),
                 new FreemarkerSkin(), new LinkValidator[0]);
     }
 
     /**
      * Creates an XSite with custom dependencies
-     * @param loader the SiteMapLoader used to load the SiteMap
+     * @param loader the SitemapLoader used to load the Sitemap
      * @param skin the Skin used to skin the pages
      * @param validators the array with the LinkValidator instances
      */
-    public XSite(SiteMapLoader loader, Skin skin, LinkValidator[] validators) {
+    public XSite(SitemapLoader2 loader, Skin skin, LinkValidator[] validators) {
         this.siteMapLoader = loader;
         this.skin = skin;
         this.validators = validators;
@@ -50,7 +50,7 @@ public class XSite {
 
     public void build(File sitemapFile, File skinFile, File[] resourceDirs, File outputDirectory) throws IOException{
         // Load sitemap and content
-        SiteMap siteMap = siteMapLoader.loadFrom(sitemapFile);
+        Sitemap2 siteMap = siteMapLoader.loadFrom(sitemapFile);
 
         // Apply skin to each page
         skin.load(skinFile);

@@ -6,12 +6,11 @@ import java.io.IOException;
 import java.io.Reader;
 
 import org.codehaus.xsite.PageExtractor;
-import org.codehaus.xsite.SiteMapLoader;
+import org.codehaus.xsite.SitemapLoader2;
 import org.codehaus.xsite.model.Link;
 import org.codehaus.xsite.model.Page;
 import org.codehaus.xsite.model.Section;
-import org.codehaus.xsite.model.SiteMap;
-
+import org.codehaus.xsite.model.Sitemap2;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.Converter;
@@ -22,20 +21,20 @@ import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 
 /**
- * Loads a SiteMap from an XML file using XStream.
+ * Loads a Sitemap from an XML file using XStream.
  *
  * @author Joe Walnes
  */
-public class XStreamSiteMapLoader implements SiteMapLoader {
+public class XStreamSitemapLoader2 implements SitemapLoader2 {
     private PageExtractor pageExtractor;
     private XStream xstream;
     
     /**
-     * Creates am XStreamSiteMapLoader
+     * Creates a XStreamSitemapLoader
      * @param extractor the PageExtractor
      * @param xstream the XStream instance
      */
-    public XStreamSiteMapLoader(PageExtractor extractor, XStream xstream) {
+    public XStreamSitemapLoader2(PageExtractor extractor, XStream xstream) {
         this.pageExtractor = extractor;
         this.xstream = xstream;
         configureXStream();
@@ -45,18 +44,18 @@ public class XStreamSiteMapLoader implements SiteMapLoader {
         xstream.alias("section", Section.class);
         xstream.alias("page", Page.class);
         xstream.alias("link", Link.class);
-        xstream.alias("sitemap", SiteMap.class);
+        xstream.alias("sitemap", Sitemap2.class);
         xstream.addImplicitCollection(Section.class, "pages");
-        xstream.addImplicitCollection(SiteMap.class, "sections");
+        xstream.addImplicitCollection(Sitemap2.class, "sections");
         xstream.registerConverter(new LinkConverter());
     }
 
-    public SiteMap loadFrom(File content) throws IOException {
+    public Sitemap2 loadFrom(File content) throws IOException {
         xstream.registerConverter(new PageConverter(content.getParentFile(),
                 pageExtractor));
         Reader reader = new FileReader(content);
         try {
-            return (SiteMap) xstream.fromXML(reader);
+            return (Sitemap2) xstream.fromXML(reader);
         } finally {
             reader.close();
         }
