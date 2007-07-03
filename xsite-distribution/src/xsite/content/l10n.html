@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>L10N support</title>
+</head>
+
+<body>
+<h1>Localisation</h1>
+
+<p>XSite supports language localisation of content HTML files, skins
+and even resources.</p>
+
+
+<p>By convention, given the root source directory the localised
+content can be specified by a language code, which identifies a
+language-specific source directory. Eg:
+<pre>
+/content/sitemap.xml       - main sitemap
+/it/content/sitemap.xml    - italian sitemap
+/it/templates/skin.html    - italian skin
+/fr/content/sitemap.xml    - french sitemap: uses main skin
+/pt/content/sitemap.xml    - portuguese sitemap
+/pt/templates/skin.html    - portuguese skin
+/pt/resources              - portuguese resources
+</pre>
+
+An additional (non-mandatory) <b>localisations</b> option will specific the language
+localisation codes as CSV. For each a sitemap file is expected (using
+the same relative path as the main content). The skin and resource files
+will default to main content ones if not found in language-specific
+path.
+</p>
+</body>
+</html>
+

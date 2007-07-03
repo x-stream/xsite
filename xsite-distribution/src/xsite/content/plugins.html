@@ -36,6 +36,7 @@
 			&lt;sitemapPath&gt;content/sitemap.xml&lt;/sitemapPath&gt;
   			&lt;skinPath&gt;templates/skin.html&lt;/skinPath&gt;
             &lt;resourcePaths&gt;resources&lt;/resourcePaths&gt;
+            &lt;localisations&gt;it,fr,pt&lt;/localisations&gt;
 			&lt;outputDirectoryPath&gt;${basedir}/target/xsite&lt;/outputDirectoryPath&gt;
 		&lt;/configuration&gt;
 		&lt;executions&gt;
@@ -59,7 +60,7 @@
 <div class="Source"><pre>
 &lt;taskdef name="xsite" classname="org.codehaus.xsite.ant.XSiteTask"/&gt;
 &lt;xsite sourceDirectory="${basedir}/src/xsite" sitemapPath="content/sitemap.xml" 
-		skinPath="templates/skin.html" resourcePaths="resources"
+		skinPath="templates/skin.html" resourcePaths="resources" localisations="it,fr,pt"
 		outputDirectoryPath="${basedir}/target/xsite"/&gt;
 </pre></div>
 	</p>	
