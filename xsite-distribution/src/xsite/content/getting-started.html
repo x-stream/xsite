@@ -1,45 +1,51 @@
 <html>
-  <head>
-    <title>Getting started</title>
-  </head>
+<head>
+<title>Getting started</title>
+</head>
 
-  <body>
+<body>
 
-    <h2>Using XSite as a standalone application</h2>
+<h2>Using XSite as a standalone application</h2>
 
-    <p>
-	<ul>
-		<li> <a href="download.html">Download</a> XSite binary distribution (xsite-distribution-bin.zip) 
-		and unzip archive to local filesystem directory of your choice.</li>
-		<li>Define an environment variable <code>XSITE_HOME</code> to point to the chosen directory.</li>
-		<li>Add <code>XSITE_HOME/bin</code> to your system path. 
-	    On UNIX systems, ensure that you have the correct permissions to execute <code>XSITE_HOME/bin/xsite</code>
-	    (defaults to <code>chmod ug+rwx o+r)</code>.
-	    On Windows systems, replace <code>/</code> with <code>\</code>.
-	    </li>
-	</ul>	
-	</p>
+<p>
+<ul>
+  <li><a href="download.html">Download</a> XSite binary
+  distribution (xsite-distribution-bin.zip) and unzip archive to local
+  filesystem directory of your choice.</li>
+  <li>Define an environment variable <code>XSITE_HOME</code> to
+  point to the chosen directory.</li>
+  <li>Add <code>XSITE_HOME/bin</code> to your system path. On UNIX
+  systems, ensure that you have the correct permissions to execute <code>XSITE_HOME/bin/xsite</code>
+  (defaults to <code>chmod ug+rwx o+r)</code>. On Windows systems,
+  replace <code>/</code> with <code>\</code>.</li>
+</ul>
+</p>
 
-	<p>The required inputs for XSite are 
-	
-	<ul>
-		<li>sitemap.xml: specifies the content of the website and the navigation.  
-		The content files refered to in the sitemap are assumed to be in the same directory as the sitemap.</li>
-		<li>skin.html: specifies the template and style used by XSite</li>
-		<li>output directory: specifies the directory where the generated files will be written to.</li>
-	</ul>
+<p>The required inputs for XSite are
+<ul>
+  <li>source directory: specifies the root source directory.
+  <li>sitemap.xml: specifies the content of the website and the
+  navigation. The file is assumed to be relative to the source
+  directory.</li>
+  <li>skin.html: specifies the template and style used by XSite.
+  The file is assumed to be relative to the source directory.</li>
+  <li>resources directory: specifies the resources (images, style, etc ...) that need to be 
+  copied to the output directory. The directory is assumed to be relative to the source directory.</li>
+  <li>output directory: specifies the directory where the generated
+  files will be written to.</li>
+</ul>
 
-	To generate site, simply execute
+To generate site, simply execute
 <div class="Source"><pre>
-xsite -m [path-to-sitemap] -s [path-to-skin]  -o [output-directory]
-</pre></div>    	
-	Executing script without arguments will also result in a usage message.
-	</p>
-	
-    <h2>Using XSite via plugins</h2>
+xsite -S [source-directory] -m [relative-path-to-sitemap] -s [relative-path-to-skin]  -o [output-directory]
+</pre></div>
+Executing script without arguments will also result in a usage message.
+</p>
 
-    <p>XSite can be used as a plugin as described in <a href="plugins.html">plugins</a>.
-	</p>
-  </body>
+<h2>Using XSite via plugins</h2>
+
+<p>XSite can be used as a plugin as described in <a
+  href="plugins.html">plugins</a>.</p>
+</body>
 
 </html>
