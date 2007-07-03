@@ -14,7 +14,9 @@ import org.codehaus.xsite.Main;
  */
 public class XSiteTask extends Task {
 
-    private String siteMapPath;
+    private String sourceDirectoryPath;
+
+    private String sitemapPath;
     
     private String skinPath;
 
@@ -48,7 +50,8 @@ public class XSiteTask extends Task {
 
     private String[] getArgs() {
         List args = new ArrayList();
-        args.add("-m" + siteMapPath);
+        args.add("-S" + sourceDirectoryPath);
+        args.add("-m" + sitemapPath);
         args.add("-s" + skinPath);
         args.add("-o" + outputDirectoryPath);
         if (resourcePaths != null) {
@@ -79,12 +82,16 @@ public class XSiteTask extends Task {
         this.resourcePaths = resourcePaths;
     }
 
-    public void setSiteMapPath(String siteMapPath) {
-        this.siteMapPath = siteMapPath;
+    public void setSitemapPath(String sitemapPath) {
+        this.sitemapPath = sitemapPath;
     }
 
     public void setSkinPath(String skinPath) {
         this.skinPath = skinPath;
+    }
+
+    public void setSourceDirectoryPath(String sourceDirectoryPath) {
+        this.sourceDirectoryPath = sourceDirectoryPath;
     }    
-    
+        
 }

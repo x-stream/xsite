@@ -20,7 +20,13 @@ public class XSiteRunMojo  extends AbstractMojo {
      * @parameter
      * @required true
      */
-    String siteMapPath;
+    String sourceDirectoryPath;
+
+    /**
+     * @parameter
+     * @required true
+     */
+    String sitemapPath;
     
     /**
      * @parameter
@@ -72,7 +78,8 @@ public class XSiteRunMojo  extends AbstractMojo {
     
     private String[] getArgs() {
         List args = new ArrayList();
-        args.add("-m" + siteMapPath);
+        args.add("-S" + sourceDirectoryPath);
+        args.add("-m" + sitemapPath);
         args.add("-s" + skinPath);
         args.add("-o" + outputDirectoryPath);
         if (resourcePaths != null) {

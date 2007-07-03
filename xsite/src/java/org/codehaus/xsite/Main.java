@@ -48,8 +48,9 @@ public class Main {
 
     private static final char XSITE_FACTORY_OPT = 'x';
 
-    private static final char OUTPUT_OPT = 'o';
+    private static final char SOURCE_OPT = 'S';
 
+    private static final char OUTPUT_OPT = 'o';
 
     public static final void main(String[] args) throws Exception {
         new Main(args);
@@ -77,9 +78,11 @@ public class Main {
             }
             try {
                 XSite xsite = instantiateXSite(cl);
-                xsite.build(new File(cl.getOptionValue(SITEMAP_OPT)), new File(
-                        cl.getOptionValue(SKIN_OPT)), getResourceDirs(cl), new File(cl
-                        .getOptionValue(OUTPUT_OPT)));
+                String sourcePath = cl.getOptionValue(SOURCE_OPT);
+                File sitemap = new File(sourcePath+File.separator+cl.getOptionValue(SITEMAP_OPT));
+                File skin = new File(sourcePath+File.separator+cl.getOptionValue(SITEMAP_OPT));
+                File output = new File(cl.getOptionValue(OUTPUT_OPT));
+                xsite.build(sitemap, skin, getResourceDirs(cl), output);
 
             } catch (Exception e) {
                 throw new RuntimeException("Failed to build XSite", e);
@@ -91,10 +94,11 @@ public class Main {
         if ( !cl.hasOption(RESOURCES_OPT)){
             return new File[]{};
         }
+        String sourcePath = cl.getOptionValue(SOURCE_OPT);
         String[] resourcePaths = cl.getOptionValue(RESOURCES_OPT).split(",");
         File[] resourceDirs = new File[resourcePaths.length];
         for ( int i = 0; i < resourcePaths.length; i++ ){
-            resourceDirs[i] = new File(resourcePaths[i]);
+            resourceDirs[i] = new File(sourcePath+File.separator+resourcePaths[i]);
         }
         return resourceDirs;
     }
@@ -123,7 +127,7 @@ public class Main {
     }
 
     private boolean validateOptions(CommandLine cl) {
-        if (cl.hasOption(SITEMAP_OPT) && cl.hasOption(SKIN_OPT)
+        if (cl.hasOption(SOURCE_OPT) && cl.hasOption(SITEMAP_OPT) && cl.hasOption(SKIN_OPT)
                 && cl.hasOption(OUTPUT_OPT)) {
             return true;
         }
@@ -135,7 +139,7 @@ public class Main {
         Thread.currentThread().setContextClassLoader(
                 Main.class.getClassLoader());
         if (cl.hasOption(FILE_OPT)) {
-            File file = new File(cl.getOptionValue(FILE_OPT));
+            File file = new File(cl.getOptionValue(SOURCE_OPT)+File.separator+cl.getOptionValue(FILE_OPT));
             if (file.exists()) {
                 url = file.toURL();
             }
@@ -160,16 +164,18 @@ public class Main {
                 "print this message and exit");
         options.addOption(String.valueOf(VERSION_OPT), "version", false,
                 "print the version information and exit");
+        options.addOption(String.valueOf(SOURCE_OPT), "sitemap", true,
+                "specify the source directory");
         options.addOption(String.valueOf(FILE_OPT), "file", true,
-                "specify the composition file");
+                "specify the composition file - relative to the source directory");
         options.addOption(String.valueOf(RESOURCE_OPT), "resource", true,
-                "specify the composition resource in classpath");
+                "specify the composition resource - relative to the classpath");
         options.addOption(String.valueOf(SITEMAP_OPT), "sitemap", true,
-                "specify the sitemap file");
+                "specify the sitemap file path - relative to the source directory");
         options.addOption(String.valueOf(SKIN_OPT), "skin", true,
-                "specify the skin file");
+                "specify the skin file path - relative to the source directory");
         options.addOption(String.valueOf(RESOURCES_OPT), "resources", true,
-                "specify the CSV list of resource dirs");
+                "specify the CSV list of resource paths - relative to the source directory");
         options.addOption(String.valueOf(OUTPUT_OPT), "output", true,
                 "specify the output dir");
         options.addOption(String.valueOf(XSITE_FACTORY_OPT), "xsite-factory", true,
@@ -188,9 +194,9 @@ public class Main {
         final StringBuffer usage = new StringBuffer();
         usage.append(lineSeparator);
         usage.append(CLASSNAME
-                        + ": -m<path-to-sitemap> -s<path-to-skin> -o<output-dir> "
+                        + ": -S<source-dir> -m<relative-path-to-sitemap> -s<relative-path-to-skin> -o<output-dir> "
                         + "[-R <csv-of-resource-paths>]"
-                        + "[-f<filesystem-path-to-xsite.xml>|-r<classpath-path-to-xsite.xml>] "
+                        + "[-f<relative-path-to-xsite.xml>|-r<classpath-path-to-xsite.xml>] "
                         + "[-x<xsite-factory-classname>"
                         + "[-h|-v]");
         usage.append(lineSeparator);

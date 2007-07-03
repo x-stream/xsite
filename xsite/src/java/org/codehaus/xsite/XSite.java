@@ -76,7 +76,7 @@ public class XSite {
             }
         });
         if (!linkChecker.verify()) {
-            System.err.println("INVALID LINKS FOUND");
+            System.err.println("Invalid links found.");
             System.exit(-1);
         }
     }

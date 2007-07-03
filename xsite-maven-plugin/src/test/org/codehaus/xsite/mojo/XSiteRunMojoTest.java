@@ -24,43 +24,48 @@ public class XSiteRunMojoTest  extends TestCase {
 
     public void testGoalCanBeRunWithDefaultComposition() throws Exception {
         XSiteRunMojo mojo = new XSiteRunMojo();
-        mojo.siteMapPath = testSrcDir+"content/website.xml";
-        mojo.skinPath = testSrcDir+"templates/skin.html";
+        mojo.sourceDirectoryPath = testSrcDir;
+        mojo.sitemapPath = "content/sitemap.xml";
+        mojo.skinPath = "templates/skin.html";
         mojo.outputDirectoryPath = "target/xsite";
         mojo.execute();
     }
 
     public void testGoalCanBeRunWithOptionalResources() throws Exception {
         XSiteRunMojo mojo = new XSiteRunMojo();
-        mojo.siteMapPath = testSrcDir+"content/website.xml";
-        mojo.skinPath = testSrcDir+"templates/skin.html";
-        mojo.resourcePaths = testSrcDir+"resources";
+        mojo.sourceDirectoryPath = testSrcDir;
+        mojo.sitemapPath = "content/sitemap.xml";
+        mojo.skinPath = "templates/skin.html";
+        mojo.resourcePaths = "resources";
         mojo.outputDirectoryPath = "target/xsite";
         mojo.execute();
     }
 
     public void testGoalCanBeRunWithOptionalFileComposition() throws Exception {
         XSiteRunMojo mojo = new XSiteRunMojo();
-        mojo.siteMapPath = testSrcDir+"content/website.xml";
-        mojo.skinPath = testSrcDir+"templates/skin.html";
+        mojo.sourceDirectoryPath = testSrcDir;
+        mojo.sitemapPath = "content/sitemap.xml";
+        mojo.skinPath = "templates/skin.html";
+        mojo.compositionFilePath = "templates/xsite.xml";
         mojo.outputDirectoryPath = "target/xsite";
-        mojo.compositionFilePath = testSrcDir+"templates/xsite.xml";
         mojo.execute();
     }
 
     public void testGoalCanBeRunWithOptionalResourceComposition() throws Exception {
         XSiteRunMojo mojo = new XSiteRunMojo();
-        mojo.siteMapPath = testSrcDir+"content/website.xml";
-        mojo.skinPath = testSrcDir+"templates/skin.html";
-        mojo.outputDirectoryPath = "target/xsite";
+        mojo.sourceDirectoryPath = testSrcDir;
+        mojo.sitemapPath = "content/sitemap.xml";
+        mojo.skinPath = "templates/skin.html";
         mojo.compositionResourcePath = "templates/xsite.xml";
+        mojo.outputDirectoryPath = "target/xsite";
         mojo.execute();
     }
     
     public void testGoalFailsWithInvalidPath() throws Exception {
         XSiteRunMojo mojo = new XSiteRunMojo();
-        mojo.siteMapPath = testSrcDir+"content/non-existent.xml";
-        mojo.skinPath = testSrcDir+"templates/skin.html";
+        mojo.sourceDirectoryPath = testSrcDir;
+        mojo.sitemapPath = "content/non-existent.xml";
+        mojo.skinPath = "templates/skin.html";
         mojo.outputDirectoryPath = "target/xsite";
         try {
 	    mojo.execute();
