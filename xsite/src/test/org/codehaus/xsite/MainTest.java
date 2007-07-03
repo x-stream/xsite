@@ -70,6 +70,11 @@ public class MainTest extends AbstractXSiteTestCase {
     public void testCanBuildWithCustomXSiteFactory() throws Exception {
         Main.main(new String[] { "-x" + DefaultXSiteFactory.class.getName(), "-S" + testSrcDir,
                 "-mcontent/sitemap.xml", "-stemplates/skin.html", "-otarget/xsite" });
-
     }
+    
+    public void testCanBuildWithL10N() throws Exception {
+        Main.main(new String[] { "-S" + testSrcDir, "-mcontent/sitemap.xml", "-stemplates/skin.html", "-Rresources", "-Lit",
+                        "-otarget/xsite" });
+    }
+
 }

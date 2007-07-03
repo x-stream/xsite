@@ -20,10 +20,12 @@ public class XSiteTask extends Task {
     
     private String skinPath;
 
-    private String outputDirectoryPath;
-
     private String resourcePaths;
 
+    private String outputDirectoryPath;
+
+    private String localisations;
+    
     private String compositionFilePath;
     
     private String compositionResourcePath;
@@ -57,6 +59,9 @@ public class XSiteTask extends Task {
         if (resourcePaths != null) {
             args.add("-R" + resourcePaths);
         }
+        if (localisations != null) {
+            args.add("-L" + localisations);
+        }
         if (compositionFilePath != null) {
             args.add("-f" + compositionFilePath);
         }
@@ -72,6 +77,10 @@ public class XSiteTask extends Task {
 
     public void setCompositionResourcePath(String compositionResourcePath) {
         this.compositionResourcePath = compositionResourcePath;
+    }
+
+    public void setLocalisations(String localisations) {
+        this.localisations = localisations;
     }
 
     public void setOutputDirectoryPath(String outputDirectoryPath) {

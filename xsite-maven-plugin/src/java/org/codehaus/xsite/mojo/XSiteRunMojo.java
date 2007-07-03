@@ -44,7 +44,12 @@ public class XSiteRunMojo  extends AbstractMojo {
      * @parameter
      */
     String resourcePaths;
-    
+ 
+    /**
+     * @parameter
+     */
+    String localisations;
+
     /**
      * @parameter
      */
@@ -53,7 +58,7 @@ public class XSiteRunMojo  extends AbstractMojo {
     /**
      * @parameter
      */
-    protected String compositionResourcePath;
+    String compositionResourcePath;
 
     public void execute() throws MojoExecutionException, MojoFailureException {
         try {
@@ -84,6 +89,9 @@ public class XSiteRunMojo  extends AbstractMojo {
         args.add("-o" + outputDirectoryPath);
         if (resourcePaths != null) {
             args.add("-R" + resourcePaths);
+        }
+        if (localisations != null) {
+            args.add("-L" + localisations);
         }
         if (compositionFilePath != null) {
             args.add("-f" + compositionFilePath);

@@ -48,9 +48,9 @@ public class XSite {
         this.validators = validators;
     }
 
-    public void build(File siteMapFile, File skinFile, File[] resourceDirs, File outputDirectory) throws IOException{
+    public void build(File sitemapFile, File skinFile, File[] resourceDirs, File outputDirectory) throws IOException{
         // Load sitemap and content
-        SiteMap siteMap = siteMapLoader.loadFrom(siteMapFile);
+        SiteMap siteMap = siteMapLoader.loadFrom(sitemapFile);
 
         // Apply skin to each page
         skin.load(skinFile);
