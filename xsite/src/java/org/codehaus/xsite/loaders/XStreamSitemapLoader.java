@@ -6,11 +6,11 @@ import java.io.IOException;
 import java.io.Reader;
 
 import org.codehaus.xsite.PageExtractor;
-import org.codehaus.xsite.SitemapLoader2;
+import org.codehaus.xsite.SitemapLoader;
 import org.codehaus.xsite.model.Link;
 import org.codehaus.xsite.model.Page;
 import org.codehaus.xsite.model.Section;
-import org.codehaus.xsite.model.Sitemap2;
+import org.codehaus.xsite.model.Sitemap;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.Converter;
@@ -25,7 +25,7 @@ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
  *
  * @author Joe Walnes
  */
-public class XStreamSitemapLoader2 implements SitemapLoader2 {
+public class XStreamSitemapLoader implements SitemapLoader {
     private PageExtractor pageExtractor;
     private XStream xstream;
     
@@ -34,7 +34,7 @@ public class XStreamSitemapLoader2 implements SitemapLoader2 {
      * @param extractor the PageExtractor
      * @param xstream the XStream instance
      */
-    public XStreamSitemapLoader2(PageExtractor extractor, XStream xstream) {
+    public XStreamSitemapLoader(PageExtractor extractor, XStream xstream) {
         this.pageExtractor = extractor;
         this.xstream = xstream;
         configureXStream();
@@ -44,18 +44,18 @@ public class XStreamSitemapLoader2 implements SitemapLoader2 {
         xstream.alias("section", Section.class);
         xstream.alias("page", Page.class);
         xstream.alias("link", Link.class);
-        xstream.alias("sitemap", Sitemap2.class);
+        xstream.alias("sitemap", Sitemap.class);
         xstream.addImplicitCollection(Section.class, "pages");
-        xstream.addImplicitCollection(Sitemap2.class, "sections");
+        xstream.addImplicitCollection(Sitemap.class, "sections");
         xstream.registerConverter(new LinkConverter());
     }
 
-    public Sitemap2 loadFrom(File content) throws IOException {
+    public Sitemap loadFrom(File content) throws IOException {
         xstream.registerConverter(new PageConverter(content.getParentFile(),
                 pageExtractor));
         Reader reader = new FileReader(content);
         try {
-            return (Sitemap2) xstream.fromXML(reader);
+            return (Sitemap) xstream.fromXML(reader);
         } finally {
             reader.close();
         }

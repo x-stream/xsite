@@ -7,7 +7,7 @@ import java.util.HashSet;
 
 import org.codehaus.xsite.LinkValidator;
 import org.codehaus.xsite.model.Page;
-import org.codehaus.xsite.model.Sitemap2;
+import org.codehaus.xsite.model.Sitemap;
 
 
 /**
@@ -19,7 +19,7 @@ import org.codehaus.xsite.model.Sitemap2;
 public class LinkChecker {
 
     private final Collection knownPageFileNames;
-    private final Sitemap2 siteMap;
+    private final Sitemap sitemap;
     private final Reporter reporter;
     private final LinkValidator[] validators;
 
@@ -30,12 +30,12 @@ public class LinkChecker {
         void badLink(Page page, String link);
     }
 
-    public LinkChecker(Sitemap2 siteMap, LinkValidator[] validators, Reporter reporter) {
-        this.siteMap = siteMap;
+    public LinkChecker(Sitemap sitemap, LinkValidator[] validators, Reporter reporter) {
+        this.sitemap = sitemap;
         this.validators = validators;
         this.reporter = reporter;
         knownPageFileNames = new HashSet();
-        List allPages = siteMap.getAllPages();
+        List allPages = sitemap.getAllPages();
         for (Iterator iterator = allPages.iterator(); iterator.hasNext();) {
             Page page = (Page) iterator.next();
             knownPageFileNames.add(page.getFilename());
@@ -48,7 +48,7 @@ public class LinkChecker {
      */
     public boolean verify() {
         boolean success = true;
-        List allPages = siteMap.getAllPages();
+        List allPages = sitemap.getAllPages();
         for (Iterator iterator = allPages.iterator(); iterator.hasNext();) {
             Page page = (Page) iterator.next();
             Collection links = page.getLinks();

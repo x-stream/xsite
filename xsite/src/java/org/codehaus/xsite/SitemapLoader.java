@@ -3,7 +3,7 @@ package org.codehaus.xsite;
 import java.io.File;
 import java.io.IOException;
 
-import org.codehaus.xsite.model.Sitemap2;
+import org.codehaus.xsite.model.Sitemap;
 
 /**
  * Loads site map content from a configuration file.
@@ -11,8 +11,8 @@ import org.codehaus.xsite.model.Sitemap2;
  * @author Mauro Talevi
  * @author Joe Walnes
  */
-public interface SitemapLoader2 {
+public interface SitemapLoader {
 
-    Sitemap2 loadFrom(File content) throws IOException;
+    Sitemap loadFrom(File content) throws IOException;
 
 }
