@@ -66,7 +66,7 @@ public class XSite {
         for ( int i = 0; i < resourceDirs.length; i++){
             File resourceDir = resourceDirs[i];
             System.out.println("Copying resources from " + resourceDir);
-            fileSystem.copyDirectory(resourceDir, outputDirectory);
+            fileSystem.copyDirectory(resourceDir, outputDirectory, true);
         }
 
         // Verify links

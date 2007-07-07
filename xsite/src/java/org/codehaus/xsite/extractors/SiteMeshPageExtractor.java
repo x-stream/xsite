@@ -52,8 +52,7 @@ public class SiteMeshPageExtractor implements PageExtractor {
         try {
             filename = htmlFile.getName();
             FileSystem fileSystem = new FileSystem();
-            char[] rawHTML = fileSystem.readFile(htmlFile);
-            extractContentFromHTML(rawHTML);
+            extractContentFromHTML(fileSystem.readFile(htmlFile).toCharArray());
             return new Page(filename, head, body, links, properties);
         } catch (IOException e) {
             throw new CannotParsePageException(e);
