@@ -1,28 +1,30 @@
 <sitemap>
-    <section>
-        <name>About XSite</name>
-        <page>index.html</page>
-        <page>license.html</page>
-        <page>download.html</page>
-        <page>plugins.html</page>
-        <page>news.html</page>
-        <page>changes.html</page>
-        <page>versioning.html</page>
-        <page>history.html</page>
-    </section>
-    <section>
-        <name>Using XSite</name>
-        <page>getting-started.html</page>
-        <page>sitemap.html</page>
-        <page>skin.html</page>
-        <page>l10n.html</page>
-        <page>faq.html</page>
-        <link title="Reporting Issues">http://jira.codehaus.org/browse/XSITE</link>
-    </section>
-    <section>
-        <name>Developing XSite</name>
-        <page>mailing-lists.html</page>
-        <page>team.html</page>
-        <page>repository.html</page>
-    </section>
+  <section>
+    <name>About XSite</name>
+    <page>index.html</page>
+    <page>license.html</page>
+    <page>download.html</page>
+    <link title="JavaDoc">javadoc/index.html</link>
+    <page>plugins.html</page>
+    <page>news.html</page>
+    <page>changes.html</page>
+    <page>versioning.html</page>
+    <page>history.html</page>
+  </section>
+  <section>
+    <name>Using XSite</name>
+    <page>getting-started.html</page>
+    <page>sitemap.html</page>
+    <page>skin.html</page>
+    <page>l10n.html</page>
+    <page>custom.html</page>
+    <page>faq.html</page>
+    <link title="Reporting Issues">http://jira.codehaus.org/browse/XSITE</link>
+  </section>
+  <section>
+    <name>Developing XSite</name>
+    <page>mailing-lists.html</page>
+    <page>team.html</page>
+    <page>repository.html</page>
+  </section>
 </sitemap>

@@ -66,6 +66,10 @@ public class CommonsFileSystem implements FileSystem {
         return relativeFiles;
     }
 
+    /**
+     * Specifies the file filter used in the #copyDirectory() method.  
+     * @return An IOFileFilter
+     */
     protected IOFileFilter getFileFilter() {
         return SVN_AWARE_FILTER;
     }

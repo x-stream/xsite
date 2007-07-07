@@ -23,6 +23,12 @@
     <h2>What is the skin used for?</h2>
     <p>The skin is the template of the website pages, both in terms of layout and of style, see <a href="skin.html">skin</a> for more details.</p>
 
+    <h2>Can I avoid copying SCM files from resource directories?</h2>
+    <p>By default, XSite is only "SVN-aware", ie only ".svn" directories are ignored when copying resources.
+    If you need to configure different SCM files to be ignored, you can customise XSite to use a bespoke implementation
+    of FileSystem, eg by extending default CommonsFileSystem and overriding the <code>IOFileFilter getFileFilter()</code> method. 
+    See <a href="custom.html">customising XSite</a> for more details </p>
+
   </body>
 </html>
 

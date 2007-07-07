@@ -1,0 +1,22 @@
+<html>
+<head>
+<title>Customising XSite</title>
+</head>
+
+<body>
+
+<h2>XSite under the hood</h2>
+
+<p>XSite can be customised using the following main components:
+<ul>
+  <li><a href="javadoc/org/codehaus/xsite/SitemapLoader.html">SitemapLoader</a>: defaults to <a href="javadoc/org/codehaus/xsite/loaders/XStreamSitemapLoader.html">XStream-based loader</a></li>
+  <li><a href="javadoc/org/codehaus/xsite/Skin.html">Skin</a>: defaults to <a href="javadoc/org/codehaus/xsite/skins/FreemarkerSkin.html">Freemarker-based skin</a></li>
+  <li><a href="javadoc/org/codehaus/xsite/LinkValidator.html">LinkValidators</a>: a list of link validators</li>
+  <li><a href="javadoc/org/codehaus/xsite/FileSystem.html">FileSystem</a>: defaults to <a href="javadoc/org/codehaus/xsite/io/CommonsFileSystem.html">Commons-IO filesystem</a></li>
+</ul>
+All default components can be overridden via the xsite.xml composition resource, specifiable via 
+the '-f' (if a file resource) or '-R' (if a classpath resource) options.
+</p>
+</body>
+
+</html>
