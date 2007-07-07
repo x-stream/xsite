@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Iterator;
 
 import org.codehaus.xsite.extractors.SiteMeshPageExtractor;
-import org.codehaus.xsite.io.FileSystem;
+import org.codehaus.xsite.io.CommonsFileSystem;
 import org.codehaus.xsite.loaders.XStreamSitemapLoader;
 import org.codehaus.xsite.model.Page;
 import org.codehaus.xsite.model.Sitemap;
@@ -62,7 +62,7 @@ public class XSite {
         }
 
         // Copy additional resources (css, images, etc) to output
-        FileSystem fileSystem = new FileSystem();
+        CommonsFileSystem fileSystem = new CommonsFileSystem();
         for ( int i = 0; i < resourceDirs.length; i++){
             File resourceDir = resourceDirs[i];
             System.out.println("Copying resources from " + resourceDir);

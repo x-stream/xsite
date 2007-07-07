@@ -17,7 +17,7 @@ import org.apache.commons.lang.StringUtils;
  * @author Joe Walnes
  * @author Mauro Talevi
  */
-public class FileSystem {
+public class CommonsFileSystem {
     
     private static final IOFileFilter SVN_AWARE_FILTER = FileFilterUtils.makeSVNAware(null);
 
