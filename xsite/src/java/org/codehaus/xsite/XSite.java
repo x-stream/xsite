@@ -24,16 +24,17 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
  */
 public class XSite {
 
-    private SitemapLoader siteMapLoader;
-    private Skin skin;
+    private final SitemapLoader siteMapLoader;
+    private final Skin skin;
     private final LinkValidator[] validators;
+    private final FileSystem fileSystem;
 
     /**
      * Creates an XSite with default dependencies
      */
     public XSite() {
         this(new XStreamSitemapLoader(new SiteMeshPageExtractor(), new XStream(new DomDriver())),
-                new FreemarkerSkin(), new LinkValidator[0]);
+                new FreemarkerSkin(), new LinkValidator[0], new CommonsFileSystem());
     }
 
     /**
@@ -41,11 +42,13 @@ public class XSite {
      * @param loader the SitemapLoader used to load the Sitemap
      * @param skin the Skin used to skin the pages
      * @param validators the array with the LinkValidator instances
+     * @param fileSystem the FileSystem used for IO operations
      */
-    public XSite(SitemapLoader loader, Skin skin, LinkValidator[] validators) {
+    public XSite(SitemapLoader loader, Skin skin, LinkValidator[] validators, FileSystem fileSystem) {
         this.siteMapLoader = loader;
         this.skin = skin;
-        this.validators = validators;
+        this.validators = validators;        
+        this.fileSystem = fileSystem;
     }
 
     public void build(File sitemapFile, File skinFile, File[] resourceDirs, File outputDirectory) throws IOException{
@@ -62,7 +65,6 @@ public class XSite {
         }
 
         // Copy additional resources (css, images, etc) to output
-        CommonsFileSystem fileSystem = new CommonsFileSystem();
         for ( int i = 0; i < resourceDirs.length; i++){
             File resourceDir = resourceDirs[i];
             System.out.println("Copying resources from " + resourceDir);

@@ -10,14 +10,15 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.apache.commons.io.filefilter.IOFileFilter;
 import org.apache.commons.lang.StringUtils;
+import org.codehaus.xsite.FileSystem;
 
 /**
- * Facade for underlying filesystem.
+ * Commons-based FileSystem implementation
  * 
  * @author Joe Walnes
  * @author Mauro Talevi
  */
-public class CommonsFileSystem {
+public class CommonsFileSystem implements FileSystem {
     
     private static final IOFileFilter SVN_AWARE_FILTER = FileFilterUtils.makeSVNAware(null);
 

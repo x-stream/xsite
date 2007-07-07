@@ -12,6 +12,7 @@ import com.opensymphony.module.sitemesh.html.rules.PageBuilder;
 import com.opensymphony.module.sitemesh.html.rules.TitleExtractingRule;
 import com.opensymphony.module.sitemesh.html.util.CharArray;
 
+import org.codehaus.xsite.FileSystem;
 import org.codehaus.xsite.PageExtractor;
 import org.codehaus.xsite.io.CommonsFileSystem;
 import org.codehaus.xsite.model.Page;
@@ -37,21 +38,22 @@ public class SiteMeshPageExtractor implements PageExtractor {
     private Collection links;
     private final TagRule[] rules;
     private final TextFilter[] filter;
+    private final FileSystem fileSystem;
 
     public SiteMeshPageExtractor() {
-        this(new TagRule[0], new TextFilter[0]);
+        this(new TagRule[0], new TextFilter[0], new CommonsFileSystem());
     }
 
-    public SiteMeshPageExtractor(TagRule[] rules, TextFilter[] filter) {
+    public SiteMeshPageExtractor(TagRule[] rules, TextFilter[] filter, FileSystem fileSystem) {
         this.rules = rules;
         this.filter = filter;
+        this.fileSystem = fileSystem;
     }
 
     public Page extractPage(File htmlFile) {
         links = new HashSet();
         try {
             filename = htmlFile.getName();
-            CommonsFileSystem fileSystem = new CommonsFileSystem();
             extractContentFromHTML(fileSystem.readFile(htmlFile).toCharArray());
             return new Page(filename, head, body, links, properties);
         } catch (IOException e) {
