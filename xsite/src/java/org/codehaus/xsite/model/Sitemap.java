@@ -9,18 +9,14 @@ import java.util.List;
  * Holds the structure of a website.
  *
  * @author Joe Walnes
+ * @author Mauro Talevi
  */
 public class Sitemap {
 
     private List sections = new ArrayList();
-    private List pages = new ArrayList();
 
     public void addSection(Section section) {
         sections.add(section);
-    }
-
-    public void addPage(Page page) {
-        pages.add(page);
     }
 
     public List getSections() {

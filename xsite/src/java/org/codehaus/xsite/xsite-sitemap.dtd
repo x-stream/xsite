@@ -3,26 +3,21 @@
 <!-- Authors: Mauro Talevi -->
 <!-- Version: 1.0 -->
 
-<!-- An xsite sitemap element consists of section and page elements -->
-<!ELEMENT xsite:sitemap (section*, page*)>
+<!-- An xsite sitemap element consists of section elements -->
+<!ELEMENT xsite:sitemap (section*)>
                              
 <!-- Sections are represented by a name  -->
-<!-- Sections may contain pages -->
-<!ELEMENT section (page*)>
-<!ATTLIST section
-  name 		CDATA 	#REQUIRED
->
+<!-- Sections must contain a name, at least one page and optionally links -->
+<!ELEMENT section (name, page+, link*)>
 
-<!-- Pages is represented by a filename -->
-<!-- Pages may contain links -->
-<!ELEMENT page (link*)> 
-<!ATTLIST page
-   filename  CDATA   #REQUIRED 
->
+<!-- Names are represented by a name, expressed as CDATA in the element body-->
+<!ELEMENT name (#CDATA)> 
 
-<!-- Links represented by a title and an href -->
-<!ELEMENT link EMPTY> 
+<!-- Pages are represented by a filename, expressed as CDATA in the element body-->
+<!ELEMENT page (#CDATA)> 
+
+<!-- Links represented by a title and an href URL, expressed as CDATA in the element body -->
+<!ELEMENT link (#CDATA)> 
 <!ATTLIST link
    title  CDATA   #REQUIRED 
-   href  CDATA   #REQUIRED 
 >
