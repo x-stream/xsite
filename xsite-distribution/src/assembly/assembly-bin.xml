@@ -15,6 +15,14 @@
       <fileMode>0774</fileMode>
     </fileSet>
     <fileSet>
+      <directory>../xsite/src/java/org/codehaus/xsite</directory>      
+      <outputDirectory>/conf</outputDirectory>
+      <includes>
+        <include>xsite-sitemap.dtd</include>
+        <include>xsite.xml</include>
+      </includes>      
+    </fileSet>
+    <fileSet>
       <directory>../xsite-distribution/src/sample</directory>
       <outputDirectory>/sample</outputDirectory>
     </fileSet>

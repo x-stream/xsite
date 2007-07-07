@@ -94,6 +94,7 @@
       <resource>
         <directory>${basedir}/src/java</directory>
         <includes>
+          <include>**/*.dtd</include>
           <include>**/*.properties</include>
           <include>**/*.xml</include>
           <include>**/*.xsd</include>
