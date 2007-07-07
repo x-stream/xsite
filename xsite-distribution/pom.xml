@@ -21,11 +21,13 @@
       <artifactId>xsite-ant</artifactId>
       <version>${pom.version}</version>
     </dependency>
+    <!-- TODO:  understand why the plugin dep causes failure in release or remove as unnecessary 
     <dependency>
       <groupId>${pom.groupId}</groupId>
       <artifactId>xsite-maven-plugin</artifactId>
       <version>${pom.version}</version>
     </dependency>
+    -->
   </dependencies>
 
   <build>
