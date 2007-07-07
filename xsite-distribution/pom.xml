@@ -34,11 +34,11 @@
         <groupId>org.codehaus.xsite</groupId>
         <artifactId>xsite-maven-plugin</artifactId>
         <configuration>
-          <sourceDirectoryPath>${basedir}/src/xsite</sourceDirectoryPath>
+          <sourceDirectoryPath>${basedir}/src/site</sourceDirectoryPath>
           <sitemapPath>content/sitemap.xml</sitemapPath>
           <skinPath>templates/skin.html</skinPath>
           <resourcePaths>resources</resourcePaths>
-          <outputDirectoryPath>${basedir}/target/xsite</outputDirectoryPath>
+          <outputDirectoryPath>${basedir}/target/site</outputDirectoryPath>
         </configuration>
         <executions>
           <execution>
@@ -61,7 +61,7 @@
               <goal>unpack</goal>
             </goals>
             <configuration>
-              <outputDirectory>${project.build.directory}/xsite/javadoc</outputDirectory>
+              <outputDirectory>${project.build.directory}/site/javadoc</outputDirectory>
               <overWriteReleases>false</overWriteReleases>
               <overWriteSnapshots>true</overWriteSnapshots>
               <artifactItems>
