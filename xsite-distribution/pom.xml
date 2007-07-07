@@ -33,7 +33,6 @@
       <plugin>
         <groupId>org.codehaus.xsite</groupId>
         <artifactId>xsite-maven-plugin</artifactId>
-        <version>${pom.version}</version>              
         <configuration>
           <sourceDirectoryPath>${basedir}/src/site</sourceDirectoryPath>
           <sitemapPath>content/sitemap.xml</sitemapPath>

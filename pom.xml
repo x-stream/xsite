@@ -34,7 +34,7 @@
       <dependency>
         <groupId>freemarker</groupId>
         <artifactId>freemarker</artifactId>
-        <version>2.3.8</version>
+        <version>2.3.9</version>
       </dependency>
       <dependency>
         <groupId>opensymphony</groupId>
@@ -253,10 +253,15 @@
   </repositories>
 
   <pluginRepositories>
-    <pluginRepository>
+     <pluginRepository>
       <id>codehaus-plugin-repository</id>
+      <name>Codehaus Plugin Repository</name>
+      <url>http://repository.codehaus.org</url>
+    </pluginRepository>
+    <pluginRepository>
+      <id>codehaus-plugin-snapshot-repository</id>
       <name>Codehaus Plugin Snapshot Repository</name>
-      <url>http://snapshots.maven.codehaus.org/maven2/</url>
+      <url>http://snapshots.repository.codehaus.org</url>
       <snapshots>
         <enabled>true</enabled>
       </snapshots>
