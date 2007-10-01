@@ -55,6 +55,13 @@ public class XSite {
         // Load sitemap and content
         Sitemap siteMap = siteMapLoader.loadFrom(sitemapFile);
 
+        // Copy resources (css, images, etc) to output
+        for ( int i = 0; i < resourceDirs.length; i++){
+            File resourceDir = resourceDirs[i];
+            System.out.println("Copying resources from " + resourceDir);
+            fileSystem.copyDirectory(resourceDir, outputDirectory, true);
+        }
+
         // Apply skin to each page
         skin.load(skinFile);
         outputDirectory.mkdirs();
@@ -64,19 +71,13 @@ public class XSite {
             skin.skin(page, siteMap, outputDirectory);
         }
 
-        // Copy additional resources (css, images, etc) to output
-        for ( int i = 0; i < resourceDirs.length; i++){
-            File resourceDir = resourceDirs[i];
-            System.out.println("Copying resources from " + resourceDir);
-            fileSystem.copyDirectory(resourceDir, outputDirectory, true);
-        }
-
         // Verify links
         LinkChecker linkChecker = new LinkChecker(siteMap, validators, new LinkChecker.Reporter() {
             public void badLink(Page page, String link) {
                 System.err.println("Invalid link on page " + page.getFilename() + " : " + link);
             }
         });
+        
         if (!linkChecker.verify()) {
             System.err.println("Invalid links found.");
             System.exit(-1);
