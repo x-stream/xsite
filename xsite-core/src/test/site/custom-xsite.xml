@@ -1,7 +1,7 @@
 <container component-instance-factory='org.picocontainer.script.xml.XStreamComponentInstanceFactory'>
   <component-instance key="org.codehaus.xsite.XSiteConfiguration">
     <org.codehaus.xsite.XSiteConfiguration>
-      <validateLinks>false</validateLinks>
+      <validateLinks>true</validateLinks>
     </org.codehaus.xsite.XSiteConfiguration>
   </component-instance>
   <component-implementation class="org.codehaus.xsite.CustomXSite" />
@@ -23,8 +23,6 @@
     </parameter>
   </component-implementation>
   <component-implementation key="http-link-validator" class="org.codehaus.xsite.validators.StartsWithLinkValidator">
-    <parameter>
-      <string>http://</string>
-    </parameter>
+    <parameter><string>http://</string></parameter>
   </component-implementation>
 </container>
