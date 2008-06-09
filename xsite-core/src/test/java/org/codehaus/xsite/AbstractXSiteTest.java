@@ -2,19 +2,17 @@ package org.codehaus.xsite;
 
 import java.io.File;
 
-import junit.framework.TestCase;
+import org.junit.Before;
 
 /**
  * @author Mauro Talevi
  */
-public abstract class AbstractXSiteTestCase extends TestCase {
+public abstract class AbstractXSiteTest {
+
     protected  String testSrcDir;
-    
+
+    @Before
     public void setUp() throws Exception {
-        setTestDir();
-    }    
-    
-    protected void setTestDir() {
         testSrcDir =  System.getProperty("test.src.dir");
         if ( testSrcDir == null ){
             testSrcDir = "xsite-core/src/test/site"; 

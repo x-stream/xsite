@@ -1,25 +1,27 @@
 package org.codehaus.xsite;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import java.net.URL;
 import java.util.Properties;
 
 import org.apache.commons.cli.CommandLine;
+import org.junit.Test;
 
 /**
  * @author J&ouml;rg Schaible
  * @author Mauro Talevi
  */
-public class MainTest extends AbstractXSiteTestCase {
+public class MainTest extends AbstractXSiteTest {
 
-    public void setUp() throws Exception {
-        super.setUp();
-    }
-
+    @Test
     public void testCanReadProperties() throws Exception {
         Properties properties = Main.createProperties();
         assertEquals("1.0", properties.getProperty("version"));
     }
 
+    @Test
     public void testCanReadOptionValuesFromCommandLine() throws Exception {
         CommandLine cl = Main.getCommandLine(
                 new String[] { "-Ssource", "-msitemap", "-sskin", "-ooutput", "-fpath", "-rresource" }, Main.createOptions());
@@ -31,28 +33,28 @@ public class MainTest extends AbstractXSiteTestCase {
         assertEquals("resource", cl.getOptionValue('r'));
     }
 
-    public void testWillFailWhenBuildingWithoutArgs() {
-        try {
-            Main.main(new String[] {});
-            fail("Expected");
-        } catch (Exception e) {
-            // expected
-        }
+    @Test(expected=Exception.class)
+    public void testWillFailWhenBuildingWithoutArgs() throws Exception {
+        Main.main(new String[] {});
     }
 
+    @Test
     public void testCanPrintUsage() throws Exception {
         Main.main(new String[] { "-h" });
     }
 
+    @Test
     public void testCanPrintVersion() throws Exception {
         Main.main(new String[] { "-v" });
     }
 
+    @Test
     public void testCanBuildWithDefaultComposition() throws Exception {
         Main.main(new String[] { "-S" + testSrcDir, "-mcontent/sitemap.xml", "-stemplates/skin.html",
                         "-otarget/xsite" });
     }
 
+    @Test
     public void testCanGetCustomCompositionURLViaFile() throws Exception {
         URL url = Main.getCompositionURL(Main.getCommandLine(new String[] { "-S" + testSrcDir, "-mcontent/sitemap.xml",
                 "-stemplates/skin.html", "-otarget/xsite", "-fcustom-xsite.xml" }, Main
@@ -60,12 +62,14 @@ public class MainTest extends AbstractXSiteTestCase {
         assertTrue(url.getPath().endsWith("custom-xsite.xml"));
     }
 
+    @Test
     public void testCanGetCustomCompositionURLViaResource() throws Exception {
         URL url = Main.getCompositionURL(Main.getCommandLine(new String[] { "-S" + testSrcDir, "-mcontent/sitemap.xml",
                 "-stemplates/skin.html", "-otarget/xsite", "-rcustom-xsite.xml" }, Main.createOptions()));
         assertTrue(url.getPath().endsWith("custom-xsite.xml"));
     }
 
+    @Test
     public void testCanBuildWithL10N() throws Exception {
         Main.main(new String[] { "-S" + testSrcDir, "-mcontent/sitemap.xml", "-stemplates/skin.html", "-Rresources", "-Lit",
                         "-otarget/xsite" });

@@ -7,13 +7,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.codehaus.xsite.factories.PicoXSiteFactory;
+import org.junit.Test;
 
-public class XSiteTest extends AbstractXSiteTestCase {
+public class XSiteTest extends AbstractXSiteTest {
 
-    public void setUp() throws Exception {
-        super.setUp();
-    }
-
+    @Test
     public void testBuild() throws IOException {
         XSiteFactory factory = new PicoXSiteFactory();
         Map config = new HashMap();

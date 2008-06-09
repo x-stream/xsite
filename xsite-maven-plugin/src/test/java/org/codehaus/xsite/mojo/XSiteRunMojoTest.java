@@ -2,18 +2,15 @@ package org.codehaus.xsite.mojo;
 
 import java.io.File;
 
-import junit.framework.TestCase;
-
 import org.apache.maven.plugin.MojoExecutionException;
+import org.junit.Before;
+import org.junit.Test;
 
-public class XSiteRunMojoTest  extends TestCase {
+public class XSiteRunMojoTest {
     protected  String testSrcDir;
     
+    @Before
     public void setUp() throws Exception {
-        setTestDir();
-    }    
-    
-    protected void setTestDir() {
         testSrcDir =  System.getProperty("test.src.dir");
         if ( testSrcDir == null ){
             testSrcDir = "xsite-core/src/test/site";
@@ -22,6 +19,7 @@ public class XSiteRunMojoTest  extends TestCase {
         }        
     }
 
+    @Test
     public void testGoalCanBeRunWithDefaultComposition() throws Exception {
         XSiteRunMojo mojo = new XSiteRunMojo();
         mojo.sourceDirectoryPath = testSrcDir;
@@ -31,6 +29,7 @@ public class XSiteRunMojoTest  extends TestCase {
         mojo.execute();
     }
 
+    @Test
     public void testGoalCanBeRunWithOptionalResources() throws Exception {
         XSiteRunMojo mojo = new XSiteRunMojo();
         mojo.sourceDirectoryPath = testSrcDir;
@@ -41,18 +40,14 @@ public class XSiteRunMojoTest  extends TestCase {
         mojo.execute();
     }
 
+    @Test(expected=MojoExecutionException.class)
     public void testGoalFailsWithInvalidPath() throws Exception {
         XSiteRunMojo mojo = new XSiteRunMojo();
         mojo.sourceDirectoryPath = testSrcDir;
         mojo.sitemapPath = "content/non-existent.xml";
         mojo.skinPath = "templates/skin.html";
         mojo.outputDirectoryPath = "target/xsite";
-        try {
 	    mojo.execute();
-	    fail("MojoExecutionException expected");
-	} catch ( MojoExecutionException e) {
-	    // expected
-	}
     }
 }
 
