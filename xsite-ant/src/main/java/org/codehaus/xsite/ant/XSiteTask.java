@@ -31,27 +31,16 @@ public class XSiteTask extends Task {
     private String compositionResourcePath;
 
     public void execute() throws BuildException {
-        String[] args = getArgs();            
+        List<String> args = cliArgs();            
         try {
-            Main.main(args);
+            Main.main(args.toArray(new String[args.size()]));
         } catch (Exception e) {
-            throw new BuildException("Failed to run xsite with args "+toString(args), e);
+            throw new BuildException("Failed to run xsite with args "+args, e);
         }
     }
 
-    private String toString(String[] args) {
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < args.length; i++) {
-            sb.append(args[i]);
-            if ( i < args.length - 1 ){
-                sb.append(",");
-            }
-        }        
-        return sb.toString();
-    }
-
-    private String[] getArgs() {
-        List args = new ArrayList();
+    protected List<String> cliArgs() {
+        List<String> args = new ArrayList<String>();
         args.add("-S" + sourceDirectoryPath);
         args.add("-m" + sitemapPath);
         args.add("-s" + skinPath);
@@ -68,7 +57,7 @@ public class XSiteTask extends Task {
         if (compositionResourcePath != null) {
             args.add("-r" + compositionResourcePath);
         }
-        return (String[]) args.toArray(new String[args.size()]);
+        return args;
     }
 
     public void setCompositionFilePath(String compositionFilePath) {

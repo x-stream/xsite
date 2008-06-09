@@ -12,7 +12,7 @@ public abstract class AbstractXSiteTest {
     protected  String testSrcDir;
 
     @Before
-    public void setUp() throws Exception {
+    public void setTestSrcDir() throws Exception {
         testSrcDir =  System.getProperty("test.src.dir");
         if ( testSrcDir == null ){
             testSrcDir = "xsite-core/src/test/site"; 

@@ -62,27 +62,16 @@ public class XSiteRunMojo  extends AbstractMojo {
 
     public void execute() throws MojoExecutionException, MojoFailureException {
         try {
-            String[] args = getArgs();
-            getLog().debug("Executing XSite run goal with args "+toString(args));
-            Main.main(args);
+            List<String> args = cliArgs();
+            getLog().debug("Executing XSite run goal with args "+args);
+            Main.main(args.toArray(new String[args.size()]));
         } catch (Exception e) {
             throw new MojoExecutionException("Failed to run xsite", e);
         }
     }
 
-    private String toString(String[] args) {
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < args.length; i++) {
-            sb.append(args[i]);
-            if ( i < args.length - 1 ){
-                sb.append(",");
-            }
-        }        
-        return sb.toString();
-    }
-    
-    private String[] getArgs() {
-        List args = new ArrayList();
+    protected List<String> cliArgs() {
+        List<String> args = new ArrayList<String>();
         args.add("-S" + sourceDirectoryPath);
         args.add("-m" + sitemapPath);
         args.add("-s" + skinPath);
@@ -99,7 +88,7 @@ public class XSiteRunMojo  extends AbstractMojo {
         if (compositionResourcePath != null) {
             args.add("-r" + compositionResourcePath);
         }
-        return (String[]) args.toArray(new String[args.size()]);
+        return args;
     }
 
 }
