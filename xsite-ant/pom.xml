@@ -20,4 +20,11 @@
 			<version>1.6.5</version>
 		</dependency>
 	</dependencies>
+	<build>
+	  <testResources>
+	    <testResource>
+	      <directory>${basedir}/../xsite-core/src/test/site</directory>
+	    </testResource>
+	  </testResources>
+	</build>
 </project>

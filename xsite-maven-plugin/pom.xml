@@ -1,24 +1,33 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.codehaus.xsite</groupId>
-		<artifactId>xsite</artifactId>
-		<version>1.0-SNAPSHOT</version>
-	</parent>
-	<artifactId>xsite-maven-plugin</artifactId>
-	<packaging>maven-plugin</packaging>
-	<name>XSite Maven Plugin</name>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.codehaus.xsite</groupId>
+    <artifactId>xsite</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>xsite-maven-plugin</artifactId>
+  <packaging>maven-plugin</packaging>
+  <name>XSite Maven Plugin</name>
 
-	<dependencies>
-		<dependency>
-			<groupId>${pom.groupId}</groupId>
-			<artifactId>xsite-core</artifactId>
-			<version>${pom.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven</groupId>
-			<artifactId>maven-plugin-api</artifactId>
-			<version>2.0</version>
-		</dependency>
-	</dependencies>
+  <dependencies>
+    <dependency>
+      <groupId>${pom.groupId}</groupId>
+      <artifactId>xsite-core</artifactId>
+      <version>${pom.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-plugin-api</artifactId>
+      <version>2.0</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <testResources>
+      <testResource>
+        <directory>${basedir}/../xsite-core/src/test/site</directory>
+      </testResource>
+    </testResources>
+  </build>
+
 </project>

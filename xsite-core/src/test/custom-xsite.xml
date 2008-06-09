@@ -1,3 +1,0 @@
-<container>
-	<component-implementation class="org.codehaus.xsite.CustomXSite"/>
-</container>

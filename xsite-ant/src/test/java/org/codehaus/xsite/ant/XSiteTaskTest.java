@@ -20,7 +20,7 @@ public class XSiteTaskTest extends TestCase {
     protected void setTestDir() {
         testSrcDir = System.getProperty("test.src.dir");
         if (testSrcDir == null) {
-            testSrcDir = "xsite-ant/src/test/";
+            testSrcDir = "xsite-core/src/test/site";
         } else if (!testSrcDir.endsWith(File.separator)) {
             testSrcDir = testSrcDir + File.separator;
         }
@@ -41,27 +41,6 @@ public class XSiteTaskTest extends TestCase {
         task.setSitemapPath("content/sitemap.xml");
         task.setSkinPath("templates/skin.html");
         task.setResourcePaths("resources");
-        task.setOutputDirectoryPath("target/xsite");
-        task.execute();
-    }
-
-    public void testGoalCanBeRunWithOptionalFileComposition() throws Exception {
-        XSiteTask task = new XSiteTask();
-        task.setSourceDirectoryPath(testSrcDir);
-        task.setSitemapPath("content/sitemap.xml");
-        task.setSkinPath("templates/skin.html");
-        task.setCompositionFilePath("templates/xsite.xml");
-        task.setOutputDirectoryPath("target/xsite");
-        task.execute();
-    }
-
-    public void testGoalCanBeRunWithOptionalResourceComposition()
-            throws Exception {
-        XSiteTask task = new XSiteTask();
-        task.setSourceDirectoryPath(testSrcDir);
-        task.setSitemapPath("content/sitemap.xml");
-        task.setSkinPath("templates/skin.html");
-        task.setCompositionResourcePath("templates/xsite.xml");
         task.setOutputDirectoryPath("target/xsite");
         task.execute();
     }

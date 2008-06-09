@@ -16,7 +16,7 @@ public class XSiteRunMojoTest  extends TestCase {
     protected void setTestDir() {
         testSrcDir =  System.getProperty("test.src.dir");
         if ( testSrcDir == null ){
-            testSrcDir = "xsite-maven-plugin/src/test/"; 
+            testSrcDir = "xsite-core/src/test/site";
         } else if ( !testSrcDir.endsWith(File.separator) ){
             testSrcDir = testSrcDir + File.separator; 
         }        
@@ -41,26 +41,6 @@ public class XSiteRunMojoTest  extends TestCase {
         mojo.execute();
     }
 
-    public void testGoalCanBeRunWithOptionalFileComposition() throws Exception {
-        XSiteRunMojo mojo = new XSiteRunMojo();
-        mojo.sourceDirectoryPath = testSrcDir;
-        mojo.sitemapPath = "content/sitemap.xml";
-        mojo.skinPath = "templates/skin.html";
-        mojo.compositionFilePath = "templates/xsite.xml";
-        mojo.outputDirectoryPath = "target/xsite";
-        mojo.execute();
-    }
-
-    public void testGoalCanBeRunWithOptionalResourceComposition() throws Exception {
-        XSiteRunMojo mojo = new XSiteRunMojo();
-        mojo.sourceDirectoryPath = testSrcDir;
-        mojo.sitemapPath = "content/sitemap.xml";
-        mojo.skinPath = "templates/skin.html";
-        mojo.compositionResourcePath = "templates/xsite.xml";
-        mojo.outputDirectoryPath = "target/xsite";
-        mojo.execute();
-    }
-    
     public void testGoalFailsWithInvalidPath() throws Exception {
         XSiteRunMojo mojo = new XSiteRunMojo();
         mojo.sourceDirectoryPath = testSrcDir;
