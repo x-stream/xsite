@@ -147,26 +147,6 @@
   </dependencies>
 
   <build>
-    <sourceDirectory>${basedir}/src/java</sourceDirectory>
-    <resources>
-      <resource>
-        <directory>${basedir}/src/java</directory>
-        <includes>
-          <include>**/*.dtd</include>
-          <include>**/*.properties</include>
-          <include>**/*.xml</include>
-          <include>**/*.xsd</include>
-        </includes>
-      </resource>
-    </resources>
-
-    <testSourceDirectory>${basedir}/src/test</testSourceDirectory>
-    <testResources>
-      <testResource>
-        <directory>${basedir}/src/test</directory>
-      </testResource>
-    </testResources>
-
     <pluginManagement>
       <plugins>
         <plugin>
