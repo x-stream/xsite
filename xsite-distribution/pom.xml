@@ -21,13 +21,11 @@
       <artifactId>xsite-ant</artifactId>
       <version>${pom.version}</version>
     </dependency>
-    <!-- TODO:  understand why the plugin dep causes failure in release or remove as unnecessary 
-      <dependency>
+    <dependency>
       <groupId>${pom.groupId}</groupId>
       <artifactId>xsite-maven-plugin</artifactId>
       <version>${pom.version}</version>
-      </dependency>
-    -->
+    </dependency>
   </dependencies>
 
   <build>
@@ -52,8 +50,8 @@
         </executions>
       </plugin>
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>dependency-maven-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
         <executions>
           <execution>
             <id>unpack</id>
