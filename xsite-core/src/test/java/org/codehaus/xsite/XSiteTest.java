@@ -6,7 +6,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.codehaus.xsite.factories.NanoXSiteFactory;
+import org.codehaus.xsite.factories.PicoXSiteFactory;
 
 public class XSiteTest extends AbstractXSiteTestCase {
 
@@ -15,7 +15,7 @@ public class XSiteTest extends AbstractXSiteTestCase {
     }
 
     public void testBuild() throws IOException {
-        XSiteFactory factory = new NanoXSiteFactory();
+        XSiteFactory factory = new PicoXSiteFactory();
         Map config = new HashMap();
         config.put(URL.class, Thread.currentThread().getContextClassLoader().getResource("org/codehaus/xsite/xsite.xml"));
         XSite xsite = factory.createXSite(config);

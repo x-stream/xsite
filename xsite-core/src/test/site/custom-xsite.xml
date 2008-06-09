@@ -1,4 +1,4 @@
-<container component-instance-factory='org.nanocontainer.script.xml.XStreamComponentInstanceFactory'>
+<container component-instance-factory='org.picocontainer.script.xml.XStreamComponentInstanceFactory'>
   <component-instance key="org.codehaus.xsite.XSiteConfiguration">
     <org.codehaus.xsite.XSiteConfiguration>
       <validateLinks>false</validateLinks>

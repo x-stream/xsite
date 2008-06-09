@@ -24,7 +24,7 @@ import org.codehaus.xsite.factories.DefaultXSiteFactory;
  */
 public class Main {
 
-    private static final String DEFAULT_XSITE_FACTORY = "org.codehaus.xsite.factories.NanoXSiteFactory";
+    private static final String DEFAULT_XSITE_FACTORY = "org.codehaus.xsite.factories.PicoXSiteFactory";
 
     private static final String XSITE_COMPOSITION = "xsite.xml";
 

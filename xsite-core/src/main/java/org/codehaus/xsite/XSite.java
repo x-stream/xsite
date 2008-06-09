@@ -68,6 +68,7 @@ public class XSite {
             }
         });
 
+        System.out.println("Validate? "+ configuration.validateLinks());
         if (configuration.validateLinks() && !linkChecker.verify()) {
             System.err.println("Invalid links found with validators " + Arrays.asList(validators));
             System.exit(-1);
