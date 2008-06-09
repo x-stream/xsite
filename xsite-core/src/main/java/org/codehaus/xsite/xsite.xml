@@ -1,7 +1,7 @@
 <container component-instance-factory='org.picocontainer.script.xml.XStreamComponentInstanceFactory'>
     <component-instance key="org.codehaus.xsite.XSiteConfiguration">
         <org.codehaus.xsite.XSiteConfiguration>
-            <validateLinks>false</validateLinks>
+            <validateLinks>true</validateLinks>
         </org.codehaus.xsite.XSiteConfiguration>
     </component-instance>
 	<component-implementation class="org.codehaus.xsite.XSite"/>
