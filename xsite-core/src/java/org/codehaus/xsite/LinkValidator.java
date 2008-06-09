@@ -13,7 +13,6 @@ public interface LinkValidator {
      *
      * @param link the link
      * @return <code>true</code> if valid
-     * @since 1.0
      */
     boolean isValid(String link);
 }

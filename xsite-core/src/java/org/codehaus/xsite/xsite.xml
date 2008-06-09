@@ -1,4 +1,9 @@
-<container>
+<container component-instance-factory='org.nanocontainer.script.xml.XStreamComponentInstanceFactory'>
+    <component-instance key="org.codehaus.xsite.XSiteConfiguration">
+        <org.codehaus.xsite.XSiteConfiguration>
+            <validateLinks>false</validateLinks>
+        </org.codehaus.xsite.XSiteConfiguration>
+    </component-instance>
 	<component-implementation class="org.codehaus.xsite.XSite"/>
 	<component-implementation class="com.thoughtworks.xstream.io.xml.DomDriver"/>
 	<component-implementation class="com.thoughtworks.xstream.XStream"/>

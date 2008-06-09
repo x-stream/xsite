@@ -30,8 +30,6 @@ public class Main {
 
     private static final String XSITE_PROPERTIES = "xsite.properties";
 
-    private static final String CLASSNAME = Main.class.getName();
-
     private static final char HELP_OPT = 'h';
 
     private static final char VERSION_OPT = 'v';
@@ -169,7 +167,6 @@ public class Main {
 
     static URL getCompositionURL(CommandLine cl) throws MalformedURLException {
         URL url = null;
-        Thread.currentThread().setContextClassLoader(Main.class.getClassLoader());
         if (cl.hasOption(FILE_OPT)) {
             File file = new File(cl.getOptionValue(SOURCE_OPT) + File.separator + cl.getOptionValue(FILE_OPT));
             if (file.exists()) {
@@ -220,7 +217,7 @@ public class Main {
         final String lineSeparator = System.getProperty("line.separator");
         final StringBuffer usage = new StringBuffer();
         usage.append(lineSeparator);
-        usage.append(CLASSNAME
+        usage.append(Main.class.getName()
                 + ": -S<source-dir> -m<relative-path-to-sitemap> -s<relative-path-to-skin> -o<output-dir> "
                 + "[-R <csv-of-resource-paths>]" + "[-f<relative-path-to-xsite.xml>|-r<classpath-path-to-xsite.xml>] "
                 + "[-x<xsite-factory-classname>" + "[-h|-v]");

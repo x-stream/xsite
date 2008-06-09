@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.Properties;
 
 import org.apache.commons.cli.CommandLine;
-import org.codehaus.xsite.factories.DefaultXSiteFactory;
 
 /**
  * @author J&ouml;rg Schaible
@@ -67,11 +66,6 @@ public class MainTest extends AbstractXSiteTestCase {
         assertTrue(url.getPath().endsWith("custom-xsite.xml"));
     }
 
-    public void testCanBuildWithCustomXSiteFactory() throws Exception {
-        Main.main(new String[] { "-x" + DefaultXSiteFactory.class.getName(), "-S" + testSrcDir,
-                "-mcontent/sitemap.xml", "-stemplates/skin.html", "-otarget/xsite" });
-    }
-    
     public void testCanBuildWithL10N() throws Exception {
         Main.main(new String[] { "-S" + testSrcDir, "-mcontent/sitemap.xml", "-stemplates/skin.html", "-Rresources", "-Lit",
                         "-otarget/xsite" });
