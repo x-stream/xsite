@@ -2,6 +2,7 @@ package org.codehaus.xsite;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Iterator;
 
 import org.codehaus.xsite.extractors.SiteMeshPageExtractor;
@@ -79,7 +80,7 @@ public class XSite {
         });
         
         if (!linkChecker.verify()) {
-            System.err.println("Invalid links found.");
+            System.err.println("Invalid links found with validators "+Arrays.asList(validators));
             System.exit(-1);
         }
     }

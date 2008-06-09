@@ -137,7 +137,7 @@ public class Main {
         return new File(sourcePath + File.separator + relativePath);
     }
 
-private XSite instantiateXSite(CommandLine cl) throws MalformedURLException {
+    private XSite instantiateXSite(CommandLine cl) throws MalformedURLException {
         XSiteFactory factory = instantiateXSiteFactory(cl);
         Map config = new HashMap();
         config.put(URL.class, getCompositionURL(cl));
