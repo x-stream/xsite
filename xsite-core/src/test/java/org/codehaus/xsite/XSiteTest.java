@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.codehaus.xsite.factories.PicoXSiteFactory;
+import org.codehaus.xsite.io.CommonsFileSystem.FileSystemException;
 import org.junit.Test;
 
 public class XSiteTest extends AbstractXSiteTest {
@@ -19,6 +20,17 @@ public class XSiteTest extends AbstractXSiteTest {
         XSite xsite = factory.createXSite(config);
         xsite.build(new File(testSrcDir + "/content/sitemap.xml"), new File(testSrcDir + "/templates/skin.html"),
                 new File[] { new File(testSrcDir + "/resources"), new File(testSrcDir + "/resources2") }, new File(
+                        "target/xsite"));
+    }
+    
+    @Test(expected=FileSystemException.class)
+    public void testBuildWithInexistentResources() throws IOException {
+        XSiteFactory factory = new PicoXSiteFactory();
+        Map config = new HashMap();
+        config.put(URL.class, Thread.currentThread().getContextClassLoader().getResource("org/codehaus/xsite/xsite.xml"));
+        XSite xsite = factory.createXSite(config);
+        xsite.build(new File(testSrcDir + "/content/sitemap.xml"), new File(testSrcDir + "/templates/skin.html"),
+                new File[] { new File(testSrcDir + "/inexistent-resources") }, new File(
                         "target/xsite"));
     }
 }

@@ -1,5 +1,7 @@
 package org.codehaus.xsite;
 
+import static java.util.Arrays.asList;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -75,12 +77,16 @@ public class Main {
                 printUsage(options);
                 throw new RuntimeException("Invalid arguments " + cl.getArgList());
             }
+            File sitemap = null;
+            File skin = null;
+            File[] resources = null;
+            File output = null;
             try {
                 XSite xsite = instantiateXSite(cl);
-                File sitemap = getSitemap(cl, null);
-                File skin = getSkin(cl, null);
-                File[] resources = getResourceDirs(cl, null);
-                File output = getOutput(cl, null);
+                sitemap = getSitemap(cl, null);
+                skin = getSkin(cl, null);
+                resources = getResourceDirs(cl, null);
+                output = getOutput(cl, null);
                 xsite.build(sitemap, skin, resources, output);
                 if (cl.hasOption(L10N_OPT)) {
                     String[] languages = cl.getOptionValue(L10N_OPT).split(",");
@@ -90,9 +96,8 @@ public class Main {
                                 getOutput(cl, language));
                     }
                 }
-
             } catch (Exception e) {
-                throw new RuntimeException("Failed to build XSite", e);
+                throw new RuntimeException("Failed to build site with sitemap '"+sitemap+"', skin '"+skin+"', resources '"+asList(resources)+"', output '"+output+"'", e);
             }
         }
     }
