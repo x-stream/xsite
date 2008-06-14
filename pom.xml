@@ -13,19 +13,6 @@
     <module>xsite-maven-plugin</module>
   </modules>
 
-  <distributionManagement>
-    <repository>
-      <id>codehaus.org</id>
-      <name>Codehaus XSite Repository</name>
-      <url>dav:https://dav.codehaus.org/repository/xsite/</url>
-    </repository>
-    <snapshotRepository>
-      <id>codehaus.org</id>
-      <name>Codehaus XSite Snapshot Repository</name>
-      <url>dav:https://dav.codehaus.org/snapshots.repository/xsite/</url>
-    </snapshotRepository>
-  </distributionManagement>
-
   <scm>
     <connection>scm:svn:https://svn.codehaus.org/xsite/trunk</connection>
     <developerConnection>scm:svn:https://svn.codehaus.org/xsite/trunk</developerConnection>
@@ -333,5 +320,23 @@
     </profile>
   </profiles>
 
+
+  <distributionManagement>
+    <repository>
+      <id>codehaus.org</id>
+      <name>Codehaus XSite Repository</name>
+      <url>dav:https://dav.codehaus.org/repository/xsite/</url>
+    </repository>
+    <snapshotRepository>
+      <id>codehaus.org</id>
+      <name>Codehaus XSite Snapshot Repository</name>
+      <url>dav:https://dav.codehaus.org/snapshots.repository/xsite/</url>
+    </snapshotRepository>
+    <site>
+      <id>codehaus.org</id>
+      <name>Codehaus XSite</name>
+      <url>dav:https://dav.codehaus.org/xsite/</url>
+    </site>
+  </distributionManagement>
 
 </project>
