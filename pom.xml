@@ -6,59 +6,15 @@
   <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>XSite</name>
-
   <modules>
     <module>xsite-core</module>
     <module>xsite-ant</module>
     <module>xsite-maven-plugin</module>
   </modules>
-
   <scm>
     <connection>scm:svn:https://svn.codehaus.org/xsite/trunk</connection>
     <developerConnection>scm:svn:https://svn.codehaus.org/xsite/trunk</developerConnection>
   </scm>
-
-  <repositories>
-    <repository>
-      <id>codehaus-repository</id>
-      <name>Codehaus Repository</name>
-      <url>http://repository.codehaus.org</url>
-    </repository>
-    <repository>
-      <id>codehaus-snapshots-repository</id>
-      <name>Codehaus Snapshots Repository</name>
-      <url>http://snapshots.repository.codehaus.org</url>
-    </repository>
-    <repository>
-      <id>codehaus-legacy-repository</id>
-      <name>Codehaus Repository</name>
-      <url>http://dist.codehaus.org</url>
-      <layout>legacy</layout>
-    </repository>
-    <repository>
-      <id>opensymphony-legacy-repository</id>
-      <name>OpenSymphone Repository</name>
-      <url>http://maven.opensymphony.com</url>
-      <layout>legacy</layout>
-    </repository>
-  </repositories>
-
-  <pluginRepositories>
-    <pluginRepository>
-      <id>codehaus-plugin-repository</id>
-      <name>Codehaus Plugin Repository</name>
-      <url>http://repository.codehaus.org</url>
-    </pluginRepository>
-    <pluginRepository>
-      <id>codehaus-plugin-snapshot-repository</id>
-      <name>Codehaus Plugin Snapshot Repository</name>
-      <url>http://snapshots.repository.codehaus.org</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </pluginRepository>
-  </pluginRepositories>
-
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -111,14 +67,12 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-
   <dependencies>
     <dependency>
       <groupId>org.jmock</groupId>
       <artifactId>jmock-junit4</artifactId>
     </dependency>
   </dependencies>
-
   <build>
     <resources>
       <resource>
@@ -136,7 +90,6 @@
         </excludes>
       </testResource>
     </testResources>
-
     <pluginManagement>
       <plugins>
         <plugin>
@@ -211,6 +164,7 @@
           <configuration>
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <preparationGoals>clean install</preparationGoals>
+            <goals>deploy</goals>
             <tagBase>https://svn.codehaus.org/xsite/tags</tagBase>
           </configuration>
         </plugin>
@@ -231,7 +185,6 @@
         </plugin>
       </plugins>
     </pluginManagement>
-
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -242,7 +195,6 @@
         <artifactId>maven-surefire-plugin</artifactId>
       </plugin>
     </plugins>
-
     <extensions>
       <extension>
         <groupId>org.apache.maven.wagon</groupId>
@@ -251,7 +203,6 @@
       </extension>
     </extensions>
   </build>
-
   <profiles>
     <profile>
       <!-- No-test profile:  equivalent to -Dmaven.test.skip=true -->
@@ -319,8 +270,6 @@
       </modules>
     </profile>
   </profiles>
-
-
   <distributionManagement>
     <repository>
       <id>codehaus.org</id>
@@ -332,11 +281,5 @@
       <name>Codehaus XSite Snapshot Repository</name>
       <url>dav:https://dav.codehaus.org/snapshots.repository/xsite/</url>
     </snapshotRepository>
-    <site>
-      <id>codehaus.org</id>
-      <name>Codehaus XSite</name>
-      <url>dav:https://dav.codehaus.org/xsite/</url>
-    </site>
   </distributionManagement>
-
 </project>

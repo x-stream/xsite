@@ -9,7 +9,6 @@
   <artifactId>xsite-distribution</artifactId>
   <packaging>pom</packaging>
   <name>XSite Distribution</name>
-
   <dependencies>
     <dependency>
       <groupId>${pom.groupId}</groupId>
@@ -27,7 +26,6 @@
       <version>${pom.version}</version>
     </dependency>
   </dependencies>
-
   <build>
     <plugins>
       <plugin>
@@ -109,14 +107,19 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <configuration>
+          <goals>deploy site-deploy</goals>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
-
   <distributionManagement>
     <site>
       <id>codehaus.org</id>
       <url>dav:https://dav.codehaus.org/xsite/</url>
     </site>
   </distributionManagement>
-
 </project>
