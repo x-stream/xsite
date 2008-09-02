@@ -15,7 +15,7 @@ public class XSiteTest extends AbstractXSiteTest {
     @Test
     public void testBuild() throws IOException {
         XSiteFactory factory = new PicoXSiteFactory();
-        Map config = new HashMap();
+        Map<Class<URL>, URL> config = new HashMap<Class<URL>, URL>();
         config.put(URL.class, Thread.currentThread().getContextClassLoader().getResource("org/codehaus/xsite/xsite.xml"));
         XSite xsite = factory.createXSite(config);
         xsite.build(new File(testSrcDir + "/content/sitemap.xml"), new File(testSrcDir + "/templates/skin.html"),
@@ -26,7 +26,7 @@ public class XSiteTest extends AbstractXSiteTest {
     @Test(expected=FileSystemException.class)
     public void testBuildWithInexistentResources() throws IOException {
         XSiteFactory factory = new PicoXSiteFactory();
-        Map config = new HashMap();
+        Map<Class<URL>, URL> config = new HashMap<Class<URL>, URL>();
         config.put(URL.class, Thread.currentThread().getContextClassLoader().getResource("org/codehaus/xsite/xsite.xml"));
         XSite xsite = factory.createXSite(config);
         xsite.build(new File(testSrcDir + "/content/sitemap.xml"), new File(testSrcDir + "/templates/skin.html"),

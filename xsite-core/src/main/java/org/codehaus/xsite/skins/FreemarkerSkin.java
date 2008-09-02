@@ -40,7 +40,7 @@ public class FreemarkerSkin implements Skin {
         }
     }
     public void skin(Page page, Sitemap siteMap, File outputDirectory) {
-        Map context = new HashMap();
+        Map<String, Object> context = new HashMap<String, Object>();
         context.put("title", page.getTitle());
         context.put("head", page.getHead());
         context.put("body", page.getBody());
@@ -64,12 +64,14 @@ public class FreemarkerSkin implements Skin {
 
     // Exceptions ----------------------
 
+    @SuppressWarnings("serial")
     public static class CannotCreateSkinException extends RuntimeException {
         public CannotCreateSkinException(Throwable throwable) {
             super(throwable);
         }
     }
 
+    @SuppressWarnings("serial")
     public static class CannotApplySkinException extends RuntimeException {
         public CannotApplySkinException(Throwable throwable) {
             super(throwable);

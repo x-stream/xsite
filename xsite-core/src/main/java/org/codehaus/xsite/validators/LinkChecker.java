@@ -1,11 +1,11 @@
 package org.codehaus.xsite.validators;
 
-import java.util.List;
-import java.util.Iterator;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
 import org.codehaus.xsite.LinkValidator;
+import org.codehaus.xsite.model.Link;
 import org.codehaus.xsite.model.Page;
 import org.codehaus.xsite.model.Sitemap;
 
@@ -18,7 +18,7 @@ import org.codehaus.xsite.model.Sitemap;
  */
 public class LinkChecker {
 
-    private final Collection knownPageFileNames;
+    private final Collection<String> knownPageFileNames;
     private final Sitemap sitemap;
     private final Reporter reporter;
     private final LinkValidator[] validators;
@@ -34,10 +34,9 @@ public class LinkChecker {
         this.sitemap = sitemap;
         this.validators = validators;
         this.reporter = reporter;
-        knownPageFileNames = new HashSet();
-        List allPages = sitemap.getAllPages();
-        for (Iterator iterator = allPages.iterator(); iterator.hasNext();) {
-            Page page = (Page) iterator.next();
+        knownPageFileNames = new HashSet<String>();
+        List<Page> allPages = sitemap.getAllPages();
+        for (Page page : allPages ){
             knownPageFileNames.add(page.getFilename());
         }
     }
@@ -48,36 +47,34 @@ public class LinkChecker {
      */
     public boolean verify() {
         boolean success = true;
-        List allPages = sitemap.getAllPages();
-        for (Iterator iterator = allPages.iterator(); iterator.hasNext();) {
-            Page page = (Page) iterator.next();
-            Collection links = page.getLinks();
-            for (Iterator iterator1 = links.iterator(); iterator1.hasNext();) {
-                String link = (String) iterator1.next();
-                if (!verifyLink(link)) {
+        List<Page> allPages = sitemap.getAllPages();
+        for ( Page page : allPages ){
+            Collection<Link> links = page.getLinks();
+            for ( Link link : links ){
+                if (!verifyLinkHref(link.getHref())) {
                     success = false;
-                    reporter.badLink(page, link);
+                    reporter.badLink(page, link.getHref());
                 }
             }
         }
         return success;
     }
 
-    protected boolean verifyLink(String link) {
+    protected boolean verifyLinkHref(String href) {
         for (int i = 0; i < validators.length; i++) {
-            if (validators[i].isValid(link)) {
+            if (validators[i].isValid(href)) {
                 return true;
             }
         }
-        int anchorIdx = link.lastIndexOf('#');
+        int anchorIdx = href.lastIndexOf('#');
         if (anchorIdx >= 0) {
             // todo: Check anchors
             if (anchorIdx == 0) {
                 return true;
             }
-            link = link.substring(0, link.lastIndexOf('#'));
+            href = href.substring(0, href.lastIndexOf('#'));
         }
-        if (knownPageFileNames.contains(link)) {
+        if (knownPageFileNames.contains(href)) {
             return true;
         }
         return false;

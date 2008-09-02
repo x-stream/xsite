@@ -13,6 +13,6 @@ public interface XSiteFactory {
      * @param config the Map of configuration required
      * @return An XSite instance
      */
-    XSite createXSite(Map config);
+    XSite createXSite(Map<?,?> config);
 
 }

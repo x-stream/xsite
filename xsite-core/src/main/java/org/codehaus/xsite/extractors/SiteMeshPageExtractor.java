@@ -1,5 +1,17 @@
 package org.codehaus.xsite.extractors;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Properties;
+
+import org.codehaus.xsite.FileSystem;
+import org.codehaus.xsite.PageExtractor;
+import org.codehaus.xsite.io.CommonsFileSystem;
+import org.codehaus.xsite.model.Link;
+import org.codehaus.xsite.model.Page;
+
 import com.opensymphony.module.sitemesh.html.BasicRule;
 import com.opensymphony.module.sitemesh.html.HTMLProcessor;
 import com.opensymphony.module.sitemesh.html.Tag;
@@ -11,17 +23,6 @@ import com.opensymphony.module.sitemesh.html.rules.MetaTagRule;
 import com.opensymphony.module.sitemesh.html.rules.PageBuilder;
 import com.opensymphony.module.sitemesh.html.rules.TitleExtractingRule;
 import com.opensymphony.module.sitemesh.html.util.CharArray;
-
-import org.codehaus.xsite.FileSystem;
-import org.codehaus.xsite.PageExtractor;
-import org.codehaus.xsite.io.CommonsFileSystem;
-import org.codehaus.xsite.model.Page;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Properties;
 
 /**
  * PageExtractor which extract page information from an HTML file using the SiteMesh library.
@@ -35,7 +36,7 @@ public class SiteMeshPageExtractor implements PageExtractor {
     private String filename;
     private String head;
     private String body;
-    private Collection links;
+    private Collection<Link> links;
     private final TagRule[] rules;
     private final TextFilter[] filter;
     private final FileSystem fileSystem;
@@ -51,7 +52,7 @@ public class SiteMeshPageExtractor implements PageExtractor {
     }
 
     public Page extractPage(File htmlFile) {
-        links = new HashSet();
+        links = new HashSet<Link>();
         try {
             filename = htmlFile.getName();
             extractContentFromHTML(fileSystem.readFile(htmlFile).toCharArray());
@@ -62,7 +63,7 @@ public class SiteMeshPageExtractor implements PageExtractor {
     }
 
     public Page extractPage(String filename, String htmlContent) {
-        links = new HashSet();
+        links = new HashSet<Link>();
         try {
             this.filename = filename;
             extractContentFromHTML(htmlContent.toCharArray());
@@ -106,6 +107,7 @@ public class SiteMeshPageExtractor implements PageExtractor {
         this.body = bodyBuffer.toString();
     }
 
+    @SuppressWarnings("serial")
     public static class CannotParsePageException extends RuntimeException {
         public CannotParsePageException(Throwable cause) {
             super(cause);
@@ -123,7 +125,7 @@ public class SiteMeshPageExtractor implements PageExtractor {
 
         public void process(Tag tag) {
             if (tag.hasAttribute("href", false)) {
-                links.add(tag.getAttributeValue("href", false));
+                links.add(new Link(tag.getAttributeValue("title", false), tag.getAttributeValue("href", false)));
             }
             tag.writeTo(currentBuffer());
         }

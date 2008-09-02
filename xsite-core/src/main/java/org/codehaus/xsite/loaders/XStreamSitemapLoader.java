@@ -45,7 +45,7 @@ public class XStreamSitemapLoader implements SitemapLoader {
         xstream.alias("section", Section.class);
         xstream.alias("page", Page.class);
         xstream.alias("link", Link.class);
-        xstream.addImplicitCollection(Section.class, "pages");
+        xstream.addImplicitCollection(Section.class, "entries");
         xstream.addImplicitCollection(Sitemap.class, "sections");
         xstream.registerConverter(new LinkConverter());
     }
@@ -71,6 +71,7 @@ public class XStreamSitemapLoader implements SitemapLoader {
             this.pageExtractor = pageExtractor;
         }
 
+        @SuppressWarnings("unchecked")
         public boolean canConvert(Class type) {
             return type == Page.class;
         }
@@ -87,6 +88,7 @@ public class XStreamSitemapLoader implements SitemapLoader {
 
     private static class LinkConverter implements Converter {
 
+        @SuppressWarnings("unchecked")
         public boolean canConvert(Class type) {
             return type == Link.class;
         }

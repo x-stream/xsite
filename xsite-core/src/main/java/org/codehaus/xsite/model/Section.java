@@ -5,14 +5,14 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * A section in a website, holding pages.
+ * A section in a website holding entries, which can be either pages or links.
  *
  * @author Joe Walnes
  */
 public class Section {
 
     private final String name;
-    private final List pages = new ArrayList();
+    private final List<Entry> entries = new ArrayList<Entry>();
 
     public Section(String name) {
         this.name = name;
@@ -22,11 +22,17 @@ public class Section {
         return name;
     }
 
-    public List getPages() {
+    public List<Page> getPages() {
+        List<Page> pages = new ArrayList<Page>();
+        for ( Entry entry : entries ){
+            if ( entry instanceof Page ){
+                pages.add((Page)entry);
+            }
+        }
         return Collections.unmodifiableList(pages);
     }
 
     public void addPage(Page page) {
-        pages.add(page);
+        entries.add(page);
     }
 }

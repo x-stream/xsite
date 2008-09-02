@@ -55,6 +55,7 @@ public class Main {
     private static final char L10N_OPT = 'L';
 
     public static final void main(String[] args) throws Exception {
+        System.out.println("ARGS "+args);
         new Main(args);
     }
 
@@ -142,7 +143,7 @@ public class Main {
 
     private XSite instantiateXSite(CommandLine cl) throws MalformedURLException {
         XSiteFactory factory = instantiateXSiteFactory(cl);
-        Map config = new HashMap();
+        Map<Class<?>,URL> config = new HashMap<Class<?>,URL>();
         config.put(URL.class, getCompositionURL(cl));
         return factory.createXSite(config);
     }

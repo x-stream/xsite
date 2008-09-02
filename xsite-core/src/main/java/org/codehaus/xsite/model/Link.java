@@ -1,6 +1,12 @@
 package org.codehaus.xsite.model;
 
-public class Link {
+/**
+ * Represents a link entry in a sitemap, including title and href.
+ * 
+ * @author Joe Walnes
+ * @author Mauro Talevi
+ */
+public class Link extends Entry {
 
     private final String title;
     private final String href;

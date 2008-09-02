@@ -2,7 +2,6 @@ package org.codehaus.xsite.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -13,25 +12,21 @@ import java.util.List;
  */
 public class Sitemap {
 
-    private List sections = new ArrayList();
+    private List<Section> sections = new ArrayList<Section>();
 
     public void addSection(Section section) {
         sections.add(section);
     }
 
-    public List getSections() {
+    public List<Section> getSections() {
         return Collections.unmodifiableList(sections);
     }
 
-    public List getAllPages() {
-        List result = new ArrayList();
-        for (Iterator i = sections.iterator(); i.hasNext();) {
-            Section section = (Section) i.next();
-            for (Iterator iterator = section.getPages().iterator(); iterator.hasNext();) {
-                Object item = iterator.next();
-                if (item instanceof Page) {
-                    result.add(item);
-                }
+    public List<Page> getAllPages() {
+        List<Page> result = new ArrayList<Page>();
+        for (Section section : sections ){
+            for ( Page page : section.getPages() ){
+                result.add(page);
             }
         }
         return Collections.unmodifiableList(result);

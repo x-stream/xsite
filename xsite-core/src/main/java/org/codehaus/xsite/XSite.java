@@ -3,7 +3,6 @@ package org.codehaus.xsite;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Iterator;
 
 import org.codehaus.xsite.model.Page;
 import org.codehaus.xsite.model.Sitemap;
@@ -55,8 +54,7 @@ public class XSite {
         // Apply skin to each page
         skin.load(skinFile);
         outputDirectory.mkdirs();
-        for (Iterator iterator = siteMap.getAllPages().iterator(); iterator.hasNext();) {
-            Page page = (Page) iterator.next();
+        for (Page page : siteMap.getAllPages()) {
             System.out.println("Skinning " + page.getFilename() + " (" + page.getTitle() + ")");
             skin.skin(page, siteMap, outputDirectory);
         }

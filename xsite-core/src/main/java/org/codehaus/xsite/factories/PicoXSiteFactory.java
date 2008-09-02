@@ -17,7 +17,7 @@ import org.picocontainer.script.xml.XMLContainerBuilder;
  */
 public class PicoXSiteFactory implements XSiteFactory {
 
-    public XSite createXSite(Map config) {
+    public XSite createXSite(Map<?,?> config) {
         URL compositionURL = (URL) config.get(URL.class);
         return instantiateXSite(compositionURL);
     }

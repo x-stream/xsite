@@ -21,7 +21,7 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
  */
 public class DefaultXSiteFactory implements XSiteFactory {
 
-    public XSite createXSite(Map config) {
+    public XSite createXSite(Map<?,?> config) {
         return new XSite(new XStreamSitemapLoader(new SiteMeshPageExtractor(), new XStream(new DomDriver())),
                 new FreemarkerSkin(), new LinkValidator[0], new CommonsFileSystem(), new XSiteConfiguration());
     }

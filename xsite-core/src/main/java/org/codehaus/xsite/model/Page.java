@@ -6,28 +6,30 @@ import java.util.HashSet;
 import java.util.Properties;
 
 /**
- * A single page in a website, including title, filename and content.
- *
+ * Represents a single page entry in a sitemap, including filename, head and
+ * body.
+ * 
  * @author Joe Walnes
  * @author Mauro Talevi
  */
-public class Page {
+public class Page extends Entry {
 
     private Properties properties;
     private String filename;
     private String head;
     private String body;
-    private Collection links = new HashSet();
+    private Collection<Link> links = new HashSet<Link>();
 
     /**
-     * Creates a Page 
+     * Creates a Page
+     * 
      * @param filename
      * @param head
      * @param body
      * @param links
      * @param properties
      */
-    public Page(String filename, String head, String body, Collection links, Properties properties) {
+    public Page(String filename, String head, String body, Collection<Link> links, Properties properties) {
         this.filename = filename;
         this.head = head;
         this.body = body;
@@ -67,12 +69,12 @@ public class Page {
         return getFilename();
     }
 
-    public Collection getLinks() {
+    public Collection<Link> getLinks() {
         return Collections.unmodifiableCollection(links);
     }
 
-     public boolean isIndex() {
+    public boolean isIndex() {
         return "index.html".equals(filename);
     }
-    
+
 }
