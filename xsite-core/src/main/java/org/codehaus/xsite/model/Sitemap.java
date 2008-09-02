@@ -22,13 +22,23 @@ public class Sitemap {
         return Collections.unmodifiableList(sections);
     }
 
-    public List<Page> getAllPages() {
-        List<Page> result = new ArrayList<Page>();
+    public List<Entry> getAllEntries() {
+        List<Entry> list = new ArrayList<Entry>();
         for (Section section : sections ){
-            for ( Page page : section.getPages() ){
-                result.add(page);
+            for ( Entry entry : section.getEntries() ){
+                list.add(entry);
             }
         }
-        return Collections.unmodifiableList(result);
+        return Collections.unmodifiableList(list);
+    }
+
+    public List<Page> getAllPages() {
+        List<Page> list = new ArrayList<Page>();
+        for (Section section : sections ){
+            for ( Page page : section.getPages() ){
+                list.add(page);
+            }
+        }
+        return Collections.unmodifiableList(list);
     }
 }

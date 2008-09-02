@@ -8,6 +8,7 @@ import java.util.List;
  * A section in a website holding entries, which can be either pages or links.
  *
  * @author Joe Walnes
+ * @author Mauro Talevi
  */
 public class Section {
 
@@ -20,6 +21,10 @@ public class Section {
 
     public String getName() {
         return name;
+    }
+    
+    public List<Entry> getEntries() {
+        return Collections.unmodifiableList(entries);
     }
 
     public List<Page> getPages() {

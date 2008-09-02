@@ -55,7 +55,6 @@ public class Main {
     private static final char L10N_OPT = 'L';
 
     public static final void main(String[] args) throws Exception {
-        System.out.println("ARGS "+args);
         new Main(args);
     }
 
