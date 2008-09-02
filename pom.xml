@@ -3,7 +3,7 @@
   <groupId>org.codehaus.xsite</groupId>
   <artifactId>xsite</artifactId>
   <packaging>pom</packaging>
-  <version>1.0</version>
+  <version>1.1-SNAPSHOT</version>
   <name>XSite</name>
   <modules>
     <module>xsite-core</module>
@@ -11,8 +11,8 @@
     <module>xsite-maven-plugin</module>
   </modules>
   <scm>
-    <connection>scm:svn:https://svn.codehaus.org/xsite/tags/xsite-1.0</connection>
-    <developerConnection>scm:svn:https://svn.codehaus.org/xsite/tags/xsite-1.0</developerConnection>
+    <connection>scm:svn:https://svn.codehaus.org/xsite/trunk</connection>
+    <developerConnection>scm:svn:https://svn.codehaus.org/xsite/trunk</developerConnection>
   </scm>
   <dependencyManagement>
     <dependencies>
