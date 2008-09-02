@@ -48,8 +48,8 @@
         </executions>
       </plugin>
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>dependency-maven-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
         <executions>
           <execution>
             <id>unpack</id>
@@ -64,7 +64,19 @@
               <artifactItems>
                 <artifactItem>
                   <groupId>${pom.groupId}</groupId>
-                  <artifactId>xsite</artifactId>
+                  <artifactId>xsite-core</artifactId>
+                  <version>${pom.version}</version>
+                  <classifier>javadoc</classifier>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>${pom.groupId}</groupId>
+                  <artifactId>xsite-ant</artifactId>
+                  <version>${pom.version}</version>
+                  <classifier>javadoc</classifier>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>${pom.groupId}</groupId>
+                  <artifactId>xsite-maven-plugin</artifactId>
                   <version>${pom.version}</version>
                   <classifier>javadoc</classifier>
                 </artifactItem>
