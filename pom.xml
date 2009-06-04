@@ -159,11 +159,11 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-release-plugin</artifactId>
-          <version>2.0-beta-7</version>
           <configuration>
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <preparationGoals>clean install</preparationGoals>
             <goals>deploy</goals>
+            <scmCommentPrefix>${release.scm.comment.prefix}</scmCommentPrefix>
             <tagBase>https://svn.codehaus.org/xsite/tags</tagBase>
           </configuration>
         </plugin>
@@ -281,4 +281,7 @@
       <url>dav:https://dav.codehaus.org/snapshots.repository/xsite/</url>
     </snapshotRepository>
   </distributionManagement>
+  <properties>
+    <release.scm.comment.prefix>[release]</release.scm.comment.prefix>
+  </properties>
 </project>
