@@ -1,6 +1,7 @@
 package org.codehaus.xsite;
 
 import java.io.File;
+import java.util.Map;
 
 import org.codehaus.xsite.model.Page;
 import org.codehaus.xsite.model.Sitemap;
@@ -16,6 +17,6 @@ public interface Skin {
 
 	void load(File skinFile);
 
-	void skin(Page page, Sitemap sitemap, File outputDirectory);
+	void skin(Page page, Sitemap sitemap, File outputDirectory, Map<String, Object> customProperties);
 
 }

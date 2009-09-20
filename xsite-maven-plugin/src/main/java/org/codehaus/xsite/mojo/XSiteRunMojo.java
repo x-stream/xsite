@@ -60,6 +60,16 @@ public class XSiteRunMojo  extends AbstractMojo {
      */
     String compositionResourcePath;
 
+    /**
+     * @parameter
+     */
+    String publishedDate;
+
+    /**
+     * @parameter
+     */
+    String publishedVersion;
+
     public void execute() throws MojoExecutionException, MojoFailureException {
         try {
             List<String> args = cliArgs();
@@ -87,6 +97,12 @@ public class XSiteRunMojo  extends AbstractMojo {
         }
         if (compositionResourcePath != null) {
             args.add("-r" + compositionResourcePath);
+        }
+        if (publishedDate !=null ){
+        	args.add("-D" +publishedDate);
+        }
+        if (publishedVersion!=null ){
+        	args.add("-V" +publishedVersion);
         }
         return args;
     }

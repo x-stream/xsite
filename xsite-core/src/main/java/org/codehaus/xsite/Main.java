@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -53,7 +54,11 @@ public class Main {
     private static final char OUTPUT_OPT = 'o';
 
     private static final char L10N_OPT = 'L';
-
+        
+    private static final char PUBLISHED_DATE_OPT = 'D';
+    
+    private static final char PUBLISHED_VERSION_OPT = 'V';
+    
     public static final void main(String[] args) throws Exception {
         new Main(args);
     }
@@ -81,19 +86,21 @@ public class Main {
             File skin = null;
             File[] resources = null;
             File output = null;
+            Map<String, Object> customProperties = null;
             try {
                 XSite xsite = instantiateXSite(cl);
                 sitemap = getSitemap(cl, null);
                 skin = getSkin(cl, null);
                 resources = getResourceDirs(cl, null);
                 output = getOutput(cl, null);
-                xsite.build(sitemap, skin, resources, output);
+                customProperties = getCustomProperties(cl, null);
+				xsite.build(sitemap, skin, resources, output, customProperties);
                 if (cl.hasOption(L10N_OPT)) {
                     String[] languages = cl.getOptionValue(L10N_OPT).split(",");
                     for (int l = 0; l < languages.length; l++) {
                         String language = languages[l];
                         xsite.build(getSitemap(cl, language), getSkin(cl, language), getResourceDirs(cl, language),
-                                getOutput(cl, language));
+                                getOutput(cl, language), customProperties);
                     }
                 }
             } catch (Exception e) {
@@ -102,7 +109,7 @@ public class Main {
         }
     }
 
-    private File getSitemap(CommandLine cl, String language) {
+	private File getSitemap(CommandLine cl, String language) {
         return getFile(cl.getOptionValue(SOURCE_OPT), language, cl.getOptionValue(SITEMAP_OPT));
     }
 
@@ -129,6 +136,23 @@ public class Main {
         }
         return resourceDirs;
     }
+    
+    private Map<String, Object> getCustomProperties(CommandLine cl,
+			Object object) {
+    	Map<String, Object> properties = new HashMap<String, Object>();
+    	addProperty(cl, properties, "publishedDate", PUBLISHED_DATE_OPT, new Date());
+    	addProperty(cl, properties, "publishedVersion", PUBLISHED_VERSION_OPT, "N/A");
+		return properties;
+	}
+
+	private void addProperty(CommandLine cl, Map<String, Object> properties, String key,
+			char opt, Object defaultValue) {
+		if ( cl.hasOption(opt) ){
+    		properties.put(key, cl.getOptionValue(opt));
+    	} else {
+    		properties.put(key, defaultValue);    		
+    	}
+	}
 
     private File getFile(String sourcePath, String language, String relativePath) {
         if (language != null) {
@@ -194,7 +218,7 @@ public class Main {
     static final Options createOptions() {
         Options options = new Options();
         options.addOption(String.valueOf(HELP_OPT), "help", false, "print this message and exit");
-        options.addOption(String.valueOf(VERSION_OPT), "version", false, "print the version information and exit");
+        options.addOption(String.valueOf(VERSION_OPT), "xsite-version", false, "print the xsite version information and exit");
         options.addOption(String.valueOf(SOURCE_OPT), "sitemap", true, "specify the source directory");
         options.addOption(String.valueOf(FILE_OPT), "file", true,
                 "specify the composition file - relative to the source directory");
@@ -210,6 +234,8 @@ public class Main {
                 "specify the CSV list of language codes");
         options.addOption(String.valueOf(OUTPUT_OPT), "output", true, "specify the output dir");
         options.addOption(String.valueOf(XSITE_FACTORY_OPT), "xsite-factory", true, "specify the xsite factory name");
+        options.addOption(String.valueOf(PUBLISHED_DATE_OPT), "published-date", true, "specify the published date");
+        options.addOption(String.valueOf(PUBLISHED_VERSION_OPT), "published-version", true, "specify the published version");
         return options;
     }
 

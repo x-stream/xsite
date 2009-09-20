@@ -44,6 +44,18 @@ public class XSiteTaskTest {
         task.execute();
     }
 
+    @Test
+    public void testGoalCanBeRunWithOptionalCustomProperties() throws Exception {
+        XSiteTask task = new XSiteTask();
+        task.setSourceDirectoryPath(testSrcDir);
+        task.setSitemapPath("content/sitemap.xml");
+        task.setSkinPath("templates/skin.html");
+        task.setOutputDirectoryPath("target/xsite");
+        task.setPublishedVersion("1.0");
+        task.setPublishedDate("10/10/2010");
+        task.execute();
+    }
+
     @Test(expected=BuildException.class)
     public void testGoalFailsWithInvalidPath() throws Exception {
         XSiteTask task = new XSiteTask();

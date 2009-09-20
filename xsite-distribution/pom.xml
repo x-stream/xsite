@@ -36,6 +36,7 @@
           <skinPath>templates/skin.html</skinPath>
           <resourcePaths>resources</resourcePaths>
           <outputDirectoryPath>${basedir}/target/site</outputDirectoryPath>
+          <publishedVersion>${pom.version}</publishedVersion>
         </configuration>
         <executions>
           <execution>

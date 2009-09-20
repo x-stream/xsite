@@ -40,13 +40,16 @@ public class FreemarkerSkin implements Skin {
         }
     }
     
-    public void skin(Page page, Sitemap sitemap, File outputDirectory) {
+    public void skin(Page page, Sitemap sitemap, File outputDirectory, Map<String, Object> customProperties) {
         Map<String, Object> context = new HashMap<String, Object>();
         context.put("title", page.getTitle());
         context.put("head", page.getHead());
         context.put("body", page.getBody());
         context.put("page", page);
         context.put("sitemap", sitemap);
+        for ( String property : customProperties.keySet() ){
+        	context.put(property, customProperties.get(property));
+        }
         context.put("centerClass", page.isIndex() ? "Content3Column" : "Content2Column");
 
         try {

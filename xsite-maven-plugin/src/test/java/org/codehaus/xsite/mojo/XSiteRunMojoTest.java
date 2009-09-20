@@ -39,6 +39,18 @@ public class XSiteRunMojoTest {
         mojo.outputDirectoryPath = "target/xsite";
         mojo.execute();
     }
+    
+    @Test
+    public void testGoalCanBeRunWithOptionalCustomProperties() throws Exception {
+        XSiteRunMojo mojo = new XSiteRunMojo();
+        mojo.sourceDirectoryPath = testSrcDir;
+        mojo.sitemapPath = "content/sitemap.xml";
+        mojo.skinPath = "templates/skin.html";
+        mojo.outputDirectoryPath = "target/xsite";
+        mojo.publishedDate = "10/10/2010";
+        mojo.publishedVersion = "1.0";
+        mojo.execute();
+    }
 
     @Test(expected=MojoExecutionException.class)
     public void testGoalFailsWithInvalidPath() throws Exception {

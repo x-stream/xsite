@@ -30,6 +30,10 @@ public class XSiteTask extends Task {
     
     private String compositionResourcePath;
 
+    private String publishedDate;
+
+    private String publishedVersion;
+    
     public void execute() throws BuildException {
         List<String> args = cliArgs();            
         try {
@@ -56,6 +60,12 @@ public class XSiteTask extends Task {
         }
         if (compositionResourcePath != null) {
             args.add("-r" + compositionResourcePath);
+        }
+        if (publishedDate !=null ){
+        	args.add("-D" +publishedDate);
+        }
+        if (publishedVersion!=null ){
+        	args.add("-V" +publishedVersion);
         }
         return args;
     }
@@ -90,6 +100,14 @@ public class XSiteTask extends Task {
 
     public void setSourceDirectoryPath(String sourceDirectoryPath) {
         this.sourceDirectoryPath = sourceDirectoryPath;
-    }    
-        
+    }
+
+	public void setPublishedDate(String publishedDate) {
+		this.publishedDate = publishedDate;
+	}
+
+	public void setPublishedVersion(String publishedVersion) {
+		this.publishedVersion = publishedVersion;
+	}    
+            
 }

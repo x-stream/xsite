@@ -3,6 +3,7 @@ package org.codehaus.xsite;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Map;
 
 import org.codehaus.xsite.model.Page;
 import org.codehaus.xsite.model.Sitemap;
@@ -40,7 +41,7 @@ public class XSite {
         this.configuration = configuration;
     }
 
-    public void build(File sitemapFile, File skinFile, File[] resourceDirs, File outputDirectory) throws IOException {
+    public void build(File sitemapFile, File skinFile, File[] resourceDirs, File outputDirectory, Map<String, Object> customProperties) throws IOException {
         // Load sitemap and content
         Sitemap siteMap = sitemapLoader.loadFrom(sitemapFile);
 
@@ -56,7 +57,7 @@ public class XSite {
         outputDirectory.mkdirs();
         for (Page page : siteMap.getAllPages()) {
             System.out.println("Skinning " + page.getFilename() + " (" + page.getTitle() + ")");
-            skin.skin(page, siteMap, outputDirectory);
+			skin.skin(page, siteMap, outputDirectory, customProperties);
         }
 
         // Verify links
