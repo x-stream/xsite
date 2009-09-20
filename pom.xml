@@ -3,7 +3,7 @@
   <groupId>org.codehaus.xsite</groupId>
   <artifactId>xsite</artifactId>
   <packaging>pom</packaging>
-  <version>1.1</version>
+  <version>1.2-SNAPSHOT</version>
   <name>XSite</name>
   <description>XSite is a simple yet flexible site generation tool that allow a full templatable separation between content and style</description>
   <modules>
@@ -13,8 +13,8 @@
     <module>xsite-maven-plugin</module>
   </modules>
   <scm>
-    <connection>scm:svn:https://svn.codehaus.org/xsite/tags/xsite-1.1</connection>
-    <developerConnection>scm:svn:https://svn.codehaus.org/xsite/tags/xsite-1.1</developerConnection>
+    <connection>scm:svn:https://svn.codehaus.org/xsite/trunk</connection>
+    <developerConnection>scm:svn:https://svn.codehaus.org/xsite/trunk</developerConnection>
   </scm>
   <dependencyManagement>
     <dependencies>
