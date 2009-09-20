@@ -16,7 +16,7 @@ import org.codehaus.xsite.validators.LinkChecker;
  */
 public class XSite {
 
-    private final SitemapLoader siteMapLoader;
+    private final SitemapLoader sitemapLoader;
     private final Skin skin;
     private final LinkValidator[] validators;
     private final FileSystem fileSystem;
@@ -33,7 +33,7 @@ public class XSite {
      */
     public XSite(SitemapLoader loader, Skin skin, LinkValidator[] validators, FileSystem fileSystem,
             XSiteConfiguration configuration) {
-        this.siteMapLoader = loader;
+        this.sitemapLoader = loader;
         this.skin = skin;
         this.validators = validators;
         this.fileSystem = fileSystem;
@@ -42,7 +42,7 @@ public class XSite {
 
     public void build(File sitemapFile, File skinFile, File[] resourceDirs, File outputDirectory) throws IOException {
         // Load sitemap and content
-        Sitemap siteMap = siteMapLoader.loadFrom(sitemapFile);
+        Sitemap siteMap = sitemapLoader.loadFrom(sitemapFile);
 
         // Copy resources (css, images, etc) to output
         for (int i = 0; i < resourceDirs.length; i++) {

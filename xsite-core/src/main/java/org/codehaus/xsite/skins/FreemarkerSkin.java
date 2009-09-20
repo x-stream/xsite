@@ -39,13 +39,14 @@ public class FreemarkerSkin implements Skin {
             throw new CannotCreateSkinException(e);
         }
     }
-    public void skin(Page page, Sitemap siteMap, File outputDirectory) {
+    
+    public void skin(Page page, Sitemap sitemap, File outputDirectory) {
         Map<String, Object> context = new HashMap<String, Object>();
         context.put("title", page.getTitle());
         context.put("head", page.getHead());
         context.put("body", page.getBody());
         context.put("page", page);
-        context.put("sitemap", siteMap);
+        context.put("sitemap", sitemap);
         context.put("centerClass", page.isIndex() ? "Content3Column" : "Content2Column");
 
         try {
