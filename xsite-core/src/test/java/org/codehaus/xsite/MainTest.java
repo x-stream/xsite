@@ -55,6 +55,12 @@ public class MainTest extends AbstractXSiteTest {
     }
 
     @Test
+    public void testCanSpecifySkinTemplatesDir() throws Exception {
+        Main.main(new String[] { "-S" + testSrcDir, "-mcontent/sitemap.xml", "-sskin.html", "-T"+testSrcDir+"/templates",
+                        "-otarget/xsite" });
+    }
+
+    @Test
     public void testCanGetCustomCompositionURLViaFile() throws Exception {
         URL url = Main.getCompositionURL(Main.getCommandLine(new String[] { "-S" + testSrcDir, "-mcontent/sitemap.xml",
                 "-stemplates/skin.html", "-otarget/xsite", "-fcustom-xsite.xml" }, Main

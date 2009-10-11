@@ -14,93 +14,102 @@ import org.codehaus.xsite.Main;
  */
 public class XSiteTask extends Task {
 
-    private String sourceDirectoryPath;
+	private String sourceDirectoryPath;
 
-    private String sitemapPath;
-    
-    private String skinPath;
+	private String sitemapPath;
 
-    private String resourcePaths;
+	private String skinPath;
 
-    private String outputDirectoryPath;
+	private String resourcePaths;
 
-    private String localisations;
-    
-    private String compositionFilePath;
-    
-    private String compositionResourcePath;
+	private String templatesDirectoryPath;
 
-    private String publishedDate;
+	private String outputDirectoryPath;
 
-    private String publishedVersion;
-    
-    public void execute() throws BuildException {
-        List<String> args = cliArgs();            
-        try {
-            Main.main(args.toArray(new String[args.size()]));
-        } catch (Exception e) {
-            throw new BuildException("Failed to run xsite with args "+args, e);
-        }
-    }
+	private String localisations;
 
-    protected List<String> cliArgs() {
-        List<String> args = new ArrayList<String>();
-        args.add("-S" + sourceDirectoryPath);
-        args.add("-m" + sitemapPath);
-        args.add("-s" + skinPath);
-        args.add("-o" + outputDirectoryPath);
-        if (resourcePaths != null) {
-            args.add("-R" + resourcePaths);
-        }
-        if (localisations != null) {
-            args.add("-L" + localisations);
-        }
-        if (compositionFilePath != null) {
-            args.add("-f" + compositionFilePath);
-        }
-        if (compositionResourcePath != null) {
-            args.add("-r" + compositionResourcePath);
-        }
-        if (publishedDate !=null ){
-        	args.add("-D" +publishedDate);
-        }
-        if (publishedVersion!=null ){
-        	args.add("-V" +publishedVersion);
-        }
-        return args;
-    }
+	private String compositionFilePath;
 
-    public void setCompositionFilePath(String compositionFilePath) {
-        this.compositionFilePath = compositionFilePath;
-    }
+	private String compositionResourcePath;
 
-    public void setCompositionResourcePath(String compositionResourcePath) {
-        this.compositionResourcePath = compositionResourcePath;
-    }
+	private String publishedDate;
 
-    public void setLocalisations(String localisations) {
-        this.localisations = localisations;
-    }
+	private String publishedVersion;
 
-    public void setOutputDirectoryPath(String outputDirectoryPath) {
-        this.outputDirectoryPath = outputDirectoryPath;
-    }
-    
-    public void setResourcePaths(String resourcePaths) {
-        this.resourcePaths = resourcePaths;
-    }
+	public void execute() throws BuildException {
+		List<String> args = cliArgs();
+		try {
+			Main.main(args.toArray(new String[args.size()]));
+		} catch (Exception e) {
+			throw new BuildException("Failed to run xsite with args " + args, e);
+		}
+	}
 
-    public void setSitemapPath(String sitemapPath) {
-        this.sitemapPath = sitemapPath;
-    }
+	protected List<String> cliArgs() {
+		List<String> args = new ArrayList<String>();
+		args.add("-S" + sourceDirectoryPath);
+		args.add("-m" + sitemapPath);
+		args.add("-s" + skinPath);
+		args.add("-o" + outputDirectoryPath);
+		if (resourcePaths != null) {
+			args.add("-R" + resourcePaths);
+		}
+		if (templatesDirectoryPath != null) {
+			args.add("-T" + templatesDirectoryPath);
+		}
+		if (localisations != null) {
+			args.add("-L" + localisations);
+		}
+		if (compositionFilePath != null) {
+			args.add("-f" + compositionFilePath);
+		}
+		if (compositionResourcePath != null) {
+			args.add("-r" + compositionResourcePath);
+		}
+		if (publishedDate != null) {
+			args.add("-D" + publishedDate);
+		}
+		if (publishedVersion != null) {
+			args.add("-V" + publishedVersion);
+		}
+		return args;
+	}
 
-    public void setSkinPath(String skinPath) {
-        this.skinPath = skinPath;
-    }
+	public void setCompositionFilePath(String compositionFilePath) {
+		this.compositionFilePath = compositionFilePath;
+	}
 
-    public void setSourceDirectoryPath(String sourceDirectoryPath) {
-        this.sourceDirectoryPath = sourceDirectoryPath;
-    }
+	public void setCompositionResourcePath(String compositionResourcePath) {
+		this.compositionResourcePath = compositionResourcePath;
+	}
+
+	public void setLocalisations(String localisations) {
+		this.localisations = localisations;
+	}
+
+	public void setOutputDirectoryPath(String outputDirectoryPath) {
+		this.outputDirectoryPath = outputDirectoryPath;
+	}
+
+	public void setResourcePaths(String resourcePaths) {
+		this.resourcePaths = resourcePaths;
+	}
+
+	public void setSitemapPath(String sitemapPath) {
+		this.sitemapPath = sitemapPath;
+	}
+
+	public void setSkinPath(String skinPath) {
+		this.skinPath = skinPath;
+	}
+
+	public void setSourceDirectoryPath(String sourceDirectoryPath) {
+		this.sourceDirectoryPath = sourceDirectoryPath;
+	}
+
+	public void setTemplatesDirectoryPath(String templatesDirectoryPath) {
+		this.templatesDirectoryPath = templatesDirectoryPath;
+	}
 
 	public void setPublishedDate(String publishedDate) {
 		this.publishedDate = publishedDate;
@@ -108,6 +117,6 @@ public class XSiteTask extends Task {
 
 	public void setPublishedVersion(String publishedVersion) {
 		this.publishedVersion = publishedVersion;
-	}    
-            
+	}
+
 }

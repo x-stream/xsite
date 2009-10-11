@@ -48,6 +48,11 @@ public class XSiteRunMojo  extends AbstractMojo {
     /**
      * @parameter
      */
+    String templatesDirectoryPath;
+
+    /**
+     * @parameter
+     */
     String localisations;
 
     /**
@@ -88,6 +93,9 @@ public class XSiteRunMojo  extends AbstractMojo {
         args.add("-o" + outputDirectoryPath);
         if (resourcePaths != null) {
             args.add("-R" + resourcePaths);
+        }
+        if (templatesDirectoryPath != null) {
+            args.add("-T" + templatesDirectoryPath);
         }
         if (localisations != null) {
             args.add("-L" + localisations);

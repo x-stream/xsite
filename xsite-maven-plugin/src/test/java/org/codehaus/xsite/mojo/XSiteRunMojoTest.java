@@ -34,7 +34,8 @@ public class XSiteRunMojoTest {
         XSiteRunMojo mojo = new XSiteRunMojo();
         mojo.sourceDirectoryPath = testSrcDir;
         mojo.sitemapPath = "content/sitemap.xml";
-        mojo.skinPath = "templates/skin.html";
+        mojo.skinPath = "skin.html";
+        mojo.templatesDirectoryPath = testSrcDir+"/templates";
         mojo.resourcePaths = "resources";
         mojo.outputDirectoryPath = "target/xsite";
         mojo.execute();

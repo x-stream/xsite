@@ -38,7 +38,8 @@ public class XSiteTaskTest {
         XSiteTask task = new XSiteTask();
         task.setSourceDirectoryPath(testSrcDir);
         task.setSitemapPath("content/sitemap.xml");
-        task.setSkinPath("templates/skin.html");
+        task.setSkinPath("skin.html");
+        task.setTemplatesDirectoryPath(testSrcDir+"/templates");
         task.setResourcePaths("resources");
         task.setOutputDirectoryPath("target/xsite");
         task.execute();
