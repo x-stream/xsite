@@ -6,7 +6,7 @@
  * http://alexgorbatchev.com/wiki/SyntaxHighlighter:Donate
  *
  * @version
- * 2.0.320 (May 03 2009)
+ * 2.1.364 (October 15 2009)
  * 
  * @copyright
  * Copyright (C) 2004-2009 Alex Gorbatchev.
@@ -28,8 +28,8 @@
  * along with SyntaxHighlighter.  If not, see <http://www.gnu.org/copyleft/lesser.html>.
  */
 /**
- * Midnight SyntaxHighlighter theme based on theme by J.D. Myers
- * http://webdesign.lsnjd.com/
+ * Emacs SyntaxHighlighter theme based on theme by Joshua Emmons
+ * http://www.skia.net/
  */
 
 /************************************
@@ -38,19 +38,19 @@
 
 .syntaxhighlighter
 {
-	background-color: #0F192A !important;
+	background-color: #000000 !important;
 }
 
 /* Gutter line numbers */
 .syntaxhighlighter .line .number
 {
-	color: #38566F !important;
+	color: #D3D3D3 !important;
 }
 
 /* Add border to the lines */
 .syntaxhighlighter .line .content
 {
-	border-left: 3px solid #435A5F !important;
+	border-left: 3px solid #990000 !important;
 	color: #B9BDB6 !important;
 }
 
@@ -60,61 +60,44 @@
 }
 
 /* First line */
-.syntaxhighlighter .line.alt1 .content
+.syntaxhighlighter .line.alt1
 {
-	background-color: #0F192A !important;
 }
 
 /* Second line */
-.syntaxhighlighter .line.alt2 .content
+.syntaxhighlighter .line.alt2
 {
-	background-color: #0F192A !important;
-}
-
-.syntaxhighlighter .line .content .block
-{
-	background: url(wrapping.png) 0 1.1em no-repeat !important;
+	background-color: #0f0f0f !important;
 }
 
 /* Highlighed line number */
 .syntaxhighlighter .line.highlighted .number
 {
-	background-color: #253E5A !important;
+	background-color: #435A5F !important;
 	color: #fff !important;
 }
 
 /* Highlighed line */
-.syntaxhighlighter .line.highlighted.alt1 .content,
-.syntaxhighlighter .line.highlighted.alt2 .content
+.syntaxhighlighter .line.highlighted.alt1,
+.syntaxhighlighter .line.highlighted.alt2
 {
-	background-color: #253E5A !important;
-}
-
-.syntaxhighlighter .ruler
-{
-	color: #38566F !important;
-	background-color: #0F192A !important;
-	border-left: 3px solid #435A5F !important;
-}
-
-.syntaxhighlighter.nogutter .ruler
-{
-	border: 0 !important;
+	background-color: #435A5F !important;
 }
 
 .syntaxhighlighter .toolbar
 {
-	background-color: #0F192A !important;
+	background-color: #000000 !important;
+	border: #000000 solid 1px !important;
 }
 
 .syntaxhighlighter .toolbar a
 {
-	color: #38566F !important;
+	color: #646763 !important;
 }
 
 .syntaxhighlighter .toolbar a:hover
 {
-	color: #8AA6C1 !important;
+	color: #9CCFF4 !important;
 }
 
 /************************************
@@ -123,29 +106,29 @@
 .syntaxhighlighter .plain,
 .syntaxhighlighter .plain a
 { 
-	color: #D1EDFF !important;
+	color: #D3D3D3 !important;
 }
 
 .syntaxhighlighter .comments,
 .syntaxhighlighter .comments a
 { 
-	color: #428BDD !important;
+	color: #FF7D27 !important;
 }
 
 .syntaxhighlighter .string,
 .syntaxhighlighter .string a
 {
-	color: #1DC116 !important; 
+	color: #FF9E7B !important; 
 }
 
 .syntaxhighlighter .keyword
 { 
-	color: #B43D3D !important; 
+	color: #00FFFF !important; 
 }
 
 .syntaxhighlighter .preprocessor 
 { 
-	color: #8AA6C1 !important; 
+	color: #AEC4DE !important; 
 }
 
 .syntaxhighlighter .variable 
@@ -155,38 +138,38 @@
 
 .syntaxhighlighter .value
 { 
-	color: #F7E741 !important; 
+	color: #090 !important; 
 }
 
 .syntaxhighlighter .functions
 { 
-	color: #FFAA3E !important; 
+	color: #81CEF9 !important; 
 }
 
 .syntaxhighlighter .constants
 { 
-	color: #E0E8FF !important; 
+	color: #FF9E7B !important; 
 }
 
 .syntaxhighlighter .script
 { 
-	background-color: #404040 !important;
+	background-color: #990000 !important;
 }
 
 .syntaxhighlighter .color1,
 .syntaxhighlighter .color1 a
 { 
-	color: #F8BB00 !important; 
+	color: #EBDB8D !important; 
 }
 
 .syntaxhighlighter .color2,
 .syntaxhighlighter .color2 a
 { 
-	color: #FFFFFF !important; 
+	color: #FF7D27 !important; 
 }
 
 .syntaxhighlighter .color3,
 .syntaxhighlighter .color3 a
 { 
-	color: #FFAA3E !important; 
+	color: #AEC4DE !important; 
 }

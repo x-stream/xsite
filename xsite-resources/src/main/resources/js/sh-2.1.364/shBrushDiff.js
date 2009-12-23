@@ -6,7 +6,7 @@
  * http://alexgorbatchev.com/wiki/SyntaxHighlighter:Donate
  *
  * @version
- * 2.0.320 (May 03 2009)
+ * 2.1.364 (October 15 2009)
  * 
  * @copyright
  * Copyright (C) 2004-2009 Alex Gorbatchev.
@@ -27,9 +27,17 @@
  * You should have received a copy of the GNU General Public License
  * along with SyntaxHighlighter.  If not, see <http://www.gnu.org/copyleft/lesser.html>.
  */
-SyntaxHighlighter.brushes.Plain = function()
+SyntaxHighlighter.brushes.Diff = function()
 {
+	this.regexList = [
+		{ regex: /^\+\+\+.*$/gm,		css: 'color2' },
+		{ regex: /^\-\-\-.*$/gm,		css: 'color2' },
+		{ regex: /^\s.*$/gm,			css: 'color1' },
+		{ regex: /^@@.*@@$/gm,			css: 'variable' },
+		{ regex: /^\+[^\+]{1}.*$/gm,	css: 'string' },
+		{ regex: /^\-[^\-]{1}.*$/gm,	css: 'comments' }
+		];
 };
 
-SyntaxHighlighter.brushes.Plain.prototype = new SyntaxHighlighter.Highlighter();
-SyntaxHighlighter.brushes.Plain.aliases = ['text', 'plain'];
+SyntaxHighlighter.brushes.Diff.prototype	= new SyntaxHighlighter.Highlighter();
+SyntaxHighlighter.brushes.Diff.aliases		= ['diff', 'patch'];
