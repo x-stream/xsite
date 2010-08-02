@@ -15,7 +15,7 @@ public abstract class AbstractXSiteTest {
     public void setTestSrcDir() throws Exception {
         testSrcDir =  System.getProperty("test.src.dir");
         if ( testSrcDir == null ){
-            testSrcDir = "xsite-core/src/test/site"; 
+            testSrcDir = "target/test-classes"; 
         } else if ( !testSrcDir.endsWith(File.separator) ){
             testSrcDir = testSrcDir + File.separator; 
         }        
