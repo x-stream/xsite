@@ -18,7 +18,7 @@ public class MainTest extends AbstractXSiteTest {
     @Test
     public void testCanReadProperties() throws Exception {
         Properties properties = Main.createProperties();
-        assertEquals("1.0", properties.getProperty("version"));
+        assertTrue(properties.getProperty("version").startsWith("1."));
     }
 
     @Test
