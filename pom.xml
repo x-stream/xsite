@@ -1,5 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.codehaus</groupId>
+    <artifactId>codehaus-parent</artifactId>
+    <version>1</version>
+  </parent>
   <groupId>org.codehaus.xsite</groupId>
   <artifactId>xsite</artifactId>
   <packaging>pom</packaging>
@@ -15,6 +20,7 @@
   <scm>
     <connection>scm:svn:https://svn.codehaus.org/xsite/trunk</connection>
     <developerConnection>scm:svn:https://svn.codehaus.org/xsite/trunk</developerConnection>
+    <url>http://svn.codehaus.org/xsite/trunk</url> 
   </scm>
   <dependencyManagement>
     <dependencies>
@@ -275,18 +281,6 @@
       </modules>
     </profile>
   </profiles>
-  <distributionManagement>
-    <repository>
-      <id>codehaus.org</id>
-      <name>Codehaus XSite Repository</name>
-      <url>dav:https://dav.codehaus.org/repository/xsite/</url>
-    </repository>
-    <snapshotRepository>
-      <id>codehaus.org</id>
-      <name>Codehaus XSite Snapshot Repository</name>
-      <url>dav:https://dav.codehaus.org/snapshots.repository/xsite/</url>
-    </snapshotRepository>
-  </distributionManagement>
   <properties>
     <release.scm.comment.prefix>[release]</release.scm.comment.prefix>
   </properties>
