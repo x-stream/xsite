@@ -20,7 +20,7 @@
   <scm>
     <connection>scm:svn:https://svn.codehaus.org/xsite/trunk</connection>
     <developerConnection>scm:svn:https://svn.codehaus.org/xsite/trunk</developerConnection>
-    <url>http://svn.codehaus.org/xsite/trunk</url> 
+    <url>https://svn.codehaus.org/xsite/trunk</url> 
   </scm>
   <dependencyManagement>
     <dependencies>
