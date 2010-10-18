@@ -1,30 +1,49 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.codehaus.xsite</groupId>
-		<artifactId>xsite</artifactId>
-		<version>1.2-SNAPSHOT</version>
-	</parent>
-	<artifactId>xsite-ant</artifactId>
-	<name>XSite Ant</name>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.codehaus.xsite</groupId>
+    <artifactId>xsite</artifactId>
+    <version>1.2-SNAPSHOT</version>
+  </parent>
+  <artifactId>xsite-ant</artifactId>
+  <name>XSite Ant</name>
 
-	<dependencies>
-		<dependency>
-			<groupId>${pom.groupId}</groupId>
-			<artifactId>xsite-core</artifactId>
-			<version>${pom.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>ant</groupId>
-			<artifactId>ant</artifactId>
-			<version>1.6.5</version>
-		</dependency>
-	</dependencies>
-	<build>
-	  <testResources>
-	    <testResource>
-	      <directory>${basedir}/../xsite-core/src/test/site</directory>
-	    </testResource>
-	  </testResources>
-	</build>
+  <dependencies>
+    <dependency>
+      <groupId>${pom.groupId}</groupId>
+      <artifactId>xsite-core</artifactId>
+      <version>${pom.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>ant</groupId>
+      <artifactId>ant</artifactId>
+      <version>1.6.5</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>generate-test-resources</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <tasks>
+                <copy todir="${project.build.testOutputDirectory}"
+                  overwrite="true" failonerror="false">
+                  <fileset dir="${basedir}/../xsite-core/src/test/site">
+                  </fileset>
+                </copy>
+              </tasks>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
