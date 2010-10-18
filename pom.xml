@@ -17,11 +17,6 @@
     <module>xsite-ant</module>
     <module>xsite-maven-plugin</module>
   </modules>
-  <scm>
-    <connection>scm:svn:https://svn.codehaus.org/xsite/trunk</connection>
-    <developerConnection>scm:svn:https://svn.codehaus.org/xsite/trunk</developerConnection>
-    <url>https://svn.codehaus.org/xsite/trunk</url> 
-  </scm>
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -176,7 +171,6 @@
             <preparationGoals>clean install</preparationGoals>
             <goals>deploy</goals>
             <scmCommentPrefix>${release.scm.comment.prefix}</scmCommentPrefix>
-            <tagBase>https://svn.codehaus.org/xsite/tags</tagBase>
           </configuration>
         </plugin>
         <plugin>
@@ -281,6 +275,25 @@
       </modules>
     </profile>
   </profiles>
+
+
+  <licenses>
+    <license>
+      <name>BSD license</name>
+      <url>http://git.codehaus.org/gitweb.cgi?p=xsite-git.git;a=blob_plain;f=LICENSE.txt;hb=HEAD</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <developers />
+  <contributors />
+
+  <scm>
+    <connection>scm:git:git://git.codehaus.org/xsite-git.git</connection>
+    <developerConnection>scm:git:ssh://git@git.codehaus.org/xsite-git.git</developerConnection>
+    <url>http://git.codehaus.org/gitweb.cgi?p=xsite-git.git</url>
+  </scm>
+
   <properties>
     <release.scm.comment.prefix>[release]</release.scm.comment.prefix>
   </properties>
