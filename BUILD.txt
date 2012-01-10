@@ -1,7 +1,7 @@
 Build system: 
 
 JDK required: 1.5+
-Maven (http://maven.apache.org) required: 2.2.1+
+Maven (http://maven.apache.org) required: 2.2.1+ (3.0.x for the distribution)
 
 Build profiles:  
 
@@ -13,25 +13,6 @@ Build profiles:
 Note:  profiles are additive and the default profile is always active.
 Eg, build with reporting and distribution:
 
-mvn -Preporting,distribution install
+mvn -Preporting,distribution install -s settings.xml
 
-IMPORTANT NOTE ON REPOSITORIES: 
-Some dependencies are not synched with central maven repo.  
-Rather than configuring lots of remote repositories to the root POM, which implies lots of redundant lookups to several remote servers, 
-it is the responsibility of the user building the code to ensure that these are configured in the user ~/.m2/settings.xml, as profiles, 
-and then build (just once) with the corresponding profiles to retrieve the dependency.  
-
-A template of ~/.m2/settings.xml is found in http://svn.codehaus.org/xsite/trunk/xsite-distribution/src/config/settings.xml
-
-A good practice is to leave a note next to dependency declaration where it is found, if not in central repo.
-Another option is to define a waffle profile with all the remote repositories needed by project and activate it on demand.
-
-Eg to build with opensymphony profile (for sitemesh):
-
-mvn clean install -Popensymphony
-
-Similar reasoning for snapshots.  Eg to build using codehaus snapshots (say for picocontainer):
-
-mvn clean install -Pcodehaus
-
-
+NOTE:  The specification of the settings is only required if the dependencies are not on Maven Central (http://search.maven.org)
