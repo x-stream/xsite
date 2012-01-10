@@ -4,7 +4,7 @@
     <page>index.html</page>
     <page>license.html</page>
     <page>download.html</page>
-    <link title="JavaDoc">javadoc/index.html</link>
+    <page>javadoc.html</page>
     <link title="Changelog">http://jira.codehaus.org/browse/XSITE?report=com.atlassian.jira.plugin.system.project:changelog-panel</link>
     <link title="Reporting Issues">http://jira.codehaus.org/browse/XSITE</link>
     <page>history.html</page>
