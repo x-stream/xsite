@@ -5,26 +5,7 @@
 
   <body>
 
-    <h2>Configuring the Maven 2 plugin</h2>
-
-	<p>Maven 2 users can easily add XSite as a dependency to their projects.  Add the following repositories to the POM:
-	
-<div class="Source"><pre>
-&lt;repositories&gt;
-	&lt;repository&gt;
-		&lt;id&gt;codehaus-repository&lt;/id&gt;
-		&lt;name&gt;Codehaus Repository&lt;/name&gt;
-		&lt;url&gt;http://repository.codehaus.org&lt;/url&gt;
-	&lt;/repository&gt;
-	&lt;repository&gt;
-		&lt;id&gt;codehaus-snapshots-repository&lt;/id&gt;
-		&lt;name&gt;Codehaus Snapshots Repository&lt;/name&gt;
-		&lt;url&gt;http://snapshots.repository.codehaus.org&lt;/url&gt;
-	&lt;/repository&gt;
-&lt;/repositories&gt;		
-</pre></div>
-
-	and add XSite plugin configuration:
+    <h2>Configuring the Maven plugin</h2>
 
 <div class="Source"><pre>
   &lt;plugins&gt;
@@ -55,14 +36,11 @@
 
     <h2>Configuring the Ant task</h2>
 
-	<p>Ant users can easily use XSite task:
-	
 <div class="Source"><pre>
 &lt;taskdef name="xsite" classname="org.codehaus.xsite.ant.XSiteTask"/&gt;
 &lt;xsite sourceDirectoryPath="${basedir}/src/xsite" sitemapPath="content/sitemap.xml" 
 		skinPath="templates/skin.html" resourcePaths="resources" localisations="it,fr,pt"
 		outputDirectoryPath="${basedir}/target/xsite"/&gt;
 </pre></div>
-	</p>	
   </body>
 </html>
