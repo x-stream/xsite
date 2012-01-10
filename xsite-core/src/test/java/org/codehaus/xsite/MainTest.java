@@ -77,7 +77,7 @@ public class MainTest extends AbstractXSiteTest {
 
     @Test
     public void testCanBuildWithL10N() throws Exception {
-        Main.main(new String[] { "-S" + testSrcDir, "-mcontent/sitemap.xml", "-stemplates/skin.html", "-Rresources", "-Lit",
+        Main.main(new String[] { "-S" + testSrcDir, "-mcontent/sitemap.xml", "-stemplates/skin.html", "-Rresources", "-Lit,fr",
                         "-otarget/xsite" });
     }
 

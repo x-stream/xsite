@@ -68,7 +68,7 @@
       <plugin>
         <groupId>org.codehaus.xsite</groupId>
         <artifactId>xsite-maven-plugin</artifactId>
-        <version>1.1.2</version>
+        <version>1.2.1</version>
         <configuration>
           <sourceDirectoryPath>${basedir}/src/site</sourceDirectoryPath>
           <sitemapPath>content/sitemap.xml</sitemapPath>

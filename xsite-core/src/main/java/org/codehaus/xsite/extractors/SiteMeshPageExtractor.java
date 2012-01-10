@@ -24,13 +24,20 @@ import com.opensymphony.module.sitemesh.html.rules.PageBuilder;
 import com.opensymphony.module.sitemesh.html.rules.TitleExtractingRule;
 import com.opensymphony.module.sitemesh.html.util.CharArray;
 
+import static org.apache.commons.lang.StringEscapeUtils.escapeHtml;
+
 /**
- * PageExtractor which extract page information from an HTML file using the SiteMesh library.
- *
+ * PageExtractor which extract page information from an HTML file using the
+ * SiteMesh library.
+ * 
  * @author Joe Walnes
  * @author J&ouml;rg Schaible
  */
 public class SiteMeshPageExtractor implements PageExtractor {
+    private static final String LA = "<";
+    private static final String RA = ">";
+    private static final String LT = "__LT__";
+    private static final String GT = "__GT__";
 
     private Properties properties;
     private String filename;
@@ -40,15 +47,21 @@ public class SiteMeshPageExtractor implements PageExtractor {
     private final TagRule[] rules;
     private final TextFilter[] filter;
     private final FileSystem fileSystem;
+    private final boolean escapeHTML;
 
     public SiteMeshPageExtractor() {
         this(new TagRule[0], new TextFilter[0], new CommonsFileSystem());
     }
 
     public SiteMeshPageExtractor(TagRule[] rules, TextFilter[] filter, FileSystem fileSystem) {
+        this(rules, filter, fileSystem, true);
+    }
+
+    public SiteMeshPageExtractor(TagRule[] rules, TextFilter[] filter, FileSystem fileSystem, boolean escapeHTML) {
         this.rules = rules;
         this.filter = filter;
         this.fileSystem = fileSystem;
+        this.escapeHTML = escapeHTML;
     }
 
     public Page extractPage(File htmlFile) {
@@ -78,7 +91,7 @@ public class SiteMeshPageExtractor implements PageExtractor {
         properties = new Properties();
         PageBuilder pageBuilder = new PageBuilder() {
             public void addProperty(String key, String value) {
-                properties.setProperty(key, value);
+                properties.setProperty(key, escape(value));
             }
         };
 
@@ -95,16 +108,23 @@ public class SiteMeshPageExtractor implements PageExtractor {
         htmlProcessor.addRule(new LinkExtractingRule());
 
         for (int i = 0; i < rules.length; i++) {
-             htmlProcessor.addRule(rules[i]);
+            htmlProcessor.addRule(rules[i]);
         }
         for (int i = 0; i < filter.length; i++) {
             htmlProcessor.addTextFilter(filter[i]);
-       }
+        }
 
         // go!
         htmlProcessor.process();
-        this.head = headBuffer.toString();
-        this.body = bodyBuffer.toString();
+        this.head = escape(headBuffer.toString());
+        this.body = escape(bodyBuffer.toString());
+    }
+
+    private String escape(String value) {
+        if (escapeHTML) {
+            return escapeHtml(value.replaceAll(LA, LT).replaceAll(RA, GT)).replaceAll(GT, RA).replaceAll(LT, LA);
+        }
+        return value;
     }
 
     @SuppressWarnings("serial")
