@@ -24,8 +24,6 @@ import com.opensymphony.module.sitemesh.html.rules.PageBuilder;
 import com.opensymphony.module.sitemesh.html.rules.TitleExtractingRule;
 import com.opensymphony.module.sitemesh.html.util.CharArray;
 
-import static org.apache.commons.lang.StringEscapeUtils.escapeHtml;
-
 /**
  * PageExtractor which extract page information from an HTML file using the
  * SiteMesh library.
@@ -34,10 +32,6 @@ import static org.apache.commons.lang.StringEscapeUtils.escapeHtml;
  * @author J&ouml;rg Schaible
  */
 public class SiteMeshPageExtractor implements PageExtractor {
-    private static final String LA = "<";
-    private static final String RA = ">";
-    private static final String LT = "__LT__";
-    private static final String GT = "__GT__";
 
     private Properties properties;
     private String filename;
@@ -47,21 +41,21 @@ public class SiteMeshPageExtractor implements PageExtractor {
     private final TagRule[] rules;
     private final TextFilter[] filter;
     private final FileSystem fileSystem;
-    private final boolean escapeHTML;
+    private final CharacterEscaper characterEscaper;
 
     public SiteMeshPageExtractor() {
         this(new TagRule[0], new TextFilter[0], new CommonsFileSystem());
     }
 
     public SiteMeshPageExtractor(TagRule[] rules, TextFilter[] filter, FileSystem fileSystem) {
-        this(rules, filter, fileSystem, true);
+        this(rules, filter, fileSystem, new CharacterEscaper());
     }
 
-    public SiteMeshPageExtractor(TagRule[] rules, TextFilter[] filter, FileSystem fileSystem, boolean escapeHTML) {
+    public SiteMeshPageExtractor(TagRule[] rules, TextFilter[] filter, FileSystem fileSystem, CharacterEscaper characterEscaper) {
         this.rules = rules;
         this.filter = filter;
         this.fileSystem = fileSystem;
-        this.escapeHTML = escapeHTML;
+        this.characterEscaper = characterEscaper;
     }
 
     public Page extractPage(File htmlFile) {
@@ -91,7 +85,7 @@ public class SiteMeshPageExtractor implements PageExtractor {
         properties = new Properties();
         PageBuilder pageBuilder = new PageBuilder() {
             public void addProperty(String key, String value) {
-                properties.setProperty(key, escape(value));
+                properties.setProperty(key, characterEscaper.escape(value));
             }
         };
 
@@ -116,15 +110,8 @@ public class SiteMeshPageExtractor implements PageExtractor {
 
         // go!
         htmlProcessor.process();
-        this.head = escape(headBuffer.toString());
-        this.body = escape(bodyBuffer.toString());
-    }
-
-    private String escape(String value) {
-        if (escapeHTML) {
-            return escapeHtml(value.replaceAll(LA, LT).replaceAll(RA, GT)).replaceAll(GT, RA).replaceAll(LT, LA);
-        }
-        return value;
+        this.head = characterEscaper.escape(headBuffer.toString());
+        this.body = characterEscaper.escape(bodyBuffer.toString());
     }
 
     @SuppressWarnings("serial")

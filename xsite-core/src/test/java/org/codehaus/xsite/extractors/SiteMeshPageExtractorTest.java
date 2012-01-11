@@ -16,7 +16,7 @@ import com.opensymphony.module.sitemesh.html.TextFilter;
 public class SiteMeshPageExtractorTest {
 
     private SiteMeshPageExtractor pageExtractor = new SiteMeshPageExtractor(
-                new TagRule[]{new AddFirstChildClassToHeader()}, new TextFilter[0], new CommonsFileSystem(), false);
+                new TagRule[]{new AddFirstChildClassToHeader()}, new TextFilter[0], new CommonsFileSystem());
 
     @Test
     public void canExtractPageBodyStartingWithHeader() {
