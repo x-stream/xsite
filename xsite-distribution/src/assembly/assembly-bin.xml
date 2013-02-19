@@ -9,8 +9,7 @@
       <outputDirectory>/bin</outputDirectory>
       <includes>
         <include>xsite</include>
-        <include>xsite.bat</include>
-        <include>cpappend.bat</include>
+        <include>xsite.cmd</include>
       </includes>
       <fileMode>0774</fileMode>
     </fileSet>
