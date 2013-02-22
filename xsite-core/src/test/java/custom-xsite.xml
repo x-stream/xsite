@@ -2,6 +2,7 @@
   <component-instance key="org.codehaus.xsite.XSiteConfiguration">
     <org.codehaus.xsite.XSiteConfiguration>
       <validateLinks>true</validateLinks>
+      <contentRoot>../site</contentRoot>
     </org.codehaus.xsite.XSiteConfiguration>
   </component-instance>
   <component-implementation class="org.codehaus.xsite.CustomXSite" />

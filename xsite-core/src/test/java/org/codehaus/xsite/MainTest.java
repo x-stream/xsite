@@ -63,7 +63,7 @@ public class MainTest extends AbstractXSiteTest {
     @Test
     public void testCanGetCustomCompositionURLViaFile() throws Exception {
         URL url = Main.getCompositionURL(Main.getCommandLine(new String[] { "-S" + testSrcDir, "-mcontent/sitemap.xml",
-                "-stemplates/skin.html", "-otarget/xsite", "-fcustom-xsite.xml" }, Main
+                "-stemplates/skin.html", "-otarget/xsite", "-f../java/custom-xsite.xml" }, Main
                 .createOptions()));
         assertTrue(url.getPath().endsWith("custom-xsite.xml"));
     }
