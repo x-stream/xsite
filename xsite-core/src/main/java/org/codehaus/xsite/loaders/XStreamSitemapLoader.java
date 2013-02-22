@@ -71,8 +71,7 @@ public class XStreamSitemapLoader implements SitemapLoader {
             this.pageExtractor = pageExtractor;
         }
 
-        @SuppressWarnings("unchecked")
-        public boolean canConvert(Class type) {
+        public boolean canConvert(@SuppressWarnings("rawtypes") Class type) {
             return type == Page.class;
         }
 
@@ -88,8 +87,7 @@ public class XStreamSitemapLoader implements SitemapLoader {
 
     private static class LinkConverter implements Converter {
 
-        @SuppressWarnings("unchecked")
-        public boolean canConvert(Class type) {
+        public boolean canConvert(@SuppressWarnings("rawtypes") Class type) {
             return type == Link.class;
         }
 
