@@ -214,7 +214,7 @@ public class Main {
 			File file = new File(cl.getOptionValue(SOURCE_OPT) + File.separator
 					+ cl.getOptionValue(FILE_OPT));
 			if (file.exists()) {
-				url = file.toURL();
+				url = file.toURI().toURL();
 			}
 		} else if (cl.hasOption(RESOURCE_OPT)) {
 			url = Thread.currentThread().getContextClassLoader().getResource(
