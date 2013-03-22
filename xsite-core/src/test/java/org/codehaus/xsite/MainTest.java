@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.net.URL;
-import java.util.Properties;
 
 import org.apache.commons.cli.CommandLine;
 import org.junit.Test;
@@ -14,12 +13,6 @@ import org.junit.Test;
  * @author Mauro Talevi
  */
 public class MainTest extends AbstractXSiteTest {
-
-    @Test
-    public void testCanReadProperties() throws Exception {
-        Properties properties = Main.createProperties();
-        assertTrue(properties.getProperty("version").startsWith("1."));
-    }
 
     @Test
     public void testCanReadOptionValuesFromCommandLine() throws Exception {

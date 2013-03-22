@@ -3,13 +3,11 @@ package org.codehaus.xsite;
 import static java.util.Arrays.asList;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -30,8 +28,6 @@ public class Main {
 	private static final String DEFAULT_XSITE_FACTORY = "org.codehaus.xsite.factories.PicoXSiteFactory";
 
 	private static final String XSITE_COMPOSITION = "xsite.xml";
-
-	private static final String XSITE_PROPERTIES = "xsite.properties";
 
 	private static final char HELP_OPT = 'h';
 
@@ -77,8 +73,7 @@ public class Main {
 		if (cl.hasOption(HELP_OPT)) {
 			printUsage(options);
 		} else if (cl.hasOption(VERSION_OPT)) {
-			Properties properties = createProperties();
-			printVersion(properties);
+			printVersion();
 		} else {
 			if (!validateOptions(cl)) {
 				printUsage(options);
@@ -230,12 +225,6 @@ public class Main {
 		return url;
 	}
 
-	static final Properties createProperties() throws IOException {
-		Properties properties = new Properties();
-		properties.load(Main.class.getResourceAsStream(XSITE_PROPERTIES));
-		return properties;
-	}
-
 	static final Options createOptions() {
 		Options options = new Options();
 		options.addOption(String.valueOf(HELP_OPT), "help", false,
@@ -296,9 +285,13 @@ public class Main {
 		System.out.println(usage.toString());
 	}
 
-	private static void printVersion(Properties properties) {
-		System.out.println(XSite.class.getName() + " version: "
-				+ properties.getProperty("version"));
+	private static void printVersion() {
+		String version = "not available";
+		Package pkg = Main.class.getPackage();
+		if (pkg != null) {
+			version = pkg.getImplementationVersion();
+		}
+		System.out.println(XSite.class.getName() + " version: " + version);
 	}
 
 }
