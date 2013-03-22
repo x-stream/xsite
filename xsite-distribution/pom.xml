@@ -10,19 +10,19 @@
   <name>XSite Distribution</name>
   <dependencies>
     <dependency>
-      <groupId>${pom.groupId}</groupId>
+      <groupId>${project.groupId}</groupId>
       <artifactId>xsite-core</artifactId>
-      <version>${pom.version}</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>${pom.groupId}</groupId>
+      <groupId>${project.groupId}</groupId>
       <artifactId>xsite-ant</artifactId>
-      <version>${pom.version}</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>${pom.groupId}</groupId>
+      <groupId>${project.groupId}</groupId>
       <artifactId>xsite-maven-plugin</artifactId>
-      <version>${pom.version}</version>
+      <version>${project.version}</version>
     </dependency>
   </dependencies>
   <build>
@@ -43,9 +43,9 @@
               <overWriteSnapshots>true</overWriteSnapshots>
               <artifactItems>
                 <artifactItem>
-                  <groupId>${pom.groupId}</groupId>
+                  <groupId>${project.groupId}</groupId>
                   <artifactId>xsite-core</artifactId>
-                  <version>${pom.version}</version>
+                  <version>${project.version}</version>
                   <classifier>javadoc</classifier>
                 </artifactItem>
               </artifactItems>
@@ -63,9 +63,9 @@
               <overWriteSnapshots>true</overWriteSnapshots>
               <artifactItems>
                 <artifactItem>
-                  <groupId>${pom.groupId}</groupId>
+                  <groupId>${project.groupId}</groupId>
                   <artifactId>xsite-ant</artifactId>
-                  <version>${pom.version}</version>
+                  <version>${project.version}</version>
                   <classifier>javadoc</classifier>
                 </artifactItem>
               </artifactItems>
@@ -83,9 +83,9 @@
               <overWriteSnapshots>true</overWriteSnapshots>
               <artifactItems>
                 <artifactItem>
-                  <groupId>${pom.groupId}</groupId>
+                  <groupId>${project.groupId}</groupId>
                   <artifactId>xsite-maven-plugin</artifactId>
-                  <version>${pom.version}</version>
+                  <version>${project.version}</version>
                   <classifier>javadoc</classifier>
                 </artifactItem>
               </artifactItems>
@@ -102,7 +102,7 @@
           <skinPath>templates/skin.html</skinPath>
           <resourcePaths>resources</resourcePaths>
           <outputDirectoryPath>${basedir}/target/site</outputDirectoryPath>
-          <publishedVersion>${pom.version}</publishedVersion>
+          <publishedVersion>${project.version}</publishedVersion>
         </configuration>
         <executions>
           <execution>
@@ -127,7 +127,7 @@
               <descriptors>
                 <descriptor>${basedir}/src/assembly/assembly-bin.xml</descriptor>
               </descriptors>
-              <finalName>xsite-${pom.version}</finalName>
+              <finalName>xsite-${project.version}</finalName>
               <workDirectory>${project.build.directory}/assembly/bin</workDirectory>
             </configuration>
           </execution>
@@ -141,7 +141,7 @@
               <descriptors>
                 <descriptor>${basedir}/src/assembly/assembly-src.xml</descriptor>
               </descriptors>
-              <finalName>xsite-${pom.version}</finalName>
+              <finalName>xsite-${project.version}</finalName>
               <workDirectory>${project.build.directory}/assembly/src</workDirectory>
             </configuration>
           </execution>
