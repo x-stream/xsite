@@ -48,7 +48,6 @@
           <archive>
             <manifest>
               <mainClass>org.codehaus.xsite.Main</mainClass>
-              <packageName>org.codehaus.xsite</packageName>
             </manifest>
           </archive>
         </configuration>

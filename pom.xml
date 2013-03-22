@@ -166,6 +166,22 @@
               </configuration>
             </execution>
           </executions>
+          <configuration>
+            <archive>
+              <manifest>
+                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+              </manifest>
+              <manifestEntries>
+                <Specification-Version>${project.info.majorVersion}.${project.info.minorVersion}</Specification-Version>
+                <X-Compile-Source>${jdk.version}</X-Compile-Source>
+                <X-Compile-Target>${jdk.version}</X-Compile-Target>
+                <X-Builder>Maven ${maven.version}</X-Builder>
+                <X-Build-Time>${maven.build.timestamp}</X-Build-Time>
+                <X-Build-Os>${os.name}</X-Build-Os>
+              </manifestEntries>
+            </archive>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -176,10 +192,47 @@
               <id>attach-sources</id>
               <phase>package</phase>
               <goals>
-                <goal>jar</goal>
+                <goal>jar-no-fork</goal>
               </goals>
             </execution>
           </executions>
+          <configuration>
+            <archive>
+              <manifest>
+                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+              </manifest>
+              <manifestEntries>
+                <Specification-Version>${project.info.majorVersion}.${project.info.minorVersion}</Specification-Version>
+                <X-Compile-Source>${jdk.version}</X-Compile-Source>
+                <X-Compile-Target>${jdk.version}</X-Compile-Target>
+                <X-Builder>Maven ${maven.version}</X-Builder>
+                <X-Build-Time>${maven.build.timestamp}</X-Build-Time>
+                <X-Build-Os>${os.name}</X-Build-Os>
+              </manifestEntries>
+            </archive>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>2.2</version>
+          <configuration>
+            <archive>
+              <manifest>
+                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+              </manifest>
+              <manifestEntries>
+                <Specification-Version>${project.info.majorVersion}.${project.info.minorVersion}</Specification-Version>
+                <X-Compile-Source>${jdk.version}</X-Compile-Source>
+                <X-Compile-Target>${jdk.version}</X-Compile-Target>
+                <X-Builder>Maven ${maven.version}</X-Builder>
+                <X-Build-Time>${maven.build.timestamp}</X-Build-Time>
+                <X-Build-Os>${os.name}</X-Build-Os>
+              </manifestEntries>
+            </archive>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -210,6 +263,11 @@
           <version>2.4</version>
         </plugin>
         <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>build-helper-maven-plugin</artifactId>
+          <version>1.5</version>
+        </plugin>
+        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
           <version>3.0</version>
@@ -236,17 +294,25 @@
           <artifactId>xsite-maven-plugin</artifactId>
           <version>1.2.1</version>
         </plugin>
-
       </plugins>
     </pluginManagement>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <executions>
+          <execution>
+          <id>versions</id>
+          <phase>initialize</phase>
+          <goals>
+            <goal>maven-version</goal>
+            <goal>parse-version</goal>
+          </goals>
+          <configuration>
+            <propertyPrefix>project.info</propertyPrefix>
+          </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
