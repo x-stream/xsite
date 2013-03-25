@@ -1,3 +1,15 @@
 <html>
+<head>
+#foreach( $author in $authors )
+    <meta name="Author" content="$author" />
+#end
+#if ( $dateCreation )
+    <meta name="Date-Creation" content="$dateCreation" />
+#end
+#if ( $dateRevision )
+    <meta name="Date" content="$dateRevision" />
+#end
+    <title>#set($idx=$title.indexOf(" - "))#if($idx<0)$title#else#set($idx=$idx+3)$title.substring($idx)#end</title>
+</head>
 <body>$bodyContent</body>
 </html>
