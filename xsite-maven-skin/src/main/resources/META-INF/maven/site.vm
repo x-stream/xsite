@@ -9,7 +9,8 @@
 #if ( $dateRevision )
     <meta name="Date" content="$dateRevision" />
 #end
-    <title>#set($idx=$title.indexOf(" - "))#if($idx<0)$title#else#set($idx=$idx+3)$title.substring($idx)#end</title>
+#set($idx=$title.indexOf(" - "))
+    <title>#if($idx<0)$title.trim()#else#set($idx=$idx+3)$title.substring($idx).trim()#end</title>
 </head>
 <body>$bodyContent</body>
 </html>
