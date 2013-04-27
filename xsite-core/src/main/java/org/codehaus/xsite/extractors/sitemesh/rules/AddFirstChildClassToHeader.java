@@ -26,13 +26,7 @@ public class AddFirstChildClassToHeader extends BasicRule {
     public void process(Tag tag) {
         if (firstChildIsHeader) {
             if (!tag.getName().equalsIgnoreCase("p")) {
-                final CustomTag customTag;
-                // http://jira.opensymphony.com/browse/SIM-202
-                if (tag.getAttributeCount() == 0) {
-                    customTag = new CustomTag(tag.getName(), tag.getType());
-                } else {
-                    customTag = new CustomTag(tag);
-                }
+                final CustomTag customTag = new CustomTag(tag);
                 customTag.addAttribute("class", "FirstChild");
                 tag = customTag;
             }
