@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import com.opensymphony.module.sitemesh.html.TagRule;
 import com.opensymphony.module.sitemesh.html.TextFilter;
+import com.opensymphony.module.sitemesh.html.rules.TagReplaceRule;
 
 /**
  * @author J&ouml;rg Schaible
@@ -16,7 +17,10 @@ import com.opensymphony.module.sitemesh.html.TextFilter;
 public class SiteMeshPageExtractorTest {
 
     private SiteMeshPageExtractor pageExtractor = new SiteMeshPageExtractor(
-                new TagRule[]{new AddFirstChildClassToHeader()}, new TextFilter[0], new CommonsFileSystem());
+                new TagRule[]{
+                	new AddFirstChildClassToHeader(),
+                	new TagReplaceRule("ul", "ol")
+                }, new TextFilter[0], new CommonsFileSystem());
 
     @Test
     public void canExtractPageBodyStartingWithHeader() {
@@ -34,5 +38,13 @@ public class SiteMeshPageExtractorTest {
         final Page page2 = pageExtractor.extractPage("Test.html", html2);
         assertEquals(1, page1.getLinks().size());
         assertEquals(0, page2.getLinks().size());
+    }
+    
+    @Test
+    public void canExtractPageWithReplacedParagraphTags() {
+        final String html = "<html><head><title>JUnit</title></head><body><div><ul><li>Header</li></ul></div></body></html>";
+        final Page page = pageExtractor.extractPage("JUnit.html", html);
+        assertEquals("JUnit", page.getTitle());
+        assertEquals("<div><ol><li>Header</li></ol></div>", page.getBody());
     }
 }
