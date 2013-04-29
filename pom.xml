@@ -22,7 +22,7 @@
     <!-- NOTE: Set -Dfile.encoding=UTF-8 in MAVEN_OPTS -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <resource.encoding>UTF-8</resource.encoding>
-    <jdk.version>1.5</jdk.version>
+    <jdk.version>1.6</jdk.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -57,9 +57,14 @@
         <version>1.4.4</version>
       </dependency>
       <dependency>
+        <groupId>org.picocontainer</groupId>
+        <artifactId>picocontainer-core</artifactId>
+        <version>2.14.3</version>
+      </dependency>
+      <dependency>
         <groupId>org.picocontainer.script</groupId>
         <artifactId>picocontainer-script-core</artifactId>
-        <version>2.0</version>
+        <version>2.2</version>
       </dependency>
       <dependency>
         <groupId>xpp3</groupId>
@@ -292,7 +297,7 @@
         <plugin>
           <groupId>org.codehaus.xsite</groupId>
           <artifactId>xsite-maven-plugin</artifactId>
-          <version>1.2.1</version>
+          <version>${project.version}</version>
         </plugin>
       </plugins>
     </pluginManagement>
