@@ -47,6 +47,14 @@ public class SiteMeshPageExtractor implements PageExtractor {
         this(new TagRule[0], new TextFilter[0], new CommonsFileSystem());
     }
 
+    public SiteMeshPageExtractor(TagRule[] rules, FileSystem fileSystem) {
+        this(rules, new TextFilter[0], fileSystem);
+    }
+
+    public SiteMeshPageExtractor(TextFilter[] filter, FileSystem fileSystem) {
+        this(new TagRule[0], filter, fileSystem);
+    }
+
     public SiteMeshPageExtractor(TagRule[] rules, TextFilter[] filter, FileSystem fileSystem) {
         this(rules, filter, fileSystem, new CharacterEscaper());
     }
