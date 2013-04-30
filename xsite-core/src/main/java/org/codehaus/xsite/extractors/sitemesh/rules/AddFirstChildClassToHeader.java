@@ -4,33 +4,24 @@ import com.opensymphony.module.sitemesh.html.BasicRule;
 import com.opensymphony.module.sitemesh.html.CustomTag;
 import com.opensymphony.module.sitemesh.html.Tag;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 /**
  * Rule for HTMLProcessor that adds class=""FirstChild" to the first header of the body if it is the first element.
  */
 public class AddFirstChildClassToHeader extends BasicRule {
-    private boolean firstChildIsHeader = true;
-    private final Pattern pattern;
+    private boolean firstChild = false;
 
     public AddFirstChildClassToHeader() {
-        pattern = Pattern.compile("^H[1-9]$", Pattern.CASE_INSENSITIVE);
-    }
-
-    public boolean shouldProcess(String tag) {
-        final Matcher matcher = pattern.matcher(tag);
-        return tag.equalsIgnoreCase("p") || matcher.matches();
+    	super(new String[]{"p", "div", "h1", "h2", "h3", "h4", "h5", "h6"});
     }
 
     public void process(Tag tag) {
-        if (firstChildIsHeader) {
-            if (!tag.getName().equalsIgnoreCase("p")) {
+        if (!firstChild) {
+            if (tag.getName().charAt(0) == 'h') {
                 final CustomTag customTag = new CustomTag(tag);
                 customTag.addAttribute("class", "FirstChild");
                 tag = customTag;
             }
-            firstChildIsHeader = false;
+            firstChild = true;
         }
         tag.writeTo(currentBuffer());
     }
