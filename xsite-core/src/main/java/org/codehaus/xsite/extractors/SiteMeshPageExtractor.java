@@ -133,7 +133,7 @@ public class SiteMeshPageExtractor implements PageExtractor {
     private class LinkExtractingRule extends BasicRule {
 
         public boolean shouldProcess(String tag) {
-            return tag.equalsIgnoreCase("a");
+            return tag.equals("a");
         }
 
         public void process(Tag tag) {
