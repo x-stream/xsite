@@ -2,8 +2,9 @@ package org.codehaus.xsite.extractors;
 
 import static org.junit.Assert.assertEquals;
 
-import org.codehaus.xsite.extractors.sitemesh.rules.AddFirstChildClassToHeader;
-import org.codehaus.xsite.extractors.sitemesh.rules.DropDivOfClassSection;
+import org.codehaus.xsite.extractors.sitemesh.rules.AddClassAttributeToFirstHeaderRule;
+import org.codehaus.xsite.extractors.sitemesh.rules.DropDivOfClassSectionRule;
+import org.codehaus.xsite.extractors.sitemesh.rules.H1ToTitleRule;
 import org.codehaus.xsite.io.CommonsFileSystem;
 import org.codehaus.xsite.model.Page;
 import org.junit.Test;
@@ -17,19 +18,25 @@ import com.opensymphony.module.sitemesh.html.rules.TagReplaceRule;
  */
 public class SiteMeshPageExtractorTest {
 
-    private SiteMeshPageExtractor pageExtractor = new SiteMeshPageExtractor(
-                new TagRule[]{
-                	new AddFirstChildClassToHeader(),
-                	new DropDivOfClassSection(),
-                	new TagReplaceRule("ul", "ol")
-                }, new TextFilter[0], new CommonsFileSystem());
+    private SiteMeshPageExtractor pageExtractor;
+    {
+    	CharacterEscaper escaper = new CharacterEscaper();
+    	final AttributedPageBuilder pageBuilder = new AttributedPageBuilder(escaper);
+		pageExtractor = new SiteMeshPageExtractor(
+            new TagRule[]{
+            	new AddClassAttributeToFirstHeaderRule("first"),
+            	new DropDivOfClassSectionRule(),
+            	new TagReplaceRule("ul", "ol"),
+            	new H1ToTitleRule(pageBuilder),
+            }, new TextFilter[0], new CommonsFileSystem(), escaper, pageBuilder);
+    }
 
     @Test
     public void canExtractPageBodyStartingWithHeader() {
-        final String html = "<html><head><title>JUnit</title></head><body><h1>Header</h1></body></html>";
+        final String html = "<html><head><title>JUnit</title></head><body><h2>Header</h2></body></html>";
         final Page page = pageExtractor.extractPage("JUnit.html", html);
         assertEquals("JUnit", page.getTitle());
-        assertEquals("<h1 class=\"FirstChild\">Header</h1>", page.getBody());
+        assertEquals("<h2 class=\"first\">Header</h2>", page.getBody());
     }
     
     @Test
@@ -53,9 +60,17 @@ public class SiteMeshPageExtractorTest {
     
     @Test
     public void canExtractPagesWithDroppedDivsOfClassSection() {
-        final String html = "<html><head><title>JUnit</title></head><body><div class='section'><h1>H1</h1><div>Text</div><div class='section'><h2>H2</h2><div>Text</div></div></div></body></html>";
+        final String html = "<html><head><title>JUnit</title></head><body><div class='section'><h2>H2</h2><div>Text</div><div class='section'><h2>H2</h2><div>Text</div></div></div></body></html>";
         final Page page = pageExtractor.extractPage("JUnit.html", html);
         assertEquals("JUnit", page.getTitle());
-        assertEquals("<h1 class=\"FirstChild\">H1</h1><div>Text</div><h2>H2</h2><div>Text</div>", page.getBody());
+        assertEquals("<h2 class=\"first\">H2</h2><div>Text</div><h2>H2</h2><div>Text</div>", page.getBody());
+    }
+    
+    @Test
+    public void canExtractPagesUsingH1AsTitleInstead() {
+        final String html = "<html><body><h1>JUnit</h1><div>Text</div></body></html>";
+        final Page page = pageExtractor.extractPage("JUnit.html", html);
+        assertEquals("JUnit", page.getTitle());
+        assertEquals("<div>Text</div>", page.getBody());
     }
 }
