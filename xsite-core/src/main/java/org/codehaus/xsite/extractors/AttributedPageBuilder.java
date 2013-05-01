@@ -31,7 +31,7 @@ public class AttributedPageBuilder implements PageBuilder {
         properties.put(key, characterEscaper.escape(value));
 	}
 	
-	Map<String, String> getProperties() {
+	public Map<String, String> getProperties() {
 		return properties;
 	}
 }
