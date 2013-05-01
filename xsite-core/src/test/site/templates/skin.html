@@ -8,10 +8,10 @@
     <body id="${page.id}">
 
         <div id="banner"> 
-            <a href="index.html"><img id="logo" src="logo.gif" alt="XStream"/></a>
+            <a href="index.html"><img id="logo" src="logo.gif" alt="Logo"/></a>
         </div>
 
-        <div id="center" class="${centerClass}">
+        <div id="center" class=<#if page.isIndex()>"Content3Column"<#else>"Content2Column"</#if>>
             <div id="content">
                 <h1 class="FirstChild">${title}</h1>
 

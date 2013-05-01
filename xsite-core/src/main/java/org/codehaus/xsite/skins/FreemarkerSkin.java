@@ -50,7 +50,6 @@ public class FreemarkerSkin implements Skin {
         for ( String property : customProperties.keySet() ){
         	context.put(property, customProperties.get(property));
         }
-        context.put("centerClass", page.isIndex() ? "Content3Column" : "Content2Column");
 
         try {
             Writer writer = new FileWriter(new File(outputDirectory, page.getFilename()));

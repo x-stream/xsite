@@ -12,7 +12,6 @@
 	<component-implementation key="org.codehaus.xsite.SitemapLoader" class="org.codehaus.xsite.loaders.XStreamSitemapLoader"/>
     <component-implementation key="org.codehaus.xsite.Skin" class="org.codehaus.xsite.skins.FreemarkerSkin"/>
 	<component-implementation key="org.codehaus.xsite.PageExtractor" class="org.codehaus.xsite.extractors.SiteMeshPageExtractor"/>
-	<component-implementation class="org.codehaus.xsite.extractors.sitemesh.rules.AddFirstChildClassToHeader"/>
 	<component-implementation class="com.opensymphony.module.sitemesh.html.rules.RegexReplacementTextFilter">
 		<parameter><string>JIRA:([A-Z]+)-([0-9]+)</string></parameter>
 		<parameter><string><![CDATA[<a href=\"http://jira.codehaus.org/browse/$1-$2\">$1-$2</a>]]></string></parameter>
