@@ -9,6 +9,7 @@ import org.codehaus.xsite.PageExtractor;
 import org.codehaus.xsite.SitemapLoader;
 import org.codehaus.xsite.model.Link;
 import org.codehaus.xsite.model.Page;
+import org.codehaus.xsite.model.Parameter;
 import org.codehaus.xsite.model.Section;
 import org.codehaus.xsite.model.Sitemap;
 
@@ -24,6 +25,7 @@ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
  * Loads a Sitemap from an XML file using XStream.
  *
  * @author Joe Walnes
+ * @author J&ouml;rg Schaible
  */
 public class XStreamSitemapLoader implements SitemapLoader {
     private PageExtractor pageExtractor;
@@ -42,12 +44,13 @@ public class XStreamSitemapLoader implements SitemapLoader {
 
     private void configureXStream() {
         xstream.alias("sitemap", Sitemap.class);
-        xstream.alias("section", Section.class);
         xstream.alias("page", Page.class);
         xstream.alias("link", Link.class);
         xstream.addImplicitCollection(Section.class, "entries");
-        xstream.addImplicitCollection(Sitemap.class, "sections");
+        xstream.addImplicitCollection(Sitemap.class, "params", "parameter", Parameter.class);
+        xstream.addImplicitCollection(Sitemap.class, "sections", "section", Section.class);
         xstream.registerConverter(new LinkConverter());
+        xstream.registerConverter(new ParameterConverter());
     }
 
     public Sitemap loadFrom(File content) throws IOException {
@@ -101,6 +104,25 @@ public class XStreamSitemapLoader implements SitemapLoader {
             String title = reader.getAttribute("title");
             String href = reader.getValue();
             return new Link(title, href);
+        }
+    }
+
+    private static class ParameterConverter implements Converter {
+
+        public boolean canConvert(@SuppressWarnings("rawtypes") Class type) {
+            return type == Parameter.class;
+        }
+
+        public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
+        	Parameter link = (Parameter) source;
+            writer.addAttribute("name", link.getName());
+            writer.setValue(link.getValue());
+        }
+
+        public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+            String name = reader.getAttribute("name");
+            String value = reader.getValue();
+            return new Parameter(name, value);
         }
     }
 }

@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <!-- Authors: Mauro Talevi -->
-<!-- Version: 1.0 -->
+<!-- Version: 1.1 -->
 
-<!-- An xsite sitemap element consists of section elements -->
-<!ELEMENT xsite:sitemap (section*)>
-                             
+<!-- An xsite sitemap element consists of parameter and section elements -->
+<!ELEMENT xsite:sitemap (parameter*, section*)>
+
+<!-- Parameters have a name and a value -->
+<!ELEMENT parameter (#CDATA)> 
+<!ATTLIST parameter
+   name  CDATA   #REQUIRED 
+>
+
 <!-- Sections are represented by a name  -->
 <!-- Sections must contain a name, at least one page and optionally links -->
 <!ELEMENT section (name, page+, link*)>

@@ -3,6 +3,7 @@ package org.codehaus.xsite;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.codehaus.xsite.model.Page;
@@ -44,6 +45,13 @@ public class XSite {
     public void build(File sitemapFile, File skinFile, File[] resourceDirs, File outputDirectory, Map<String, Object> customProperties) throws IOException {
         // Load sitemap and content
         Sitemap siteMap = sitemapLoader.loadFrom(sitemapFile);
+        
+        if (customProperties == null) {
+        	customProperties = new HashMap<String, Object>();
+        } else {
+        	customProperties = new HashMap<String, Object>(customProperties);
+        }
+        customProperties.putAll(siteMap.getParameter());
 
         // Copy resources (css, images, etc) to output
         for (int i = 0; i < resourceDirs.length; i++) {

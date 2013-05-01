@@ -3,8 +3,8 @@ package org.codehaus.xsite.extractors;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Properties;
 
 import org.codehaus.xsite.FileSystem;
 import org.codehaus.xsite.PageExtractor;
@@ -20,7 +20,6 @@ import com.opensymphony.module.sitemesh.html.TextFilter;
 import com.opensymphony.module.sitemesh.html.rules.BodyTagRule;
 import com.opensymphony.module.sitemesh.html.rules.HeadExtractingRule;
 import com.opensymphony.module.sitemesh.html.rules.MetaTagRule;
-import com.opensymphony.module.sitemesh.html.rules.PageBuilder;
 import com.opensymphony.module.sitemesh.html.rules.TitleExtractingRule;
 import com.opensymphony.module.sitemesh.html.util.CharArray;
 
@@ -33,7 +32,6 @@ import com.opensymphony.module.sitemesh.html.util.CharArray;
  */
 public class SiteMeshPageExtractor implements PageExtractor {
 
-    private Properties properties;
     private String filename;
     private String head;
     private String body;
@@ -42,6 +40,7 @@ public class SiteMeshPageExtractor implements PageExtractor {
     private final TextFilter[] filter;
     private final FileSystem fileSystem;
     private final CharacterEscaper characterEscaper;
+	private final AttributedPageBuilder pageBuilder;
 
     public SiteMeshPageExtractor() {
         this(new TagRule[0], new TextFilter[0], new CommonsFileSystem());
@@ -60,10 +59,15 @@ public class SiteMeshPageExtractor implements PageExtractor {
     }
 
     public SiteMeshPageExtractor(TagRule[] rules, TextFilter[] filter, FileSystem fileSystem, CharacterEscaper characterEscaper) {
+    	this(rules, filter, fileSystem, characterEscaper, new AttributedPageBuilder(characterEscaper));
+    }
+
+    public SiteMeshPageExtractor(TagRule[] rules, TextFilter[] filter, FileSystem fileSystem,  CharacterEscaper characterEscaper, AttributedPageBuilder pageBuilder) {
         this.rules = rules;
         this.filter = filter;
         this.fileSystem = fileSystem;
         this.characterEscaper = characterEscaper;
+		this.pageBuilder = pageBuilder;
     }
 
     public Page extractPage(File htmlFile) {
@@ -71,7 +75,7 @@ public class SiteMeshPageExtractor implements PageExtractor {
         try {
             filename = htmlFile.getName();
             extractContentFromHTML(fileSystem.readFile(htmlFile).toCharArray());
-            return new Page(filename, head, body, links, properties);
+            return new Page(filename, head, body, links, new HashMap<String, String>(pageBuilder.getProperties()));
         } catch (IOException e) {
             throw new CannotParsePageException(e);
         }
@@ -82,21 +86,15 @@ public class SiteMeshPageExtractor implements PageExtractor {
         try {
             this.filename = filename;
             extractContentFromHTML(htmlContent.toCharArray());
-            return new Page(filename, head, body, links, properties);
+            return new Page(filename, head, body, links, new HashMap<String, String>(pageBuilder.getProperties()));
         } catch (IOException e) {
             throw new CannotParsePageException(e);
         }
     }
 
     private void extractContentFromHTML(char[] rawHTML) throws IOException {
-        // where to dump properties extracted from the page
-        properties = new Properties();
-        PageBuilder pageBuilder = new PageBuilder() {
-            public void addProperty(String key, String value) {
-                properties.setProperty(key, characterEscaper.escape(value));
-            }
-        };
-
+    	pageBuilder.getProperties().clear();
+    	
         // buffers to hold head and body content
         CharArray headBuffer = new CharArray(64);
         CharArray bodyBuffer = new CharArray(4096);
