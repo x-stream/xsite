@@ -82,7 +82,7 @@ public class Main {
 			}
 			File sitemap = null;
 			File skin = null;
-			File[] resources = null;
+			File[] resources = new File[0];
 			File output = null;
 			Map<String, Object> customProperties = null;
 			try {
