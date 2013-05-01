@@ -12,7 +12,7 @@ import org.codehaus.xsite.loaders.XStreamSitemapLoader;
 import org.codehaus.xsite.skins.FreemarkerSkin;
 
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
+import com.thoughtworks.xstream.io.xml.StaxDriver;
 
 /**
  * Implementation of XSiteFactory which returns instances of XSite with default dependencies
@@ -22,7 +22,7 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 public class DefaultXSiteFactory implements XSiteFactory {
 
     public XSite createXSite(Map<?,?> config) {
-        return new XSite(new XStreamSitemapLoader(new SiteMeshPageExtractor(), new XStream(new DomDriver())),
+        return new XSite(new XStreamSitemapLoader(new SiteMeshPageExtractor(), new XStream(new StaxDriver())),
                 new FreemarkerSkin(), new LinkValidator[0], new CommonsFileSystem(), new XSiteConfiguration());
     }
 
