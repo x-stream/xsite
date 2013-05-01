@@ -15,7 +15,7 @@ import com.opensymphony.module.sitemesh.html.Tag;
 /**
  * Special rule for Maven/Doxia generated HTML pages. They nest typically the header paragraphs
  * together with the following elements into a div section with a class attribute of value
- * "section". This rule removes this div elements so that any contained elements will be at the
+ * "section". This rule removes this div elements so that any contained element will be at the
  * same level.  
  * 
  * @author J&ouml;rg Schaible
