@@ -13,13 +13,18 @@ import com.opensymphony.module.sitemesh.html.BasicRule;
 import com.opensymphony.module.sitemesh.html.Tag;
 
 /**
+ * Special rule for Maven/Doxia generated HTML pages. They nest typically the header paragraphs
+ * together with the following elements into a div section with a class attribute of value
+ * "section". This rule removes this div elements so that any contained elements will be at the
+ * same level.  
+ * 
  * @author J&ouml;rg Schaible
  */
-public class DropDivOfClassSection extends BasicRule {
+public class DropDivOfClassSectionRule extends BasicRule {
 
 	private Deque<Boolean> stack;
 	
-	public DropDivOfClassSection() {
+	public DropDivOfClassSectionRule() {
 		super("div");
 		stack = new ArrayDeque<Boolean>(10);
 	}
