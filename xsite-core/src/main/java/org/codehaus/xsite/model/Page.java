@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class Page extends Entry {
 
-    private  Map<String, String> properties;
+    private Map<String, String> properties;
     private String filename;
     private String head;
     private String body;
@@ -78,4 +78,15 @@ public class Page extends Entry {
         return "index.html".equals(filename);
     }
 
+    public String[] getParagraphs() {
+    	String value = properties.get("paragraphs");
+    	if (value == null) {
+    		return new String[0];
+    	}
+    	String[] paragraphs = new String[Integer.valueOf(value)];
+    	for (int i = 0; i < paragraphs.length; i++ ) {
+			paragraphs[i] = properties.get("paragraph." + i);
+		}
+    	return paragraphs;
+    }
 }
