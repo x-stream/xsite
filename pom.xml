@@ -55,6 +55,16 @@
         <groupId>com.thoughtworks.xstream</groupId>
         <artifactId>xstream</artifactId>
         <version>1.4.4</version>
+        <exclusions>
+          <exclusion>
+            <groupId>xmlpull</groupId>
+            <artifactId>xmlpull</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>xpp3</groupId>
+            <artifactId>xpp3_min</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.picocontainer</groupId>
@@ -65,12 +75,6 @@
         <groupId>org.picocontainer.script</groupId>
         <artifactId>picocontainer-script-core</artifactId>
         <version>2.2</version>
-      </dependency>
-      <dependency>
-        <groupId>xpp3</groupId>
-        <artifactId>xpp3_min</artifactId>
-        <version>1.1.4c</version>
-        <optional>true</optional>
       </dependency>
       <!-- test-scoped -->
       <dependency>
