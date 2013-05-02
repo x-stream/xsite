@@ -19,6 +19,8 @@ import com.opensymphony.module.sitemesh.html.util.CharArray;
 
 import org.codehaus.xsite.extractors.SiteMeshPageExtractor.CannotParsePageException;
 
+import org.apache.commons.lang.StringUtils;
+
 
 /**
  * Rule to extract all top level block elements as separate paragraphs. Normally a body
@@ -100,11 +102,14 @@ public class TopLevelBlockExtractingRule extends BasicRule {
 			if (depth == 0 && type == Tag.OPEN) {
 				CharArray currentBuffer = currentBuffer();
 				if (currentBuffer.length() > 0) {
-					CharArray ca = new CharArray(currentBuffer.length() + 16);
-					DIV_OPEN.writeTo(ca);
-					ca.append(currentBuffer);
-					DIV_CLOSE.writeTo(ca);
-					paragraphs.add(ca);
+					String text = StringUtils.stripToNull(currentBuffer.toString());
+					if (text != null) {
+						CharArray ca = new CharArray(text.length() + 16);
+						DIV_OPEN.writeTo(ca);
+						ca.append(text);
+						DIV_CLOSE.writeTo(ca);
+						paragraphs.add(ca);
+					}
 					currentBuffer.clear();
 				}
 				tag.writeTo(currentBuffer);
