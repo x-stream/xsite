@@ -42,8 +42,8 @@ public class LinkChecker {
     }
 
     /**
-     * Verifies all the links in the site. Returns true if all links are valid.
-     * @return
+     * Verifies all the links in the site. 
+     * @return true if all links are valid.
      */
     public boolean verify() {
         boolean success = true;

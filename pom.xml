@@ -168,14 +168,12 @@
               <goals>
                 <goal>jar</goal>
               </goals>
-              <configuration>
-                <links>
-                  <link>http://java.sun.com/j2se/1.5/docs/api</link>
-                </links>
-              </configuration>
             </execution>
           </executions>
           <configuration>
+            <links>
+              <link>http://http://docs.oracle.com/javase/6/docs/api</link>
+            </links>
             <archive>
               <manifest>
                 <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
@@ -434,5 +432,4 @@
     <developerConnection>scm:git:ssh://git@git.codehaus.org/xsite-git.git</developerConnection>
     <url>http://git.codehaus.org/gitweb.cgi?p=xsite-git.git</url>
   </scm>
-
 </project>
