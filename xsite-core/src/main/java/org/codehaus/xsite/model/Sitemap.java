@@ -10,8 +10,8 @@ import java.util.Map;
  * Holds the structure of a website.
  *
  * @author Joe Walnes
- * @author Mauro Talev
- * @author J&ouml;rg Schaiblei
+ * @author Mauro Talevi
+ * @author J&ouml;rg Schaible
  */
 public class Sitemap {
 
