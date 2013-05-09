@@ -50,7 +50,7 @@ public class SiteMeshPageExtractorTest {
 		final Page page2 = pageExtractor.extractPage("Test.html", html2);
 		assertEquals(1, page1.getLinks().size());
 		assertEquals(0, page2.getLinks().size());
-		assertEquals("<div><a href=\"foo.html\">Header</a></div>", page1.getBody());
+		assertEquals("<p><a href=\"foo.html\">Header</a></p>", page1.getBody());
 		assertEquals("<p>Header</p>", page2.getBody());
 	}
 
@@ -86,8 +86,8 @@ public class SiteMeshPageExtractorTest {
 		final Page page = pageExtractor.extractPage("JUnit.html", html);
 		assertEquals("JUnit", page.getTitle());
 		final String paragraphs[] = {
-			"<div>Intro</div>", "<ol><li>Header</li></ol>", "<div>In between</div>",
-			"<p>Next</p>", "<isindex/>", "<div>Outro</div>"};
+			"<p>Intro</p>", "<ol><li>Header</li></ol>", "<p>In between</p>",
+			"<p>Next</p>", "<isindex/>", "<p>Outro</p>"};
 		assertEquals(StringUtils.join(paragraphs), page.getBody());
 		String[] paras = page.getParagraphs();
 		assertEquals(paragraphs.length, paras.length);

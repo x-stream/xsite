@@ -25,7 +25,7 @@ import org.apache.commons.lang.StringUtils;
 /**
  * Rule to extract all top level block elements as separate paragraphs. Normally a body
  * should contain only such elements. In case of other tags or text, those are added as
- * separate div block. 
+ * separate p block. 
  * 
  * @author J&ouml;rg Schaible
  */
@@ -33,6 +33,8 @@ public class TopLevelBlockExtractingRule extends BasicRule {
 
 	private final static Tag DIV_OPEN = new CustomTag("div", Tag.OPEN); 
 	private final static Tag DIV_CLOSE = new CustomTag("div", Tag.CLOSE); 
+	private final static Tag P_OPEN = new CustomTag("p", Tag.OPEN); 
+	private final static Tag P_CLOSE = new CustomTag("p", Tag.CLOSE); 
 	private final PageBuilder page;
 
 	public TopLevelBlockExtractingRule(PageBuilder page) {
@@ -105,9 +107,9 @@ public class TopLevelBlockExtractingRule extends BasicRule {
 					String text = StringUtils.stripToNull(currentBuffer.toString());
 					if (text != null) {
 						CharArray ca = new CharArray(text.length() + 16);
-						DIV_OPEN.writeTo(ca);
+						P_OPEN.writeTo(ca);
 						ca.append(text);
-						DIV_CLOSE.writeTo(ca);
+						P_CLOSE.writeTo(ca);
 						paragraphs.add(ca);
 					}
 					currentBuffer.clear();
