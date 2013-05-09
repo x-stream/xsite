@@ -1,6 +1,6 @@
 Build system: 
 
-JDK required: 1.5+
+JDK required: 1.6+
 Maven (http://maven.apache.org) required: 2.2.1+ (3.0.x for the distribution)
 
 Build profiles:  
