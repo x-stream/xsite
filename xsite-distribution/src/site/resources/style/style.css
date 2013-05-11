@@ -216,6 +216,14 @@ ul, ol {
     padding: 2px;
 }
 
+#content h3 {
+    margin-top: 16px;
+    border-top: 1px solid #060;
+    margin-bottom: 16px;
+    background-color: #e0f0e0;
+    padding: 2px;
+}
+
 #content li {
     margin-bottom: 6px;
 }

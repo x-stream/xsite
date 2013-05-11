@@ -5,7 +5,7 @@
 
   <body>
     <h2>Which JDK is required to use XSite?</h2>
-    <p>1.5 or later.</p>
+    <p>1.6 or later.</p>
 
     <h2>What is required to use XSite as a standalone application?</h2>
     <p>Only the JDK.  Simply <a href="download.html">download</a> the binary distribution and unzip somewhere on your local filesystem.  
@@ -26,8 +26,9 @@
     <h2>Can I avoid copying SCM files from resource directories?</h2>
     <p>By default, XSite is only "SVN-aware", ie only ".svn" directories are ignored when copying resources.
     If you need to configure different SCM files to be ignored, you can customise XSite to use a bespoke implementation
-    of FileSystem, eg by extending default CommonsFileSystem and overriding the <code>IOFileFilter getFileFilter()</code> method. 
-    See <a href="custom.html">customising XSite</a> for more details </p>
+    of FileSystem, e.g. by extending default CommonsFileSystem and overriding the <code>IOFileFilter getFileFilter()</code> method. 
+    See <a href="custom.html">customising XSite</a> for more details. Note, that current versions of Subversion or SCMs
+    like Git do not have such files in the resources folder anyway.</p>
 
   </body>
 </html>

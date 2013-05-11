@@ -9,6 +9,7 @@
 	<p>XSite can be configured using an XML-based sitemap:</p>
 <div class="Source"><pre>
 &lt;sitemap&gt;
+    &lt;parameter name=&quot;theme&quot;&gt;red&lt;/parameter&gt;
     &lt;section&gt;
         &lt;name&gt;About XSite&lt;/name&gt;
         &lt;page&gt;index.html&lt;/page&gt;
@@ -32,6 +33,9 @@
 	<p>
 		Each <code>page</code> element corresponds to an HTML file in the content directory.  The HTML content files are read from the same directory in which 
 		<code>sitemap</code> is found.
+	</p>
+	<p>
+		The defined parameters can be used later in the <a href="skin.html">skin template</a>.
 	</p>
 	<p>
 		The sitemap filename is configurable but must be found in the content directory.
