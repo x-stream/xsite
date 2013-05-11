@@ -10,6 +10,7 @@
 <p>XSite can be customised using the following main components:</p>
 <ul>
   <li><a href="javadoc/org/codehaus/xsite/SitemapLoader.html">SitemapLoader</a>: defaults to <a href="javadoc/org/codehaus/xsite/loaders/XStreamSitemapLoader.html">XStream-based loader</a></li>
+  <li><a href="javadoc/org/codehaus/xsite/PageExtractor.html">PageExtractor</a>: defaults to <a href="javadoc/org/codehaus/xsite/extractor/SiteMeshPageExtractor.html">SiteMesh-based page extractor</a></li>
   <li><a href="javadoc/org/codehaus/xsite/Skin.html">Skin</a>: defaults to <a href="javadoc/org/codehaus/xsite/skins/FreemarkerSkin.html">Freemarker-based skin</a></li>
   <li><a href="javadoc/org/codehaus/xsite/LinkValidator.html">LinkValidators</a>: a list of link validators</li>
   <li><a href="javadoc/org/codehaus/xsite/FileSystem.html">FileSystem</a>: defaults to <a href="javadoc/org/codehaus/xsite/io/CommonsFileSystem.html">Commons-IO filesystem</a></li>
@@ -18,6 +19,53 @@
 All default components can be overridden via the <code>conf/xsite.xml</code> composition resource found in the binary distribution, and specifiable via  
 the '-f' (if a file resource) or '-R' (if a classpath resource) options.
 </p>
+
+<h2>SiteMesh components</h2>
+
+<p>The context extraction is by default done by SiteMesh. SiteMesh does not only extract the content, but is also
+able to modify it on the fly based on tag rules and text filters. Some of it are being used by XSite already
+internally, but others are available (from SiteMesh directly or from XSite). Implementations of both types can be
+registered in the composition resource.</p>
+
+<h3>Text Filter</h3>
+
+<p>Text filter are applied to the extracted text value. Following <a href="http://web.archive.org/web/20071008171209/http://www.opensymphony.com/sitemesh/api/com/opensymphony/module/sitemesh/html/TextFilter.html">TextFilter</a> implementations are available:
+</p>
+<dl>
+	<dt><a href="http://web.archive.org/web/20071008180718/http://www.opensymphony.com/sitemesh/api/com/opensymphony/module/sitemesh/html/rules/RegexReplacementTextFilter.html">RegexReplacementTextFilter</a></dt>
+	<dd>Text replacement with regular expressions</dd>
+</dl>
+
+<h3>Tag Rules</h3>
+
+<p>A TagRule processes HTML tags. Note, that it is not possible to process the same tag twice with different rules.
+Following <a href="http://web.archive.org/web/20071008180901/http://www.opensymphony.com/sitemesh/api/com/opensymphony/module/sitemesh/html/TagRule.html.html">TagRule</a> implementations are available and useful in the context of XSite:
+</p>
+<dl>
+	<dt><a href="http://web.archive.org/web/20071008180901/http://www.opensymphony.com/sitemesh/api/com/opensymphony/module/sitemesh/html/rules/FramesetRule.html">FramesetRule</a></dt>
+	<dd>The rule will simply add the property &quot;frameset&quot; with value &quot;true&quot; to the properties of the current Page model.</dd>
+	<dt><a href="http://web.archive.org/web/20071008180901/http://www.opensymphony.com/sitemesh/api/com/opensymphony/module/sitemesh/html/rules/HtmlAttributesRule.html">HtmlAttributesRule</a></dt>
+	<dd>The rule will add all attributes of the HTML tag as property to the current Page model.</dd>
+	<dt><a href="http://web.archive.org/web/20071008180901/http://www.opensymphony.com/sitemesh/api/com/opensymphony/module/sitemesh/html/rules/MetaTagRule.html">MetaTagRule</a></dt>
+	<dd>The rule will add all attributes of the meta tags in the HTML header as property to the current Page model.</dd>
+	<dt><a href="http://web.archive.org/web/20071008180901/http://www.opensymphony.com/sitemesh/api/com/opensymphony/module/sitemesh/html/rules/ParameterExtractingRule.html">ParameterExtractingRule</a></dt>
+	<dd>The rule will remove any tag named &quot;parameter&uot; and add its value as property with the name of the tag's attribute &quot;name&quot; to the current Page model.</dd>
+	<dt><a href="http://web.archive.org/web/20071008180901/http://www.opensymphony.com/sitemesh/api/com/opensymphony/module/sitemesh/html/rules/TagReplaceRule.html">TagReplaceRule</a></dt>
+	<dd>Replace the current tag with a different one.</dd>
+	<dt><a href="javadoc/core/org/codehaus/xsite/extractors/sitemesh/rules/AddClassAttributeToFirstHeaderRule.html">AddClassAttributeToFirstHeaderRule</a></dt>
+	<dd>Add a class attribute to the first header tag.</dd>
+	<dt><a href="javadoc/core/org/codehaus/xsite/extractors/sitemesh/rules/H1ToTitleRule.html">H1ToTitleRule</a></dt>
+	<dd>Extract the content of the first H1 tag and provide it in as title in the page model.</dd>
+	<dt><a href="javadoc/core/org/codehaus/xsite/extractors/sitemesh/rules/DropDivOfClassSectionRule.html">DropDivOfClassSectionRule</a></dt>
+	<dd>Special rule for Doxia/Maven generated HTML pages that nest any header tag (H1-6) into div elements with
+	class &quot;section&quot;. The rule will remove these div tags and therefore unnest the inner elements again.</dd>
+	<dt><a href="javadoc/core/org/codehaus/xsite/extractors/sitemesh/rules/TopLevelBlockExtractingRule.html">TopLevelBlockExtractingRule</a></dt>
+	<dd>Special rule for the body of the HTML page, that extracts all HTML top level block elements as individual
+	paragraphs. The rule will add the number of paragraphs as property &quot;paragraphs&quot; and all the
+	individual paragraphs as property &quot;paragraph.&lt;i&gt;&quot; with <em>i</em> starting with <em>0</em>.</dd>
+</dl>
+
+
 </body>
 
 </html>
