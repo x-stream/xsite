@@ -1,0 +1,143 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd ">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.codehaus.xsite.example</groupId>
+    <artifactId>xsite-maven-example</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>XSite Maven Example</name>
+    <description>XSite example based on Maven Site.</description>
+    <inceptionYear>2013</inceptionYear>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.2</version>
+                <executions>
+                    <execution>
+                        <id>doxia</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <generateReports>false</generateReports>
+                    <outputDirectory>${project.build.directory}/xsite/content</outputDirectory>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.doxia</groupId>
+                        <artifactId>doxia-module-markdown</artifactId>
+                        <version>1.3</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.maven.doxia</groupId>
+                        <artifactId>doxia-module-twiki</artifactId>
+                        <version>1.3</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.jszip.maven</groupId>
+                <artifactId>jszip-maven-plugin</artifactId>
+                <version>0.1-alpha-9</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <webappDirectory>${project.build.directory}/generate/resources</webappDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mappings>
+                        <mapping>
+                            <select>jquery</select>
+                            <path>js</path>
+                        </mapping>
+                    </mappings>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>xsite-prepare</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <concat destfile="${project.build.directory}/generate/resources/js/bootstrap.js">
+                                  <fileset dir="${project.build.directory}/generate/resources/js">
+                                    <include name="bootstrap-*.js"/>
+                                  </fileset>
+                                </concat>
+                                <delete>
+                                  <fileset dir="${project.build.directory}/generate/resources/js">
+                                    <include name="bootstrap-*.js"/>
+                                  </fileset>
+                                </delete>
+                                <copy todir="${project.build.directory}/xsite" overwrite="true" failonerror="false">
+                                  <fileset dir="${basedir}/src/xsite"/>
+                                  <fileset dir="${project.build.directory}/generate"/>
+                                </copy>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.xsite</groupId>
+                <artifactId>xsite-maven-plugin</artifactId>
+                <version>${version.org.codehaus.xsite}</version>
+                <configuration>
+                    <sourceDirectoryPath>${project.build.directory}/xsite</sourceDirectoryPath>
+                    <sitemapPath>content/sitemap.xml</sitemapPath>
+                    <skinPath>skin.html</skinPath>
+                    <compositionFilePath>xsite.xml</compositionFilePath>
+                    <resourcePaths>resources</resourcePaths>
+                    <outputDirectoryPath>${project.build.directory}/site</outputDirectoryPath>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>site</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jszip.redist</groupId>
+            <artifactId>bootstrap</artifactId>
+            <type>jszip</type>
+            <version>2.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jszip.redist</groupId>
+            <artifactId>jquery</artifactId>
+            <type>jszip</type>
+            <version>1.9.1</version>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <version.plugin.xsite>1.3</version.plugin.xsite>
+        <version.org.codehaus.xsite>${version.plugin.xsite}</version.org.codehaus.xsite>
+    </properties>
+</project>

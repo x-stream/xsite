@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/DECORATION/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
+    <!-- only used to define skin, see xsite/content/sitemap.xml instead -->
+    <skin>
+        <groupId>org.codehaus.xsite</groupId>
+        <artifactId>xsite-maven-skin</artifactId>
+        <version>${version.org.codehaus.xsite}</version>
+    </skin>
+</project>

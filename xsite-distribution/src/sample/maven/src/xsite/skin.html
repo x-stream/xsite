@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Script-Type" content="text/javascript">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>XSite Maven Example · ${title}</title>
+        <link href="favicon.ico" rel="shortcut icon">
+        <link href="css/bootstrap.css" rel="stylesheet"  media="screen"/>
+        <link href="css/bootstrap-responsive.css" rel="stylesheet"  media="screen"/>
+        <link href="css/xsite.css" rel="stylesheet"  media="screen"/>
+        ${head}
+    </head>
+    <body>
+		<div class="navbar navbar-fixed-top">
+		  <div class="navbar-inner">
+		      <ul class="nav" role="navigation">
+<#list sitemap.sections as section>
+  <#if section.entries?size = 1>
+		   	    <li role="presentation"><a role="menuitem" tabindex="-1" href="${section.entries?first.href}">${section.entries?first.title}</a></li>
+  <#else>
+		        <li class="dropdown">
+				  <a id="drop${section_index}" role="button" class="dropdown-toggle" data-toggle="dropdown" href="#">${section.name} <b class="caret"></b></a>
+				  <ul class="dropdown-menu" role="menu" aria-labelledby="drop${section_index}">
+	<#list section.entries as entry>
+				   	<li role="presentation"><a role="menuitem" tabindex="-1" href="${entry.href}">${entry.title}</a></li>
+    </#list>
+				  </ul>
+                </li>
+  </#if>
+</#list>
+		      </ul>
+		    <!-- /div-->
+		  </div>
+		</div>
+		<div class="jumbotron subhead">
+		  <div class="container">
+		    <h1>${title}</h1>
+		  </div>
+		</div>
+	    <div class="container">
+	    	<div class="row">
+<#assign rows = ( page.paragraphs?size / 4 )?floor>
+<#assign rest = page.paragraphs?size - ( 4 * rows )>
+<#assign i = 0>
+<#list page.paragraphs as paragraph>
+  <#if i = rows>
+    <#if rest = 0>
+      <#assign i = 0>
+                </div>
+    </#if>
+  </#if>
+  <#if i = 0>
+                <div class="span3">
+  </#if>
+  <#if i = rows>
+    <#if rest &gt; 0>
+      <#assign rest = rest - 1>
+      <#assign i = 0>
+				  ${paragraph}
+                </div>
+    </#if>
+  <#else>
+    <#assign i = i + 1>
+				  ${paragraph}
+  </#if>
+</#list>
+  <#if i != rows>
+                </div>
+  </#if>
+            </div>
+        </div>
+        <div class="modal-footer">
+        	<div class="container">
+        		<ul class="footer-links">
+        			<li>&copy; 2013 XSite Committers</li>
+        		</ul>
+        	</div>
+        </div>
+        <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.js"></script>
+  </body>
+</html>
