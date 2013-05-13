@@ -89,4 +89,8 @@ public class Page extends Entry {
 		}
     	return paragraphs;
     }
+    
+    public Map<String, String> getProperties() {
+    	return properties;
+    }
 }
