@@ -2,6 +2,9 @@ package org.codehaus.xsite.extractors;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Collections;
+
+import org.codehaus.xsite.extractors.sitemesh.filters.MailToLinkTextFilter;
 import org.codehaus.xsite.extractors.sitemesh.rules.AddClassAttributeToFirstHeaderRule;
 import org.codehaus.xsite.extractors.sitemesh.rules.TopLevelBlockExtractingRule;
 import org.codehaus.xsite.extractors.sitemesh.rules.DropDivOfClassSectionRule;
@@ -14,6 +17,7 @@ import org.apache.commons.lang.StringUtils;
 
 import com.opensymphony.module.sitemesh.html.TagRule;
 import com.opensymphony.module.sitemesh.html.TextFilter;
+import com.opensymphony.module.sitemesh.html.rules.RegexReplacementTextFilter;
 import com.opensymphony.module.sitemesh.html.rules.TagReplaceRule;
 
 
@@ -31,7 +35,10 @@ public class SiteMeshPageExtractorTest {
 				new AddClassAttributeToFirstHeaderRule("first"),
 				new DropDivOfClassSectionRule(), new TagReplaceRule("ul", "ol"),
 				new H1ToTitleRule(pageBuilder), new TopLevelBlockExtractingRule(pageBuilder)},
-			new TextFilter[0], new CommonsFileSystem(), escaper, pageBuilder);
+			new TextFilter[]{
+				new RegexReplacementTextFilter("%CR", "\n"),
+				new MailToLinkTextFilter(Collections.singletonMap("jd", "john.doe@somewhere.moon"))},
+			new CommonsFileSystem(), escaper, pageBuilder);
 	}
 
 	@Test
@@ -94,5 +101,13 @@ public class SiteMeshPageExtractorTest {
 		for (int i = 0; i < paras.length; i++ ) {
 			assertEquals(paragraphs[i], paras[i]);
 		}
+	}
+
+	@Test
+	public void canFilterPageTextAndInjectEmailLink() {
+		final String html = "<html><body><h1>JUnit</h1><div>Send an %{MAIL:jd|email|Demo|German Umlaut &#xf6;%CRNext line}% to me!</div></body></html>";
+		final Page page = pageExtractor.extractPage("JUnit.html", html);
+		assertEquals("JUnit", page.getTitle());
+		assertEquals("<div>Send an <a href=\"mailto:john.doe@somewhere.moon?subject=Demo&amp;body=German%20Umlaut%20&#246;%0ANext%20line\">email</a> to me!</div>", page.getBody());
 	}
 }
