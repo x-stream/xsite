@@ -6,6 +6,7 @@ import java.util.Collections;
 
 import org.codehaus.xsite.extractors.sitemesh.filters.MailToLinkTextFilter;
 import org.codehaus.xsite.extractors.sitemesh.rules.AddClassAttributeToFirstHeaderRule;
+import org.codehaus.xsite.extractors.sitemesh.rules.ImgAttributesRule;
 import org.codehaus.xsite.extractors.sitemesh.rules.TopLevelBlockExtractingRule;
 import org.codehaus.xsite.extractors.sitemesh.rules.DropDivOfClassSectionRule;
 import org.codehaus.xsite.extractors.sitemesh.rules.H1ToTitleRule;
@@ -34,7 +35,8 @@ public class SiteMeshPageExtractorTest {
 			new TagRule[]{
 				new AddClassAttributeToFirstHeaderRule("first"),
 				new DropDivOfClassSectionRule(), new TagReplaceRule("ul", "ol"),
-				new H1ToTitleRule(pageBuilder), new TopLevelBlockExtractingRule(pageBuilder)},
+				new H1ToTitleRule(pageBuilder), new ImgAttributesRule(),
+				new TopLevelBlockExtractingRule(pageBuilder)},
 			new TextFilter[]{
 				new RegexReplacementTextFilter("%CR", "\n"),
 				new MailToLinkTextFilter(Collections.singletonMap("jd", "john.doe@somewhere.moon"))},
@@ -109,5 +111,26 @@ public class SiteMeshPageExtractorTest {
 		final Page page = pageExtractor.extractPage("JUnit.html", html);
 		assertEquals("JUnit", page.getTitle());
 		assertEquals("<div>Send an <a href=\"mailto:john.doe@somewhere.moon?subject=Demo&amp;body=German%20Umlaut%20&#246;%0ANext%20line\">email</a> to me!</div>", page.getBody());
+	}
+
+	@Test
+	public void canAddImageAttribute() {
+		final String html = "<html><body><div><img src='image.png#class=i'/></div></body></html>";
+		final Page page = pageExtractor.extractPage("JUnit.html", html);
+		assertEquals("<div><img src=\"image.png\" class=\"i\"/></div>", page.getBody());
+	}
+
+	@Test
+	public void canAppendToImageAttribute() {
+		final String html = "<html><body><div><img src='image.png#class+=\" i\"' class=\"x\"/></div></body></html>";
+		final Page page = pageExtractor.extractPage("JUnit.html", html);
+		assertEquals("<div><img src=\"image.png\" class=\"x i\"/></div>", page.getBody());
+	}
+
+	@Test
+	public void canAddImageAttributes() {
+		final String html = "<html><body><div><img src='image.png#class+=\" i\"#style=\"font:arial; text-color:#112233\"' class=\"x\"/></div></body></html>";
+		final Page page = pageExtractor.extractPage("JUnit.html", html);
+		assertEquals("<div><img src=\"image.png\" class=\"x i\" style=\"font:arial; text-color:#112233\"/></div>", page.getBody());
 	}
 }
