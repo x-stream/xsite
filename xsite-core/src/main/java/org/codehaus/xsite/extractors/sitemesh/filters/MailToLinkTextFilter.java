@@ -31,7 +31,7 @@ import org.apache.commons.lang.StringUtils;
  * </pre>
  * 
  * @author J&ouml;rg Schaible
- * @since upcoming
+ * @since 1.3
  */
 public class MailToLinkTextFilter implements TextFilter {
 
