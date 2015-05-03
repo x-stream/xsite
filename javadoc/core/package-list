@@ -1,0 +1,10 @@
+org.codehaus.xsite
+org.codehaus.xsite.extractors
+org.codehaus.xsite.extractors.sitemesh.filters
+org.codehaus.xsite.extractors.sitemesh.rules
+org.codehaus.xsite.factories
+org.codehaus.xsite.io
+org.codehaus.xsite.loaders
+org.codehaus.xsite.model
+org.codehaus.xsite.skins
+org.codehaus.xsite.validators

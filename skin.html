@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>XSite - XSite Skin</title>
+<link rel="stylesheet" type="text/css" href="style/style.css" />
+
+    
+  
+
+<!-- Google analytics -->
+<script src="http://www.google-analytics.com/urchin.js"
+    type="text/javascript">
+        </script>
+<script type="text/javascript">
+          _uacct = "UA-110973-2";
+          urchinTracker();
+        </script>
+
+</head>
+<body>
+
+<div id="banner"><a href="index.html"><img id="logo"
+    src="images/XSite.png" alt="XSite" width="160" height="100" /></a></div>
+
+<div id="breadcrumbs">
+<div class="left">Version 1.3 published on 06/07/2013</div>
+<div class="clear"></div>
+</div>
+
+
+<div id="center" class="Content2Column"><!-- Content3Column for index -->
+<div id="content">
+<h1 class="FirstChild">XSite Skin</h1>
+
+
+	<h2>A templateable skin</h1>
+	
+	<p>XSite has internally two phases.  In the first phase it will extract the content of provided HTML files into
+	XSite's <a href="javadoc/core/org/codehaus/xsite/model/package-summary.html">model</a> of the site, in the last
+	phase it will provide this content to be used in a template engine for new pages. The default page extractor
+	implementation is based on <a href="http://wiki.sitemesh.org/display/sitemesh/Home">SiteMesh</a>, the default
+	implementation for the template engine uses <a href="http://freemarker.sourceforge.net/docs/index.html">FreeMarker</a>.
+	Other implementations for both functionalities are <a href="custom.html">possible</a> (and configurable), but XSite
+	does currently not deliver another one.   
+	</p>
+	
+	<h2>Template engine</h2>
+	
+	<p>The template engine gets as input parameter a mandatory skin file and an instance of the current
+	<a href="javadoc/core/org/codehaus/xsite/model/Page.html">Page</a>. The page and its elements are exposed in the
+	template engine's context, so that they are available in the template: 
+	</p>
+	<dl>
+		<dt>page</dt><dd>the Page instance itself</dd>
+		<dt>head</dt><dd>the head part of the original page (without the surrounding head tag)</dd>
+		<dt>body</dt><dd>the body part of the original page (without the surrounding body tag)</dd>
+		<dt>title</dt><dd>the value of the title element in the head of the original page</dd>
+		<dt>sitemap</dt><dd>the <a href="javadoc/core/org/codehaus/xsite/model/Sitemap.html">Sitemap</a> instance
+		describing the XStream site</dd>
+	</dl>
+   <br/>
+<br/>
+</div>
+</div>
+
+<div class="SidePanel" id="left"><div class="MenuGroup">
+<h1>About XSite</h1>
+<ul>
+         <li><a href="index.html">About XSite</a></li>
+          <li><a href="license.html">License</a></li>
+          <li><a href="download.html">Download</a></li>
+          <li><a href="javadoc.html">Javadoc</a></li>
+          <li><a href="http://jira.codehaus.org/browse/XSITE?report=com.atlassian.jira.plugin.system.project:changelog-panel">Changelog</a></li>
+          <li><a href="http://jira.codehaus.org/browse/XSITE">Reporting Issues</a></li>
+          <li><a href="history.html">Project history</a></li>
+          <li><a href="used-by.html">Who uses XSite?</a></li>
+          <li><a href="faq.html">Frequently Asked Questions</a></li>
+     
+</ul>
+</div>
+<div class="MenuGroup">
+<h1>Using XSite</h1>
+<ul>
+         <li><a href="getting-started.html">Getting started</a></li>
+          <li><a href="plugins.html">Plugins</a></li>
+          <li><a href="sitemap.html">XSite Sitemap</a></li>
+      
+    <li class="currentLink">XSite Skin</li>
+      <li><a href="l10n.html">L10N support</a></li>
+          <li><a href="custom.html">Customising XSite</a></li>
+     
+</ul>
+</div>
+<div class="MenuGroup">
+<h1>Developing XSite</h1>
+<ul>
+         <li><a href="mailing-lists.html">Mailing Lists</a></li>
+          <li><a href="team.html">Development Team</a></li>
+          <li><a href="source-repository.html">Source Repository</a></li>
+     
+</ul>
+</div>
+</div>
+
+</body>
+</html>
