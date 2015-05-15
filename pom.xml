@@ -406,12 +406,32 @@
         </plugins>
       </build>
     </profile>
+    <!-- Distribution -->
     <profile>
-      <!-- Distribution profile -->
       <id>distribution</id>
       <modules>
         <module>xsite-distribution</module>
       </modules>
+    </profile>
+    <profile>
+      <id>java</id>
+      <activation>
+        <file>
+          <exists>src/main/java</exists>
+        </file>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
     </profile>
   </profiles>
 
@@ -419,7 +439,7 @@
   <licenses>
     <license>
       <name>BSD license</name>
-      <url>http://git.codehaus.org/gitweb.cgi?p=xsite-git.git;a=blob_plain;f=LICENSE.txt;hb=HEAD</url>
+      <url>https://raw.githubusercontent.com/x-stream/xsite/master/LICENSE.txt</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
