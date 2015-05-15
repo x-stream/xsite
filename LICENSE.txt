@@ -1,12 +1,6 @@
-<html>
-  <head>
-    <title>License</title>
-  </head>
-  <body>
+(BSD Style License)
 
-    <p>XSite is open source software, made available under a BSD license.</p>
-
-<div class="Source Java"><pre>Copyright (c) 2005-2015, XSite Organisation
+Copyright (c) 2005-2015, XSite Committers
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -31,7 +25,3 @@ BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
 CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
 WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
 DAMAGE.
-</pre></div>
-
-  </body>
-</html>
