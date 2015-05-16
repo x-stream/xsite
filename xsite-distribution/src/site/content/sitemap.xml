@@ -6,7 +6,7 @@
     <page>download.html</page>
     <page>javadoc.html</page>
     <link title="Changelog">http://jira.codehaus.org/browse/XSITE?report=com.atlassian.jira.plugin.system.project:changelog-panel</link>
-    <link title="Reporting Issues">http://jira.codehaus.org/browse/XSITE</link>
+    <link title="Reporting Issues">https://github.com/x-stream/xstream/issues</link>
     <page>history.html</page>
     <page>used-by.html</page>   
     <page>faq.html</page>
@@ -22,7 +22,6 @@
   </section>
   <section>
     <name>Developing XSite</name>
-    <page>mailing-lists.html</page>
     <page>team.html</page>
     <page>source-repository.html</page>
   </section>
