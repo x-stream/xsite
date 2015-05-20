@@ -106,6 +106,7 @@
           <sourceDirectoryPath>${basedir}/src/site</sourceDirectoryPath>
           <sitemapPath>content/sitemap.xml</sitemapPath>
           <skinPath>templates/skin.html</skinPath>
+          <compositionFilePath>xsite.xml</compositionFilePath>
           <resourcePaths>resources</resourcePaths>
           <outputDirectoryPath>${basedir}/target/site</outputDirectoryPath>
           <publishedVersion>${project.version}</publishedVersion>
