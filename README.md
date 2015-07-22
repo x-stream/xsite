@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/x-stream/xsite.svg?branch=master)](https://travis-ci.org/x-stream/xsite)
+
 ----
 # XSite
 XSite is a simple yet flexible site generation tool.
