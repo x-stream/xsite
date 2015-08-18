@@ -476,6 +476,14 @@
     <connection>scm:git:https://github.com/x-stream/xsite.git</connection>
     <tag>HEAD</tag>
   </scm>
+  <issueManagement>
+    <system>github</system>
+    <url>https://github.com/x-stream/xsite/issues/</url>
+  </issueManagement>
+  <ciManagement>
+    <system>Travis</system>
+    <url>https://travis-ci.org/x-stream/xsite</url>
+  </ciManagement>
 
   <distributionManagement>
     <repository>
