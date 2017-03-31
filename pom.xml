@@ -18,7 +18,7 @@
     <!-- NOTE: Set -Dfile.encoding=UTF-8 in MAVEN_OPTS -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <resource.encoding>UTF-8</resource.encoding>
-    <jdk.version>1.6</jdk.version>
+    <jdk.version>1.7</jdk.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -168,7 +168,7 @@
           </executions>
           <configuration>
             <links>
-              <link>http://http://docs.oracle.com/javase/6/docs/api</link>
+              <link>https://docs.oracle.com/javase/7/docs/api/</link>
             </links>
             <archive>
               <manifest>
