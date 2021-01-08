@@ -478,8 +478,8 @@
 
   <scm>
     <url>http://github.com/x-stream/xsite</url>
-    <developerConnection>scm:git:https://github.com/x-stream/xsite.git</developerConnection>
-    <connection>scm:git:https://github.com/x-stream/xsite.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/x-stream/xsite.git</developerConnection>
+    <connection>scm:git:ssh://git@github.com/x-stream/xsite.git</connection>
     <tag>HEAD</tag>
   </scm>
   <issueManagement>
