@@ -1,7 +1,7 @@
 Build system: 
 
-JDK required: 1.6+
-Maven (http://maven.apache.org) required: 2.2.1+ (3.0.x for the distribution)
+JDK required: 1.8+
+Maven (http://maven.apache.org) required: 3.6.x
 
 Build profiles:  
 
@@ -13,6 +13,5 @@ Build profiles:
 Note:  profiles are additive and the default profile is always active.
 Eg, build with reporting and distribution:
 
-mvn -Preporting,distribution install -s settings.xml
+mvn -Preporting,distribution install
 
-NOTE:  The specification of the settings is only required if the dependencies are not on Maven Central (http://search.maven.org)
