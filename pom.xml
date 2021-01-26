@@ -3,7 +3,7 @@
   <groupId>org.codehaus.xsite</groupId>
   <artifactId>xsite</artifactId>
   <packaging>pom</packaging>
-  <version>1.4</version>
+  <version>1.5-SNAPSHOT</version>
   <name>XSite</name>
   <url>http://x-stream.github.io/xsite</url>
   <description>XSite is a simple yet flexible site generation tool that allow a full templatable separation between content and style</description>
@@ -481,7 +481,7 @@
     <url>http://github.com/x-stream/xsite</url>
     <developerConnection>scm:git:ssh://git@github.com/x-stream/xsite.git</developerConnection>
     <connection>scm:git:ssh://git@github.com/x-stream/xsite.git</connection>
-    <tag>xsite-1.4</tag>
+    <tag>HEAD</tag>
   </scm>
   <issueManagement>
     <system>github</system>
