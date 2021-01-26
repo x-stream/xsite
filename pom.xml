@@ -495,11 +495,11 @@
   <distributionManagement>
     <repository>
       <id>sonatype-nexus-oss</id>
-      <url>http://s01.oss.sonatype.org/service/local/staging/deploy/maven2</url>
+      <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2</url>
     </repository>
     <snapshotRepository>
       <id>sonatype-nexus-oss</id>
-      <url>http://s01.oss.sonatype.org/content/repositories/snapshots</url>
+      <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
     </snapshotRepository>
     <!--site>
       <id>github</id>
