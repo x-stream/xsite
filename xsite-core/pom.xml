@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.codehaus.xsite</groupId>
     <artifactId>xsite</artifactId>
-    <version>1.5-SNAPSHOT</version>
+    <version>1.4-SNAPSHOT</version>
   </parent>
   <artifactId>xsite-core</artifactId>
   <packaging>jar</packaging>
