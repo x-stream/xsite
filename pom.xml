@@ -50,7 +50,7 @@
       <dependency>
         <groupId>com.thoughtworks.xstream</groupId>
         <artifactId>xstream</artifactId>
-        <version>1.4.9</version>
+        <version>1.4.15</version>
         <exclusions>
           <exclusion>
             <groupId>xmlpull</groupId>
@@ -151,7 +151,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>2.9</version>
+          <version>3.1.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -366,7 +366,6 @@
       </build>
     </profile>
     <profile>
-      <!-- reporting profile: requires mvn 3 -->
       <id>reporting</id>
       <build>
         <plugins>
