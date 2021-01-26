@@ -494,12 +494,12 @@
 
   <distributionManagement>
     <repository>
-      <id>ossrh-staging</id>
-      <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+      <id>sonatype-nexus-oss</id>
+      <url>http://s01.oss.sonatype.org/service/local/staging/deploy/maven2</url>
     </repository>
     <snapshotRepository>
-      <id>ossrh-snapshots</id>
-      <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+      <id>sonatype-nexus-oss</id>
+      <url>http://s01.oss.sonatype.org/content/repositories/snapshots</url>
     </snapshotRepository>
     <!--site>
       <id>github</id>
